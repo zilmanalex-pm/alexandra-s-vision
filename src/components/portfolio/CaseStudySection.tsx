@@ -93,8 +93,8 @@ const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: st
   </div>
 );
 
-const MobileMockup = ({ img, label, offset = false }: { img?: string | null; label: string; offset?: boolean }) => (
-  <div className={`relative w-28 md:w-36 ${offset ? "mt-8" : ""}`}>
+const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | null; label: string; offset?: boolean; onClick?: () => void }) => (
+  <div className={`relative w-28 md:w-36 ${offset ? "mt-8" : ""} ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
     <div
       className="rounded-[1.4rem] aspect-[9/19] flex flex-col items-center justify-center overflow-hidden relative"
       style={{
