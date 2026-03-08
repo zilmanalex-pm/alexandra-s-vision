@@ -10,13 +10,10 @@ import FooterSection from "@/components/portfolio/FooterSection";
 
 const Divider = () => (
   <div className="w-full px-6">
-    <div className="max-w-6xl mx-auto h-px bg-border/50" />
+    <div className="max-w-6xl mx-auto" style={{ height: "1px", background: "#2D6A6A" }} />
   </div>
 );
 
-const TealFadeDivider = () => (
-  <div className="w-full h-16" style={{ background: "linear-gradient(180deg, #1A1A1B 0%, hsl(180, 30%, 12%) 50%, hsl(0, 0%, 10.2%) 100%)" }} />
-);
 
 const Index = () => (
   <div className="min-h-screen bg-background">
