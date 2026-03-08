@@ -97,12 +97,7 @@ const HeroSection = () => {
               style={font}
             >
               Simplifying the complex.{" "}
-              <span
-                className="bg-clip-text text-transparent"
-                style={{
-                  backgroundImage: "linear-gradient(135deg, hsl(36, 90%, 44%) 0%, hsl(28, 90%, 52%) 100%)",
-                }}
-              >
+              <span className="text-accent">
                 Delivering what matters.
               </span>
             </motion.h1>
