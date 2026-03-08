@@ -1,0 +1,1 @@
+ALTER TABLE public.site_analytics ADD COLUMN source text DEFAULT NULL;

@@ -153,18 +153,21 @@ export type Database = {
         Row: {
           id: string
           page_path: string | null
+          source: string | null
           user_agent: string | null
           visited_at: string | null
         }
         Insert: {
           id?: string
           page_path?: string | null
+          source?: string | null
           user_agent?: string | null
           visited_at?: string | null
         }
         Update: {
           id?: string
           page_path?: string | null
+          source?: string | null
           user_agent?: string | null
           visited_at?: string | null
         }
