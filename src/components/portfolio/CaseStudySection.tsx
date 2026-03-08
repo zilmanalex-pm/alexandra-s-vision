@@ -4,6 +4,9 @@ import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor,
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import { useIsMobile } from "@/hooks/use-mobile";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
+import tarbutonDashboard from "@/assets/tarbuton-dashboard.png";
+import tarbutonEvent from "@/assets/tarbuton-event.png";
+import tarbutonProfile from "@/assets/tarbuton-profile.png";
 import ScreenshotLightbox from "./ScreenshotLightbox";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
