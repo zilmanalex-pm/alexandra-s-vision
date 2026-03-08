@@ -34,6 +34,9 @@ const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
 const CapabilitiesSection = () => {
   const { data: capabilities } = useCapabilities();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   const dbSkills = capabilities?.filter((c: any) => c.category === "skill") ?? [];
   const dbLanguages = capabilities?.filter((c: any) => c.category === "language") ?? [];
