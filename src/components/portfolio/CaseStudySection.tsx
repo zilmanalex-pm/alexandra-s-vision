@@ -92,7 +92,7 @@ const CaseStudySection = () => {
 
         {/* Problem Statement */}
         <motion.div
-          className="glass-card p-8 md:p-10 border-l-4 border-accent/40 mb-16 max-w-3xl mx-auto"
+          className="glass-card-frost p-8 md:p-10 border-l-4 border-foreground/20 mb-16 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
