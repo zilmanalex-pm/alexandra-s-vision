@@ -4,6 +4,7 @@ import { useTestimonials } from "@/hooks/use-portfolio-data";
 import { useRef } from "react";
 import palmFrondImg from "@/assets/palm-frond.png";
 
+
 const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
