@@ -20,7 +20,7 @@ const fadeUp = {
 
 const MetricsSection = () => {
   const { data: metrics } = useMetrics();
-  const metricsTyping = useTypingEffect("Real outcomes from real products. Numbers that moved the needle.", 40, true);
+  
 
   if (!metrics || metrics.length === 0) return null;
 
