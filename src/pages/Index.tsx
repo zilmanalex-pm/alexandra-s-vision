@@ -2,6 +2,7 @@ import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import MetricsSection from "@/components/portfolio/MetricsSection";
 import ProductEdgeSection from "@/components/portfolio/ProductEdgeSection";
+import PsychologySection from "@/components/portfolio/PsychologySection";
 import CaseStudySection from "@/components/portfolio/CaseStudySection";
 import TestimonialsSection from "@/components/portfolio/TestimonialsSection";
 import FooterSection from "@/components/portfolio/FooterSection";
@@ -21,9 +22,12 @@ const Index = () => (
     <WaveDivider from={teal} to={bg} />
     <ProductEdgeSection />
     <WaveDivider from={bg} to={orange} flip />
-    <CaseStudySection />
+    <PsychologySection />
     <WaveDivider from={orange} to={bg} />
+    <CaseStudySection />
+    <WaveDivider from={bg} to={orange} flip />
     <TestimonialsSection />
+    <WaveDivider from={orange} to={bg} />
     <FooterSection />
   </div>
 );
