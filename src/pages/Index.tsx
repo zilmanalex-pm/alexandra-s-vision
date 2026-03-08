@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ValueSection from "@/components/portfolio/ValueSection";
 import CapabilitiesSection from "@/components/portfolio/CapabilitiesSection";
@@ -16,7 +18,19 @@ const Divider = () => (
 );
 
 
-const Index = () => (
+const Index = () => {
+  useEffect(() => {
+    const key = "analytics_session_logged";
+    if (!sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, "1");
+      supabase.from("site_analytics").insert({
+        page_path: window.location.pathname,
+        user_agent: navigator.userAgent,
+      }).then(() => {});
+    }
+  }, []);
+
+  return (
   <div className="min-h-screen bg-background">
     <HeroSection />
     <Divider />
@@ -36,6 +50,7 @@ const Index = () => (
     <Divider />
     <FooterSection />
   </div>
-);
+  );
+};
 
 export default Index;

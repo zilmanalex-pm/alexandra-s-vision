@@ -149,6 +149,27 @@ export type Database = {
         }
         Relationships: []
       }
+      site_analytics: {
+        Row: {
+          id: string
+          page_path: string | null
+          user_agent: string | null
+          visited_at: string | null
+        }
+        Insert: {
+          id?: string
+          page_path?: string | null
+          user_agent?: string | null
+          visited_at?: string | null
+        }
+        Update: {
+          id?: string
+          page_path?: string | null
+          user_agent?: string | null
+          visited_at?: string | null
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           client_name: string | null
