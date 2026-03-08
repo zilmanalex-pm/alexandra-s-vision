@@ -130,11 +130,11 @@ const CaseStudySection = () => {
                   transition={{ ...slow, delay: i * 0.15 }}
                 >
                   {/* Node */}
-                  <div className="absolute left-3 top-1 w-7 h-7 rounded-full bg-secondary border border-primary/30 flex items-center justify-center">
-                    <Icon size={14} strokeWidth={1.5} className="text-primary" />
+                  <div className="absolute left-3 top-1 w-7 h-7 rounded-full bg-foreground/10 border border-foreground/20 flex items-center justify-center">
+                    <Icon size={14} strokeWidth={1.5} className="text-foreground" />
                   </div>
 
-                  <div className="glass-card p-5">
+                  <div className="glass-card-frost p-5">
                     <h4 className="font-semibold text-foreground mb-1.5">{step.label}</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                   </div>
