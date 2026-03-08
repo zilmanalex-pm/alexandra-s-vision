@@ -58,12 +58,14 @@ const CapabilitiesSection = () => {
       <motion.img
         src={monsteraImg}
         alt=""
-        className="absolute -bottom-16 -left-16 w-[380px] h-[380px] object-contain pointer-events-none select-none"
+        className="absolute -bottom-24 -left-24 w-[550px] h-[550px] object-contain pointer-events-none select-none"
         style={{
-          opacity: 0.15,
+          opacity: 0.7,
+          mixBlendMode: "screen",
           y: parallaxY,
-          filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.4)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.2))",
+          filter: "drop-shadow(0 0 40px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 80px hsla(180, 43%, 30%, 0.25)) brightness(0.5) saturate(1.4)",
           transform: "rotate(-15deg)",
+          zIndex: 0,
         }}
       />
 

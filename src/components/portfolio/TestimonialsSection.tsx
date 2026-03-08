@@ -30,12 +30,14 @@ const TestimonialsSection = () => {
       <motion.img
         src={palmFrondImg}
         alt=""
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] object-contain pointer-events-none select-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] object-contain pointer-events-none select-none"
         style={{
-          opacity: 0.11,
+          opacity: 0.7,
+          mixBlendMode: "screen",
           y: parallaxY,
           rotate: -25,
-          filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.4)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.2))",
+          filter: "drop-shadow(0 0 40px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 80px hsla(180, 43%, 30%, 0.25)) brightness(0.5) saturate(1.4)",
+          zIndex: 0,
         }}
       />
 
