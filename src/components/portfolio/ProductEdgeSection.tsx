@@ -83,6 +83,7 @@ const BulletIcon = ({ icon: Icon }: { icon: typeof ShieldCheck }) => (
 
 const ProductEdgeSection = () => {
   const { data: dbCards } = useProductEdge();
+  const edgeTyping = useTypingEffect("What Sets Me Apart", 60, true);
 
   const cards = dbCards && dbCards.length > 0
     ? dbCards.map((c: any) => ({
