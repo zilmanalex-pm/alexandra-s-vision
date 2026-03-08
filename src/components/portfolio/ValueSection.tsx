@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
-import { Puzzle, Layers, RefreshCcw } from "lucide-react";
-import oliveBranchImg from "@/assets/olive-branch.png";
+import { Puzzle, Layers, RefreshCcw, UserRound } from "lucide-react";
 
 const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
 const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
