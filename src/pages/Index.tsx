@@ -18,7 +18,19 @@ const Divider = () => (
 );
 
 
-const Index = () => (
+const Index = () => {
+  useEffect(() => {
+    const key = "analytics_session_logged";
+    if (!sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, "1");
+      supabase.from("site_analytics").insert({
+        page_path: window.location.pathname,
+        user_agent: navigator.userAgent,
+      }).then(() => {});
+    }
+  }, []);
+
+  return (
   <div className="min-h-screen bg-background">
     <HeroSection />
     <Divider />
