@@ -50,6 +50,33 @@ export type Database = {
         }
         Relationships: []
       }
+      experience: {
+        Row: {
+          company: string | null
+          description: string | null
+          display_order: number | null
+          id: string
+          role: string | null
+          years: string | null
+        }
+        Insert: {
+          company?: string | null
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          role?: string | null
+          years?: string | null
+        }
+        Update: {
+          company?: string | null
+          description?: string | null
+          display_order?: number | null
+          id?: string
+          role?: string | null
+          years?: string | null
+        }
+        Relationships: []
+      }
       metrics: {
         Row: {
           category: string | null
