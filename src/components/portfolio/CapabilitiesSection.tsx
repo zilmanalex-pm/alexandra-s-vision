@@ -110,7 +110,8 @@ const CapabilitiesSection = () => {
                 <motion.div
                   key={l.lang}
                   variants={popIn}
-                  className="flex items-center gap-3.5 px-5 py-3 rounded-2xl text-foreground backdrop-blur-md"
+                  whileHover={{ scale: 1.03, boxShadow: "0 0 24px hsla(36, 90%, 44%, 0.25)" }}
+                  className="flex items-center gap-3.5 px-5 py-3 rounded-2xl text-foreground backdrop-blur-md cursor-default transition-colors duration-300"
                   style={{
                     ...font,
                     background: "hsla(0, 0%, 14%, 0.6)",
