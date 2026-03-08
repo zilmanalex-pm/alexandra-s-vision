@@ -56,7 +56,7 @@ const HeroSection = () => {
           >
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-2"
+              className="text-[32px] md:text-[40px] lg:text-[48px] font-bold tracking-tight text-foreground mb-2"
               style={font}
             >
               {fullName}
