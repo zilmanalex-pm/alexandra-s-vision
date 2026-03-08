@@ -192,7 +192,7 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
+          <h2 className="text-[32px] md:text-[48px] font-bold text-foreground" style={font}>
             Case Study: <span className="text-accent">TarbutON</span>
           </h2>
           <p className="mt-3 max-w-2xl mx-auto" style={{ ...font, color: "#A3B8B8" }}>
