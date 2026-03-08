@@ -1,8 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-
 import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
+import { useIsMobile } from "@/hooks/use-mobile";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
 import ScreenshotLightbox from "./ScreenshotLightbox";
 
@@ -12,57 +12,76 @@ const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } },
 };
-
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
-
 const stepIcons = [Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge];
 
 const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string; details?: string }; index: number }) => {
   const Icon = stepIcons[index] || Compass;
-
   return (
-    <motion.div
-      variants={fadeUp}
-      whileHover={{ scale: 1.03, boxShadow: "0 0 24px hsla(36, 90%, 44%, 0.25)" }}
-      className="rounded-2xl p-6 flex flex-col relative overflow-hidden transition-colors duration-300"
+    <div
+      className="rounded-2xl p-6 flex flex-col relative overflow-hidden transition-colors duration-300 h-full"
       style={{
         background: "hsla(0, 0%, 12%, 0.9)",
         border: "1px solid hsla(180, 43%, 30%, 0.15)",
         minHeight: "200px",
       }}
     >
-      {/* Muted teal step number */}
-      <span
-        className="absolute top-4 right-5 text-4xl font-black select-none"
-        style={{ ...font, color: "hsla(36, 90%, 44%, 0.25)" }}
-      >
+      <span className="absolute top-4 right-5 text-4xl font-black select-none" style={{ ...font, color: "hsla(36, 90%, 44%, 0.25)" }}>
         {index + 1}
       </span>
-
-      {/* Icon */}
-      <div
-        className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
-        style={{ background: "hsla(180, 43%, 30%, 0.12)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
-      >
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "hsla(180, 43%, 30%, 0.12)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
         <Icon size={18} strokeWidth={1} className="text-white" />
       </div>
-
-      {/* Label */}
       <h4 className="text-base font-semibold text-accent mb-2" style={font}>{step.label}</h4>
-
-      {/* Description — always fully visible */}
       <p className="text-sm leading-relaxed flex-1" style={{ ...font, color: "hsla(180, 30%, 75%, 1)" }}>{step.desc}</p>
-
-      {/* Details — always fully visible */}
       {step.details && (
-        <div
-          className="mt-3 pt-3 text-sm leading-relaxed"
-          style={{ ...font, color: "hsla(180, 30%, 80%, 0.9)", borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}
-        >
+        <div className="mt-3 pt-3 text-sm leading-relaxed" style={{ ...font, color: "hsla(180, 30%, 80%, 0.9)", borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}>
           {step.details}
         </div>
       )}
-    </motion.div>
+    </div>
+  );
+};
+
+const MobileStepsCarousel = ({ steps }: { steps: Array<{ label: string; desc: string; details?: string }> }) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const handleScroll = () => {
+      const cardWidth = el.offsetWidth * 0.82;
+      const idx = Math.round(el.scrollLeft / cardWidth);
+      setActiveIndex(Math.min(idx, steps.length - 1));
+    };
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, [steps.length]);
+
+  return (
+    <div>
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+      >
+        {steps.map((step, i) => (
+          <div key={i} className="snap-start shrink-0" style={{ width: "82%" }}>
+            <ProcessStepCard step={step} index={i} />
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center gap-2 mt-4">
+        {steps.map((_, i) => (
+          <div
+            key={i}
+            className="w-2 h-2 rounded-full transition-all duration-300"
+            style={{ background: i === activeIndex ? "hsl(36, 90%, 44%)" : "hsla(180, 43%, 30%, 0.3)" }}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -122,10 +141,10 @@ const CaseStudySection = () => {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const isMobile = useIsMobile();
   const cs = caseStudies?.[0];
 
   const title = cs?.title || "TarbutON";
-  const tagline = "An interactive deep-dive into cultural education transformation.";
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
   const desktopImg = null;
   const mobileImg = null;
@@ -152,7 +171,6 @@ const CaseStudySection = () => {
     <section id="casestudy" ref={sectionRef} className="relative py-28 px-6 overflow-hidden" style={{ background: "#1A1A1B" }}>
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-primary/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: "6s" }} />
 
-      {/* Eucalyptus branch - right edge */}
       <motion.img
         src={eucalyptusImg}
         alt=""
@@ -167,7 +185,6 @@ const CaseStudySection = () => {
       />
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        {/* Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 25 }}
@@ -183,7 +200,6 @@ const CaseStudySection = () => {
           </p>
         </motion.div>
 
-        {/* Problem Statement */}
         <motion.div
           className="rounded-3xl p-8 md:p-10 mb-16 max-w-3xl mx-auto relative overflow-hidden"
           style={{ background: "#242426", border: "none" }}
@@ -198,7 +214,6 @@ const CaseStudySection = () => {
           </div>
         </motion.div>
 
-        {/* ═══ Process Steps — 3x2 Grid ═══ */}
         <motion.div
           className="mb-16"
           initial={{ opacity: 0, y: 25 }}
@@ -210,20 +225,25 @@ const CaseStudySection = () => {
             Process <span className="text-accent">Steps</span>
           </h3>
 
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {steps.map((step, i) => (
-              <ProcessStepCard key={i} step={step} index={i} />
-            ))}
-          </motion.div>
+          {isMobile ? (
+            <MobileStepsCarousel steps={steps} />
+          ) : (
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {steps.map((step, i) => (
+                <motion.div key={i} variants={fadeUp}>
+                  <ProcessStepCard step={step} index={i} />
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </motion.div>
 
-        {/* ═══ Device Mockups — Z-Pattern ═══ */}
         <motion.div
           className="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-16"
           initial={{ opacity: 0, y: 30 }}

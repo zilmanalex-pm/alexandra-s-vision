@@ -95,14 +95,14 @@ const ValueSection = () => {
 
             {/* Right column — 40% (2/5) */}
             <motion.div
-              className="lg:col-span-2 flex items-center justify-center p-8 lg:p-6 relative"
+              className="lg:col-span-2 flex items-center justify-center p-4 sm:p-8 lg:p-6 relative"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
             >
               <div
-                className="w-56 md:w-64 lg:w-72 aspect-[3/4] rounded-3xl overflow-hidden"
+                className="w-[30vw] max-w-72 aspect-[3/4] rounded-3xl overflow-hidden"
                 style={{
                   border: "1px solid hsla(180, 43%, 30%, 0.2)",
                   boxShadow: "0 0 40px hsla(180, 43%, 30%, 0.2), 0 0 80px hsla(180, 43%, 30%, 0.1)",
