@@ -93,13 +93,12 @@ const ValueSection = () => {
 
             {/* Right column — 40% (2/5) */}
             <motion.div
-              className="lg:col-span-2 flex items-center justify-center p-8 lg:p-6 relative overflow-visible"
+              className="lg:col-span-2 flex items-center justify-center p-8 lg:p-6 lg:pr-14 relative overflow-visible"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
             >
-              {/* Teal glow behind fern */}
               <div
                 className="absolute inset-0 pointer-events-none overflow-visible"
                 style={{
@@ -109,7 +108,7 @@ const ValueSection = () => {
               <img
                 src={fernImg}
                 alt="Fern frond"
-                className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain relative z-10"
+                className="w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain relative z-10"
                 style={{
                   opacity: 0.9,
                   filter: "drop-shadow(0 0 35px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 70px hsla(180, 43%, 30%, 0.25)) brightness(0.85) saturate(1.4)",
