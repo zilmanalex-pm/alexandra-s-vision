@@ -44,7 +44,7 @@ const CaseStudySection = () => {
 
         {/* Laptop + Mobile Mockup Duo */}
         <motion.div
-          className="glass-card p-8 md:p-12 mb-16"
+          className="glass-card-frost p-8 md:p-12 mb-16"
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
