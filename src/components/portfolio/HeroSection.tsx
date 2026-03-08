@@ -110,7 +110,7 @@ const HeroSection = () => {
               className="rounded-3xl backdrop-blur-xl p-8 flex flex-col gap-4 lg:min-w-[240px]"
               style={{
                 background: "hsla(0, 0%, 14%, 0.5)",
-                border: "1px solid hsla(180, 43%, 30%, 0.2)",
+                border: "1px solid hsla(180, 43%, 30%, 0.15)",
               }}
             >
               <a
