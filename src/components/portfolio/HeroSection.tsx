@@ -119,7 +119,7 @@ const HeroSection = () => {
   const { displayed: typedTitle, done: typingDone } = useTypingEffect(jobTitle, 70);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-24">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-24" style={{ background: "linear-gradient(180deg, #244D4D 0%, #244D4D 60%, hsl(0,0%,10.2%) 100%)" }}>
       {/* Drifting aura blobs */}
       <motion.div
         className="absolute w-[600px] h-[600px] rounded-full bg-primary/[0.05] blur-[180px] pointer-events-none"

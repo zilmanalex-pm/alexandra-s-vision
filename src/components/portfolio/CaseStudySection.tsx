@@ -25,7 +25,7 @@ const CaseStudySection = () => {
   const mobileImg = cs?.mobile_image_url;
 
   return (
-    <section id="casestudy" className="relative py-28 px-6">
+    <section id="casestudy" className="relative py-28 px-6" style={{ background: "linear-gradient(180deg, hsl(0,0%,10.2%) 0%, #B45309 25%, #B45309 75%, hsl(0,0%,10.2%) 100%)" }}>
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-primary/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: "6s" }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">

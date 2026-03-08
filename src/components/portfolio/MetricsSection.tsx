@@ -101,7 +101,7 @@ const MetricsSection = () => {
             return (
               <motion.div key={m.id} variants={fadeUp}>
                 <TiltMetricCard>
-                  <div className="glass-card p-8 text-center relative group h-full">
+                  <div className="glass-card-frost glass-card-hover p-8 text-center relative group h-full">
                     <div className="absolute -inset-1 rounded-3xl bg-accent/[0.04] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                     <div className="relative z-10">

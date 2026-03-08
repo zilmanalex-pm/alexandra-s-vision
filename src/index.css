@@ -69,11 +69,20 @@
     background: hsla(0, 0%, 14%, 0.6);
     border: 1px solid hsla(0, 0%, 100%, 0.06);
   }
+  /* Frosted variant for colored backgrounds */
+  .glass-card-frost {
+    @apply backdrop-blur-xl rounded-3xl;
+    background: hsla(0, 0%, 100%, 0.1);
+    border: 1px solid hsla(0, 0%, 100%, 0.15);
+  }
   .glass-card-hover {
     transition: transform 0.5s cubic-bezier(0.03, 0.98, 0.52, 0.99), border-color 0.5s ease;
   }
   .glass-card-hover:hover {
     border-color: hsla(180, 43%, 30%, 0.25);
+  }
+  .glass-card-frost.glass-card-hover:hover {
+    border-color: hsla(0, 0%, 100%, 0.3);
   }
 }
 
