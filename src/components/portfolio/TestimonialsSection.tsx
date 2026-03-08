@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
         {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="rounded-3xl backdrop-blur-xl p-6 animate-pulse" style={{ background: "hsla(0,0%,14%,0.6)", border: "1px solid hsla(180,43%,30%,0.2)" }}>
+              <div key={i} className="rounded-3xl backdrop-blur-xl p-6 animate-pulse" style={{ background: "hsla(0,0%,14%,0.6)", border: "1px solid hsla(180,43%,30%,0.15)" }}>
                 <div className="h-4 bg-muted rounded w-3/4 mb-3" />
                 <div className="h-4 bg-muted rounded w-full mb-2" />
                 <div className="h-4 bg-muted rounded w-2/3" />
