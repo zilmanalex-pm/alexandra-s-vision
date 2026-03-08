@@ -110,14 +110,14 @@ const ProductEdgeSection = () => (
         viewport={{ once: true }}
       >
         {cards.map((card, i) => (
-          <motion.div key={i} variants={fadeUp}>
+          <motion.div key={i} variants={fadeUp} className="h-full">
             <TiltCard>
-              <div className="glass-card glass-card-hover p-8 h-full group">
+              <div className="glass-card glass-card-hover p-8 min-h-[340px] flex flex-col group">
                 <div className="mb-6">
                   <FloatingIcon icon={card.icon} />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-5">{card.title}</h3>
-                <ul className="space-y-3.5">
+                <ul className="space-y-3.5 flex-1">
                   {card.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-3 text-muted-foreground text-sm">
                       <BulletIcon icon={b.icon} />
