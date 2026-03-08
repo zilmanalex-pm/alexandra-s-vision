@@ -110,7 +110,7 @@ const HeroSection = () => {
               className="rounded-3xl backdrop-blur-xl p-8 flex flex-col gap-4 lg:min-w-[240px]"
               style={{
                 background: "hsla(0, 0%, 14%, 0.5)",
-                border: "1px solid hsla(180, 43%, 30%, 0.2)",
+                border: "1px solid hsla(180, 43%, 30%, 0.15)",
               }}
             >
               <a
@@ -128,7 +128,7 @@ const HeroSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-foreground font-semibold rounded-2xl transition-colors hover:border-primary/50"
-                style={{ ...font, background: "hsla(0, 0%, 14%, 0.4)", border: "1px solid hsla(180, 30%, 30%, 1)" }}
+                style={{ ...font, background: "hsla(0, 0%, 14%, 0.4)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
               >
                 <Linkedin size={18} strokeWidth={1.5} />
                 LinkedIn

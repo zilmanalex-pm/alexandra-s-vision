@@ -103,8 +103,8 @@ const CaseStudySection = () => {
 
         {/* Problem Statement */}
         <motion.div
-          className="rounded-3xl p-8 md:p-10 border-l-4 border-foreground/20 mb-16 max-w-3xl mx-auto relative overflow-hidden"
-          style={{ background: "hsla(180, 30%, 16%, 0.7)", border: "1px solid hsla(180, 43%, 30%, 0.2)" }}
+          className="rounded-3xl p-8 md:p-10 mb-16 max-w-3xl mx-auto relative overflow-hidden"
+          style={{ background: "hsla(180, 30%, 16%, 0.7)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -156,7 +156,7 @@ const CaseStudySection = () => {
                     className="rounded-3xl p-7 flex flex-col"
                     style={{
                       background: "hsla(180, 30%, 16%, 0.85)",
-                      border: "1px solid hsla(180, 43%, 30%, 0.25)",
+                      border: "1px solid hsla(180, 43%, 30%, 0.15)",
                       minHeight: "220px",
                     }}
                   >
