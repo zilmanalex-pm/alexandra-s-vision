@@ -51,7 +51,7 @@ const ValueSection = () => {
         </motion.h2>
 
         <motion.div
-          className="rounded-3xl overflow-hidden"
+          className="rounded-3xl overflow-visible"
           style={{
             background: "hsla(0, 0%, 12%, 0.9)",
             border: "1px solid hsla(180, 43%, 30%, 0.15)",
