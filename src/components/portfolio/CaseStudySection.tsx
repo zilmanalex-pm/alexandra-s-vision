@@ -22,7 +22,8 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
   return (
     <motion.div
       variants={fadeUp}
-      className="rounded-2xl p-6 flex flex-col relative overflow-hidden group cursor-pointer"
+      whileHover={{ scale: 1.03, boxShadow: "0 0 24px hsla(36, 90%, 44%, 0.25)" }}
+      className="rounded-2xl p-6 flex flex-col relative overflow-hidden group cursor-pointer transition-colors duration-300"
       style={{
         background: "hsla(0, 0%, 12%, 0.9)",
         border: "1px solid hsla(180, 43%, 30%, 0.15)",
