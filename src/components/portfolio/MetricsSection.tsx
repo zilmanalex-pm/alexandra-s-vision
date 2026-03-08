@@ -68,13 +68,8 @@ const MetricsSection = () => {
                 </div>
 
                 <p
-                  className="text-5xl md:text-6xl font-bold leading-none"
-                  style={{
-                    ...font,
-                    backgroundImage: "linear-gradient(135deg, #D97706, #B45309)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
+                  className="text-5xl md:text-6xl font-bold leading-none text-accent"
+                  style={font}
                 >
                   {m.value}
                 </p>

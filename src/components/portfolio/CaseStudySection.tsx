@@ -33,7 +33,7 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
       {/* Muted teal step number */}
       <span
         className="absolute top-4 right-5 text-4xl font-black select-none"
-        style={{ ...font, color: "hsla(180, 43%, 30%, 0.2)" }}
+        style={{ ...font, color: "hsla(36, 90%, 44%, 0.25)" }}
       >
         {index + 1}
       </span>
