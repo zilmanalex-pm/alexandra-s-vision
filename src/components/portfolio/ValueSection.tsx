@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { Puzzle, Layers, RefreshCcw, UserRound } from "lucide-react";
 
+
 const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
 const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
