@@ -1,6 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Download, Linkedin } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
+import { useState, useEffect, useRef } from "react";
 
 const GlowingBrain = () => (
   <div className="relative w-64 h-64 md:w-80 md:h-80 animate-float">
@@ -28,49 +29,139 @@ const GlowingBrain = () => (
       <circle cx="112" cy="95" r="1.5" fill="hsl(180, 43%, 30%)" opacity="0.4" />
       <rect x="90" y="150" width="20" height="8" rx="2" fill="url(#pathGrad)" opacity="0.3" />
       <rect x="92" y="158" width="16" height="4" rx="2" fill="url(#pathGrad)" opacity="0.2" />
-      <line x1="100" y1="20" x2="100" y2="10" stroke="hsl(180, 43%, 30%)" strokeWidth="0.8" opacity="0.25" />
-      <line x1="140" y1="45" x2="148" y2="38" stroke="hsl(36, 90%, 44%)" strokeWidth="0.8" opacity="0.25" />
-      <line x1="60" y1="45" x2="52" y2="38" stroke="hsl(180, 43%, 30%)" strokeWidth="0.8" opacity="0.25" />
-      <line x1="155" y1="85" x2="165" y2="85" stroke="hsl(36, 90%, 44%)" strokeWidth="0.8" opacity="0.25" />
-      <line x1="45" y1="85" x2="35" y2="85" stroke="hsl(180, 43%, 30%)" strokeWidth="0.8" opacity="0.25" />
     </svg>
   </div>
 );
 
+/* ─── Typing animation hook ─── */
+const useTypingEffect = (text: string, speed = 60) => {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setDisplayed("");
+    setDone(false);
+    let i = 0;
+    const timer = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(timer);
+        setDone(true);
+      }
+    }, speed);
+    return () => clearInterval(timer);
+  }, [text, speed]);
+
+  return { displayed, done };
+};
+
+/* ─── CV Pulse button ─── */
+const PulsingCVButton = ({ href }: { href: string }) => {
+  const [pulse, setPulse] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPulse(true);
+      setTimeout(() => setPulse(false), 1200);
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="glass-card inline-flex items-center gap-2.5 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-2xl hover:opacity-90 transition-opacity relative overflow-hidden"
+      animate={pulse ? { scale: [1, 1.05, 1] } : {}}
+      transition={{ duration: 1.2, ease: "easeInOut" }}
+    >
+      {/* Pulse ring */}
+      {pulse && (
+        <motion.span
+          className="absolute inset-0 rounded-2xl border-2 border-accent"
+          initial={{ opacity: 0.6, scale: 1 }}
+          animate={{ opacity: 0, scale: 1.15 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        />
+      )}
+      <Download size={18} strokeWidth={1.5} />
+      Download CV
+    </motion.a>
+  );
+};
+
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] } },
+};
 
 const HeroSection = () => {
   const { data: profile } = useProfile();
 
   const fullName = profile?.full_name || "Alexandra Zilman";
+  const jobTitle = profile?.job_title || "Product Manager";
   const headline = profile?.hero_headline || "Simplifying the complex. Delivering what matters.";
   const subHeadline = profile?.sub_headline || "Specializing in high-stakes execution within regulated B2B SaaS and GovTech.";
   const cvUrl = profile?.cv_url || "https://drive.google.com/file/d/16-ZXZKiDFk0hHNDCVRnRLVZT_GPJXnqX/view?usp=drive_link";
   const linkedinUrl = profile?.linkedin_url || "https://www.linkedin.com/in/alexandra-zilman-33770a11/";
 
+  const { displayed: typedTitle, done: typingDone } = useTypingEffect(jobTitle, 70);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-24">
-      <div className="absolute top-20 -left-40 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[120px] animate-blob" />
-      <div className="absolute bottom-10 -right-40 w-[400px] h-[400px] rounded-full bg-accent/6 blur-[120px] animate-blob" style={{ animationDelay: "5s" }} />
+      {/* Drifting aura blobs */}
+      <motion.div
+        className="absolute w-[600px] h-[600px] rounded-full bg-primary/[0.05] blur-[180px] pointer-events-none"
+        animate={{ x: [0, 80, -40, 0], y: [0, -60, 40, 0] }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        style={{ top: "10%", left: "-10%" }}
+      />
+      <motion.div
+        className="absolute w-[500px] h-[500px] rounded-full bg-accent/[0.05] blur-[180px] pointer-events-none"
+        animate={{ x: [0, -60, 50, 0], y: [0, 50, -30, 0] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        style={{ bottom: "5%", right: "-5%" }}
+      />
 
       <div className="container mx-auto max-w-6xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
         <motion.div
           className="flex-1 text-center lg:text-left"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={slow}
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
         >
           {/* Signature name */}
           <motion.p
-            className="text-sm md:text-base tracking-[0.3em] uppercase text-primary/70 font-medium mb-4"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ ...slow, delay: 0.2 }}
+            variants={fadeUp}
+            className="text-sm md:text-base tracking-[0.3em] uppercase text-primary/70 font-medium mb-2"
           >
             {fullName}
           </motion.p>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground">
+          {/* Typing job title */}
+          <motion.p
+            variants={fadeUp}
+            className="text-base text-accent font-medium mb-5 h-6"
+          >
+            {typedTitle}
+            {!typingDone && <span className="inline-block w-0.5 h-5 bg-accent ml-0.5 animate-pulse align-middle" />}
+          </motion.p>
+
+          <motion.h1
+            variants={fadeUp}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground"
+          >
             {headline.includes(".") ? (
               <>
                 {headline.split(".")[0]}.{" "}
@@ -81,20 +172,17 @@ const HeroSection = () => {
             ) : (
               headline
             )}
-          </h1>
-          <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed"
+          >
             {subHeadline}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
-            <a
-              href={cvUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass-card inline-flex items-center gap-2.5 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-2xl hover:opacity-90 transition-opacity"
-            >
-              <Download size={18} strokeWidth={1.5} />
-              Download CV
-            </a>
+          </motion.p>
+
+          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
+            <PulsingCVButton href={cvUrl} />
             <a
               href={linkedinUrl}
               target="_blank"
@@ -104,14 +192,14 @@ const HeroSection = () => {
               <Linkedin size={18} strokeWidth={1.5} />
               LinkedIn
             </a>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           className="flex-shrink-0"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ ...slow, delay: 0.4 }}
+          transition={{ ...slow, delay: 0.6 }}
         >
           <GlowingBrain />
         </motion.div>
