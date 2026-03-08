@@ -216,7 +216,7 @@ const CaseStudySection = () => {
                 href="https://tarbut-on.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_20px_hsla(36,90%,44%,0.5)] hover:brightness-110"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-lg font-bold text-white transition-all duration-300 hover:shadow-[0_0_20px_hsla(36,90%,44%,0.5)] hover:brightness-110"
                 style={{
                   ...font,
                   background: "#D97706",
