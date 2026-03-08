@@ -41,7 +41,7 @@ const CapabilitiesSection = () => (
         viewport={{ once: true }}
         transition={slow}
       >
-        Capabilities
+        Core <span className="text-accent">Capabilities</span>
       </motion.h2>
 
       {/* 2-column grid */}
