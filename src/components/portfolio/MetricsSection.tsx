@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Users, Zap, Target, BarChart3 } from "lucide-react";
 import { useMetrics } from "@/hooks/use-portfolio-data";
-import { useTypingEffect } from "@/hooks/use-typing-effect";
+
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
