@@ -43,7 +43,7 @@ const PsychologySection = () => (
         variants={fadeUp}
         className="text-3xl md:text-4xl font-bold text-center text-foreground mb-6"
       >
-        The Psychology of <span className="text-foreground/80">Product</span>
+        The Psychology of <span className="text-accent">Product</span>
       </motion.h2>
 
       <motion.p
