@@ -187,7 +187,7 @@ const MetricsTab = () => {
           <div key={m.id} className="glass-card p-4 flex items-center justify-between">
             <div>
               <span className="font-semibold text-foreground">{m.value}</span>
-              <span className="text-muted-foreground ml-2">— {m.label}</span>
+              <span className="text-muted-foreground ml-2">{m.label}</span>
               {m.description && <span className="text-xs text-muted-foreground ml-2">({m.description})</span>}
             </div>
             <div className="flex gap-2">
