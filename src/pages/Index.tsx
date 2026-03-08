@@ -33,7 +33,7 @@ const Index = () => (
     <PsychologySection />
     <Divider />
     <CaseStudySection />
-    <Divider />
+    <TealFadeDivider />
     <TestimonialsSection />
     <Divider />
     <FooterSection />
