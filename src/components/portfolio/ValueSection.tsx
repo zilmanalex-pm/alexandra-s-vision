@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
-import { Puzzle, Layers, RefreshCcw, UserRound } from "lucide-react";
+import { Puzzle, Layers, RefreshCcw } from "lucide-react";
+import profileImg from "@/assets/alexandra-profile.jpg";
 
 
 const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
@@ -100,17 +101,17 @@ const ValueSection = () => {
               transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
             >
               <div
-                className="w-56 md:w-64 lg:w-72 aspect-[3/4] rounded-3xl backdrop-blur-xl flex flex-col items-center justify-center gap-4"
+                className="w-56 md:w-64 lg:w-72 aspect-[3/4] rounded-3xl overflow-hidden"
                 style={{
-                  background: "hsla(0, 0%, 14%, 0.5)",
                   border: "1px solid hsla(180, 43%, 30%, 0.2)",
-                  boxShadow: "0 8px 32px hsla(180, 43%, 30%, 0.08), inset 0 1px 0 hsla(0, 0%, 100%, 0.04)",
+                  boxShadow: "0 0 40px hsla(180, 43%, 30%, 0.2), 0 0 80px hsla(180, 43%, 30%, 0.1)",
                 }}
               >
-                <UserRound size={64} strokeWidth={0.8} className="text-white/60" />
-                <span className="text-xs text-muted-foreground tracking-wide" style={headingFont}>
-                  Upload Professional Photo
-                </span>
+                <img
+                  src={profileImg}
+                  alt="Alexandra Zilman"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
             </motion.div>
           </div>
