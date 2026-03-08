@@ -31,7 +31,8 @@ const PsychologySection = () => (
     >
       <motion.div variants={fadeUp} className="flex justify-center mb-8">
         <motion.div
-          className="w-16 h-16 rounded-full bg-foreground/[0.1] border border-foreground/[0.15] flex items-center justify-center"
+          className="w-16 h-16 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center"
+          style={{ background: "hsla(0, 0%, 100%, 0.08)" }}
           animate={{ y: [0, -4, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         >
@@ -43,7 +44,7 @@ const PsychologySection = () => (
         variants={fadeUp}
         className="text-3xl md:text-4xl font-bold text-center text-foreground mb-6"
       >
-        The Psychology of <span className="text-foreground/80">Product</span>
+        The Psychology of <span className="text-accent">Product</span>
       </motion.h2>
 
       <motion.p

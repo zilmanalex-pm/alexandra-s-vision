@@ -107,8 +107,8 @@ const MetricsSection = () => {
                     <div className="absolute -inset-1 rounded-3xl bg-accent/[0.04] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
                     <div className="relative z-10">
-                      <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center mx-auto mb-6">
-                        <Icon size={22} strokeWidth={1.5} className="text-primary" />
+                      <div className="w-12 h-12 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center mx-auto mb-6" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                        <Icon size={22} strokeWidth={1.5} className="text-foreground" />
                       </div>
 
                       <p className="text-5xl md:text-6xl font-bold bg-gradient-to-br from-accent via-accent to-primary bg-clip-text text-transparent leading-none">

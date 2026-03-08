@@ -41,7 +41,7 @@ const CapabilitiesSection = () => (
         viewport={{ once: true }}
         transition={slow}
       >
-        Capabilities
+        Core <span className="text-accent">Capabilities</span>
       </motion.h2>
 
       {/* 2-column grid */}
@@ -70,7 +70,9 @@ const CapabilitiesSection = () => (
                 className="flex items-center gap-3.5 px-5 py-3 rounded-2xl border border-accent/40 text-foreground/90 cursor-default transition-colors duration-300 hover:border-accent/80 backdrop-blur-md"
                 style={{ ...font, background: "hsla(0, 0%, 14%, 0.5)" }}
               >
-                <s.icon size={18} strokeWidth={1.5} className="text-primary flex-shrink-0" />
+                <div className="flex-shrink-0 w-8 h-8 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                  <s.icon size={16} strokeWidth={1.5} className="text-foreground" />
+                </div>
                 <span className="text-sm font-medium">{s.label}</span>
               </motion.div>
             ))}
@@ -98,7 +100,9 @@ const CapabilitiesSection = () => (
                   boxShadow: "0 0 18px hsla(180, 43%, 30%, 0.2), inset 0 1px 0 hsla(180, 43%, 30%, 0.08)",
                 }}
               >
-                <Globe size={18} strokeWidth={1.5} className="text-primary flex-shrink-0" />
+                <div className="flex-shrink-0 w-8 h-8 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                  <Globe size={16} strokeWidth={1.5} className="text-foreground" />
+                </div>
                 <span className="text-sm font-medium flex-1">{l.lang}</span>
                 <span className="text-xs text-muted-foreground">{l.level}</span>
               </motion.div>
