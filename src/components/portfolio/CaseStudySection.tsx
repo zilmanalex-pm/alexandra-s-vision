@@ -232,7 +232,7 @@ const CaseStudySection = () => {
                 href="https://drive.google.com/file/d/1fnYSeSOG5GMBHTSftxqFcb-nQcpGOCS-/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:bg-primary/10"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-lg font-bold text-white transition-all duration-300 hover:bg-primary/10"
                 style={{
                   ...font,
                   background: "transparent",
