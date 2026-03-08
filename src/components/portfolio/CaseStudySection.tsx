@@ -1,21 +1,23 @@
 import { motion } from "framer-motion";
-import { MapPin, Lightbulb, Settings, Route, Download, Monitor, Smartphone } from "lucide-react";
+import { MapPin, Lightbulb, Settings, Download, Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import leafVeinImg from "@/assets/leaf-vein.png";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
-const iconMap: Record<string, typeof MapPin> = { Mapping: MapPin, Insights: Lightbulb, Solutions: Settings, Roadmap: Route };
-
-const fallbackSteps = [
-  { label: "Mapping", desc: "Comprehensive stakeholder landscape analysis and regulatory framework review across government sectors." },
-  { label: "Insights", desc: "Deep-dive user research uncovering fragmented workflows and adoption barriers in legacy systems." },
-  { label: "Solutions", desc: "Designed modular platform architecture enabling rapid iteration under strict compliance constraints." },
-  { label: "Roadmap", desc: "Phased delivery plan balancing quick wins with long-term platform scalability and stakeholder buy-in." },
-];
+const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.15 } } };
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] } },
+};
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
-/* ─── Glass device placeholder ─── */
+const processSteps = [
+  { icon: MapPin, label: "Mapping", desc: "Comprehensive stakeholder landscape analysis and regulatory framework review across government sectors." },
+  { icon: Lightbulb, label: "Insights", desc: "Deep-dive user research uncovering fragmented workflows and adoption barriers in legacy systems." },
+  { icon: Settings, label: "Solutions", desc: "Designed modular platform architecture enabling rapid iteration under strict compliance constraints." },
+];
+
 const DesktopMockup = ({ img, title }: { img?: string | null; title: string }) => (
   <div className="w-full">
     <div className="rounded-t-xl bg-secondary/80 border border-border px-4 py-2.5 flex items-center gap-2">
@@ -67,13 +69,18 @@ const CaseStudySection = () => {
   const { data: caseStudies } = useCaseStudies();
   const cs = caseStudies?.[0];
 
-  const steps = (cs?.process_steps as Array<{ label: string; desc: string }>) || fallbackSteps;
   const title = cs?.title || "TarbutON";
   const tagline = cs?.tagline || "An interactive deep-dive into cultural education transformation.";
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
   const presentationLink = cs?.presentation_link;
   const desktopImg = cs?.desktop_image_url;
   const mobileImg = cs?.mobile_image_url;
+  const dbSteps = cs?.process_steps as Array<{ label: string; desc: string }> | null;
+
+  // Merge DB steps with icons if available
+  const steps = dbSteps && dbSteps.length >= 3
+    ? dbSteps.slice(0, 3).map((s, i) => ({ ...processSteps[i], ...s }))
+    : processSteps;
 
   return (
     <section id="casestudy" className="relative py-28 px-6" style={{ background: "linear-gradient(180deg, hsl(0,0%,10.2%) 0%, #B45309 25%, #B45309 75%, hsl(0,0%,10.2%) 100%)" }}>
@@ -82,7 +89,7 @@ const CaseStudySection = () => {
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -91,59 +98,75 @@ const CaseStudySection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
             Case Study — <span className="text-accent">{title}</span>
           </h2>
-          <p className="text-muted-foreground mt-3 max-w-2xl mx-auto" style={font}>{tagline}</p>
+          <p className="mt-3 max-w-2xl mx-auto" style={{ ...font, color: "#A3B8B8" }}>{tagline}</p>
         </motion.div>
 
-        {/* ═══ Z-Row 1: Text Left + Desktop Right ═══ */}
+        {/* Problem Statement */}
         <motion.div
-          className="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-20"
+          className="rounded-3xl p-8 md:p-10 border-l-4 border-foreground/20 mb-16 max-w-3xl mx-auto relative overflow-hidden"
+          style={{ background: "hsla(180, 30%, 16%, 0.7)", border: "1px solid hsla(180, 43%, 30%, 0.2)" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={slow}
         >
-          {/* Text — Problem & Mapping */}
-          <div>
-            <div className="glass-card-frost p-8 border-l-4 border-foreground/20 relative overflow-hidden mb-8">
-              <img
-                src={leafVeinImg}
-                alt=""
-                className="absolute -right-8 -bottom-8 w-40 h-40 object-cover opacity-[0.08] rotate-12"
-                style={{
-                  maskImage: "radial-gradient(circle, black 30%, transparent 70%)",
-                  WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 70%)",
-                }}
-              />
-              <div className="relative z-10">
-                <h3 className="text-xl font-semibold text-foreground mb-3" style={font}>The Problem</h3>
-                <p className="text-muted-foreground leading-relaxed" style={font}>{problem}</p>
-              </div>
-            </div>
-
-            {/* Mapping step */}
-            {steps.slice(0, 2).map((step, i) => {
-              const Icon = iconMap[step.label] || MapPin;
-              return (
-                <div key={i} className="glass-card-frost p-5 mb-4 flex items-start gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-foreground/10 border border-foreground/20 flex items-center justify-center mt-0.5">
-                    <Icon size={15} strokeWidth={1.5} className="text-foreground" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1" style={font}>{step.label}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed" style={font}>{step.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Desktop Mockup */}
-          <div className="glass-card-frost p-6 md:p-8">
-            <DesktopMockup img={desktopImg} title={title} />
+          <img
+            src={leafVeinImg}
+            alt=""
+            className="absolute -right-8 -bottom-8 w-40 h-40 object-cover opacity-[0.08] rotate-12"
+            style={{ maskImage: "radial-gradient(circle, black 30%, transparent 70%)", WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 70%)" }}
+          />
+          <div className="relative z-10">
+            <h3 className="text-xl font-semibold text-white mb-3" style={font}>The Problem</h3>
+            <p className="leading-relaxed text-lg text-white/90" style={font}>{problem}</p>
           </div>
         </motion.div>
 
-        {/* ═══ Z-Row 2: Mobiles Left + Text Right ═══ */}
+        {/* ═══ Process Steps — Horizontal 3-Column Grid ═══ */}
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={slow}
+        >
+          <h3 className="text-2xl font-bold text-white text-center mb-10" style={font}>
+            Process <span className="text-accent">Steps</span>
+          </h3>
+
+          <motion.div
+            className="gap-6"
+            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {steps.map((step, i) => {
+              const Icon = processSteps[i]?.icon || MapPin;
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="rounded-3xl p-7 flex flex-col"
+                  style={{
+                    background: "hsla(180, 30%, 16%, 0.85)",
+                    border: "1px solid hsla(180, 43%, 30%, 0.25)",
+                    minHeight: "220px",
+                  }}
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-accent/15 border border-accent/25 flex items-center justify-center mb-5">
+                    <Icon size={22} strokeWidth={1.5} className="text-accent" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-white mb-3" style={font}>{step.label}</h4>
+                  <p className="text-sm leading-relaxed mt-auto" style={{ ...font, color: "hsla(180, 30%, 80%, 1)" }}>{step.desc}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </motion.div>
+
+        {/* ═══ Device Mockups — Z-Pattern ═══ */}
         <motion.div
           className="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -151,28 +174,12 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          {/* Mobile Mockups */}
-          <div className="glass-card-frost p-8 md:p-10 flex justify-center gap-5">
+          <div className="rounded-3xl p-6 md:p-8" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <DesktopMockup img={desktopImg} title={title} />
+          </div>
+          <div className="rounded-3xl p-8 md:p-10 flex justify-center gap-5" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
             <MobileMockup img={mobileImg} label="TarbutON Mobile App" />
             <MobileMockup img={null} label="TarbutON Mobile App" offset />
-          </div>
-
-          {/* Text — Metrics & Flow */}
-          <div>
-            {steps.slice(2).map((step, i) => {
-              const Icon = iconMap[step.label] || MapPin;
-              return (
-                <div key={i} className="glass-card-frost p-5 mb-4 flex items-start gap-4">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-foreground/10 border border-foreground/20 flex items-center justify-center mt-0.5">
-                    <Icon size={15} strokeWidth={1.5} className="text-foreground" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1" style={font}>{step.label}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed" style={font}>{step.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </motion.div>
 
