@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Download, Linkedin } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { useState, useEffect } from "react";
+import monsteraHeroImg from "@/assets/monstera-leaf.png";
 
 const useTypingEffect = (text: string, speed = 60) => {
   const [displayed, setDisplayed] = useState("");
