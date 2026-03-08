@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Puzzle, Layers, Repeat, UserRound } from "lucide-react";
+import monsteraImg from "@/assets/monstera-hero.png";
 
 const stagger = {
   hidden: {},
@@ -17,9 +18,28 @@ const values = [
 ];
 
 const AboutSection = () => (
-  <section id="about" className="relative py-28 px-6">
+  <section id="about" className="relative py-28 px-6 overflow-hidden">
+    {/* Vibrant monstera behind text */}
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        maskImage: "radial-gradient(ellipse 70% 80% at 70% 50%, black 0%, transparent 70%)",
+        WebkitMaskImage: "radial-gradient(ellipse 70% 80% at 70% 50%, black 0%, transparent 70%)",
+      }}
+    >
+      <img
+        src={monsteraImg}
+        alt=""
+        className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[650px] h-auto opacity-[0.3]"
+        style={{
+          mixBlendMode: "screen",
+          filter: "brightness(1.6) saturate(1.8) drop-shadow(0 0 50px hsla(180, 43%, 30%, 0.3))",
+        }}
+      />
+    </div>
+
     <div className="absolute top-1/2 right-0 w-[350px] h-[350px] rounded-full bg-primary/[0.05] blur-[100px] animate-blob pointer-events-none" style={{ animationDelay: "3s" }} />
-    <div className="container mx-auto max-w-6xl">
+    <div className="container mx-auto max-w-6xl relative z-10">
       <motion.div
         className="flex flex-col lg:flex-row items-center gap-16"
         variants={stagger}
@@ -30,9 +50,7 @@ const AboutSection = () => (
         {/* Headshot */}
         <motion.div className="flex-shrink-0 text-center" variants={fadeUp}>
           <div className="relative w-56 h-56 md:w-64 md:h-64 mx-auto">
-            {/* Teal outer glow */}
             <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-primary/25 to-accent/20 blur-2xl" />
-            {/* Glassmorphism frame */}
             <div
               className="relative w-full h-full rounded-full flex items-center justify-center border border-white/[0.12] overflow-hidden backdrop-blur-xl"
               style={{ background: "hsla(0, 0%, 14%, 0.5)" }}

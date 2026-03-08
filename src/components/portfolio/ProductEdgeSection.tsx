@@ -103,7 +103,7 @@ const ProductEdgeSection = () => (
       </motion.h2>
 
       <motion.div
-        className="grid md:grid-cols-3 gap-8"
+        className="grid md:grid-cols-3 gap-8 items-stretch"
         variants={stagger}
         initial="hidden"
         whileInView="visible"

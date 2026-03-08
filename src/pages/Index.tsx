@@ -7,29 +7,30 @@ import PsychologySection from "@/components/portfolio/PsychologySection";
 import CaseStudySection from "@/components/portfolio/CaseStudySection";
 import TestimonialsSection from "@/components/portfolio/TestimonialsSection";
 import FooterSection from "@/components/portfolio/FooterSection";
-import WaveDivider from "@/components/portfolio/WaveDivider";
 
-const bg = "hsl(0,0%,10.2%)";
-const teal = "#244D4D";
-const orange = "#B45309";
+const Divider = () => (
+  <div className="w-full px-6">
+    <div className="max-w-6xl mx-auto h-px bg-border/50" />
+  </div>
+);
 
 const Index = () => (
   <div className="min-h-screen bg-background">
     <HeroSection />
-    <WaveDivider from={teal} to={bg} />
+    <Divider />
     <AboutSection />
     <CapabilitiesSection />
-    <WaveDivider from={bg} to={teal} flip />
+    <Divider />
     <MetricsSection />
-    <WaveDivider from={teal} to={bg} />
+    <Divider />
     <ProductEdgeSection />
-    <WaveDivider from={bg} to={orange} flip />
+    <Divider />
     <PsychologySection />
-    <WaveDivider from={orange} to={bg} />
+    <Divider />
     <CaseStudySection />
-    <WaveDivider from={bg} to={orange} flip />
+    <Divider />
     <TestimonialsSection />
-    <WaveDivider from={orange} to={bg} />
+    <Divider />
     <FooterSection />
   </div>
 );
