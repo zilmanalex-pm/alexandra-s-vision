@@ -65,8 +65,8 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
   );
 };
 
-const DesktopMockup = ({ img, title }: { img?: string | null; title: string }) => (
-  <div className="w-full">
+const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: string; onClick?: () => void }) => (
+  <div className={`w-full ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
     <div className="rounded-t-xl bg-secondary/80 flex items-center gap-2 px-4 py-2.5" style={{ border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
       <div className="flex gap-1.5">
         <span className="w-2.5 h-2.5 rounded-full bg-destructive/50" />
