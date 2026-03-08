@@ -103,19 +103,22 @@ const ProductEdgeSection = () => (
       </motion.h2>
 
       <motion.div
-        className="grid md:grid-cols-3 gap-8 items-stretch"
+        className="gap-8"
+        style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}
         variants={stagger}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         {cards.map((card, i) => (
-          <motion.div key={i} variants={fadeUp} className="h-full">
+          <motion.div key={i} variants={fadeUp} style={{ height: "100%" }}>
             <TiltCard>
               <div
-                className="glass-card-hover p-8 flex flex-col group rounded-3xl backdrop-blur-xl"
+                className="glass-card-hover p-8 group rounded-3xl backdrop-blur-xl"
                 style={{
-                  minHeight: "380px",
+                  minHeight: "450px",
+                  display: "flex",
+                  flexDirection: "column",
                   background: "hsla(0, 0%, 14%, 0.6)",
                   border: "1px solid hsla(180, 43%, 30%, 0.25)",
                 }}
@@ -124,7 +127,7 @@ const ProductEdgeSection = () => (
                   <FloatingIcon icon={card.icon} />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-5">{card.title}</h3>
-                <ul className="space-y-3.5 flex-1">
+                <ul className="space-y-3.5 mt-auto">
                   {card.bullets.map((b, j) => (
                     <li key={j} className="flex items-start gap-3 text-muted-foreground text-sm">
                       <BulletIcon icon={b.icon} />
