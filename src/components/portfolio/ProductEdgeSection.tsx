@@ -15,7 +15,7 @@ const fadeUp = {
 
 const cards = [
   {
-    icon: Compass,
+    icon: ShieldCheck,
     title: "The Comprehensive Vision",
     bullets: [
       { icon: ShieldCheck, text: "Navigating Regulation & Gov-tech/Military" },
@@ -24,7 +24,7 @@ const cards = [
     ],
   },
   {
-    icon: Briefcase,
+    icon: Cpu,
     title: "My Product Tool Kit",
     bullets: [
       { icon: Compass, text: "Stakeholder Alignment — roadmap management" },
@@ -33,7 +33,7 @@ const cards = [
     ],
   },
   {
-    icon: TrendingUp,
+    icon: Users2,
     title: 'Evidence (The "Receipts")',
     bullets: [
       { icon: ShieldCheck, text: "21st Reporter platform success" },
