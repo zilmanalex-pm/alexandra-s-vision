@@ -178,7 +178,12 @@ const CaseStudySection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
             Case <span className="text-accent">Study</span>
           </h2>
-          <p className="mt-3 max-w-2xl mx-auto" style={{ ...font, color: "#A3B8B8" }}>{tagline}</p>
+          <p ref={caseTyping.ref as any} className="mt-3 max-w-2xl mx-auto h-7" style={{ ...font, color: "#A3B8B8" }}>
+            {caseTyping.displayed}
+            {!caseTyping.done && caseTyping.displayed.length > 0 && (
+              <span className="inline-block w-0.5 h-4 bg-accent ml-1 animate-pulse align-middle" />
+            )}
+          </p>
         </motion.div>
 
         {/* Problem Statement */}
