@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Download, Linkedin } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { useState, useEffect } from "react";
+import monsteraHeroImg from "@/assets/monstera-leaf.png";
 
 const useTypingEffect = (text: string, speed = 60) => {
   const [displayed, setDisplayed] = useState("");
@@ -46,6 +47,22 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: "#1A1A1B" }}
     >
+      {/* Large botanical leaf framing the left side */}
+      <motion.img
+        src={monsteraHeroImg}
+        alt=""
+        className="absolute -left-20 top-1/2 -translate-y-1/2 w-[600px] h-[600px] lg:w-[750px] lg:h-[750px] object-contain pointer-events-none select-none"
+        style={{
+          opacity: 0.85,
+          mixBlendMode: "screen",
+          filter: "drop-shadow(0 0 40px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 80px hsla(180, 43%, 30%, 0.25)) brightness(0.45) saturate(1.4)",
+          zIndex: 0,
+        }}
+        initial={{ opacity: 0, x: -40 }}
+        animate={{ opacity: 0.85, x: 0 }}
+        transition={{ duration: 2, ease: [0.25, 0.1, 0.25, 1] }}
+      />
+
       <div className="container mx-auto max-w-6xl px-8 md:px-16 lg:px-20 py-24 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16">
           {/* ── Left: Text ── */}
