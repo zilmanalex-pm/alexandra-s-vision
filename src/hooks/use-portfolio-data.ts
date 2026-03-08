@@ -40,3 +40,13 @@ export const useMetrics = () =>
       return data ?? [];
     },
   });
+
+export const useValues = () =>
+  useQuery({
+    queryKey: ["values"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("values").select("*").order("display_order");
+      if (error) throw error;
+      return data ?? [];
+    },
+  });

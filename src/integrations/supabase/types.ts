@@ -176,6 +176,27 @@ export type Database = {
         }
         Relationships: []
       }
+      values: {
+        Row: {
+          created_at: string | null
+          display_order: number | null
+          id: string
+          text: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          text?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          display_order?: number | null
+          id?: string
+          text?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
