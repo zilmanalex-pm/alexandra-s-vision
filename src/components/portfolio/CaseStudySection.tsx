@@ -228,15 +228,24 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <div className="rounded-3xl p-6 md:p-8" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <DesktopMockup img={desktopImg} title={title} />
+          <div className="rounded-3xl p-6 md:p-8 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
-          <div className="rounded-3xl p-8 md:p-10 flex justify-center gap-5" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <MobileMockup img={mobileImg} label="TarbutON Mobile App" />
-            <MobileMockup img={null} label="TarbutON Mobile App" offset />
+          <div className="rounded-3xl p-8 md:p-10 flex justify-center gap-5 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <MobileMockup img={mobileImg} label="TarbutON Mobile App" onClick={() => setLightboxIndex(1)} />
+            <MobileMockup img={null} label="TarbutON Mobile App" offset onClick={() => setLightboxIndex(2)} />
           </div>
         </motion.div>
       </div>
+
+      {lightboxIndex !== null && (
+        <ScreenshotLightbox
+          items={lightboxItems}
+          activeIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </section>
   );
 };
