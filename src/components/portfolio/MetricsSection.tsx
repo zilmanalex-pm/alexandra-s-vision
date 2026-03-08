@@ -9,12 +9,12 @@ const iconPool = [TrendingUp, Users, Zap, Target, BarChart3];
 
 const stagger = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  visible: { transition: { staggerChildren: 0.12 } }
 };
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } }
 };
 
 const MetricsSection = () => {
@@ -30,8 +30,8 @@ const MetricsSection = () => {
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={slow}
-        >
+          transition={slow}>
+          
           <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
             Measurable <span className="text-accent">Impact</span>
           </h2>
@@ -45,8 +45,8 @@ const MetricsSection = () => {
           variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-        >
+          viewport={{ once: true }}>
+          
           {metrics.map((m, i) => {
             const Icon = iconPool[i % iconPool.length];
             return (
@@ -57,36 +57,36 @@ const MetricsSection = () => {
                 className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] rounded-2xl p-8 text-center cursor-default transition-colors duration-300"
                 style={{
                   background: "hsla(0, 0%, 12%, 0.9)",
-                  border: "1px solid hsla(180, 43%, 30%, 0.15)",
-                }}
-              >
+                  border: "1px solid hsla(180, 43%, 30%, 0.15)"
+                }}>
+                
                 <div
                   className="w-11 h-11 rounded-xl flex items-center justify-center mx-auto mb-5"
-                  style={{ background: "hsla(180, 43%, 30%, 0.12)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
-                >
+                  style={{ background: "hsla(180, 43%, 30%, 0.12)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+                  
                   <Icon size={20} strokeWidth={1} color="white" />
                 </div>
 
                 <p
-                  className="text-5xl md:text-6xl font-bold leading-none text-accent"
-                  style={font}
-                >
+                  className="text-5xl md:text-6xl font-bold leading-none text-accent font-sans"
+                  style={font}>
+                  
                   {m.value}
                 </p>
 
                 <p className="font-semibold text-foreground mt-4 text-base" style={font}>{m.label}</p>
-                {m.description && (
-                  <p className="text-sm mt-2 leading-relaxed" style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}>
+                {m.description &&
+                <p className="text-sm mt-2 leading-relaxed" style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}>
                     {m.description}
                   </p>
-                )}
-              </motion.div>
-            );
+                }
+              </motion.div>);
+
           })}
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default MetricsSection;
