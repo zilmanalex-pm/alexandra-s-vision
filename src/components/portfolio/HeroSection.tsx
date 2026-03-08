@@ -2,6 +2,7 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Download, Linkedin } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { useState, useEffect, useRef } from "react";
+import monsteraImg from "@/assets/monstera-hero.png";
 
 const GlowingBrain = () => (
   <div className="relative w-64 h-64 md:w-80 md:h-80 animate-float">
@@ -133,6 +134,21 @@ const HeroSection = () => {
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
         style={{ bottom: "5%", right: "-5%" }}
       />
+
+      {/* Semi-transparent monstera background */}
+      <div
+        className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none hidden lg:block"
+        style={{
+          maskImage: "linear-gradient(to left, transparent 0%, black 30%, black 70%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to left, transparent 0%, black 30%, black 70%, transparent 100%)",
+        }}
+      >
+        <img
+          src={monsteraImg}
+          alt=""
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-auto opacity-[0.12]"
+        />
+      </div>
 
       <div className="container mx-auto max-w-6xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
         <motion.div
