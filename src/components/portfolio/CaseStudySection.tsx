@@ -25,7 +25,7 @@ const CaseStudySection = () => {
   const mobileImg = cs?.mobile_image_url;
 
   return (
-    <section id="casestudy" className="relative py-28 px-6">
+    <section id="casestudy" className="relative py-28 px-6" style={{ background: "linear-gradient(180deg, hsl(0,0%,10.2%) 0%, #B45309 25%, #B45309 75%, hsl(0,0%,10.2%) 100%)" }}>
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-primary/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: "6s" }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -44,7 +44,7 @@ const CaseStudySection = () => {
 
         {/* Laptop + Mobile Mockup Duo */}
         <motion.div
-          className="glass-card p-8 md:p-12 mb-16"
+          className="glass-card-frost p-8 md:p-12 mb-16"
           initial={{ opacity: 0, y: 35 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -92,7 +92,7 @@ const CaseStudySection = () => {
 
         {/* Problem Statement */}
         <motion.div
-          className="glass-card p-8 md:p-10 border-l-4 border-accent/40 mb-16 max-w-3xl mx-auto"
+          className="glass-card-frost p-8 md:p-10 border-l-4 border-foreground/20 mb-16 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -116,7 +116,7 @@ const CaseStudySection = () => {
 
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-accent/30 to-transparent" />
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-foreground/30 via-foreground/15 to-transparent" />
 
             {steps.map((step, i) => {
               const Icon = iconMap[step.label] || MapPin;
@@ -130,11 +130,11 @@ const CaseStudySection = () => {
                   transition={{ ...slow, delay: i * 0.15 }}
                 >
                   {/* Node */}
-                  <div className="absolute left-3 top-1 w-7 h-7 rounded-full bg-secondary border border-primary/30 flex items-center justify-center">
-                    <Icon size={14} strokeWidth={1.5} className="text-primary" />
+                  <div className="absolute left-3 top-1 w-7 h-7 rounded-full bg-foreground/10 border border-foreground/20 flex items-center justify-center">
+                    <Icon size={14} strokeWidth={1.5} className="text-foreground" />
                   </div>
 
-                  <div className="glass-card p-5">
+                  <div className="glass-card-frost p-5">
                     <h4 className="font-semibold text-foreground mb-1.5">{step.label}</h4>
                     <p className="text-sm text-muted-foreground leading-relaxed">{step.desc}</p>
                   </div>
