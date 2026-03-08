@@ -114,14 +114,10 @@ const ProductEdgeSection = () => {
           transition={slow}
         >
           <motion.p
-            ref={edgeTyping.ref as any}
-            className="text-sm uppercase tracking-[0.25em] text-accent font-medium mb-4 h-5"
+            className="text-sm uppercase tracking-[0.25em] text-accent font-medium mb-4"
             style={{ fontFamily: "'Lexend', sans-serif" }}
           >
-            {edgeTyping.displayed}
-            {!edgeTyping.done && edgeTyping.displayed.length > 0 && (
-              <span className="inline-block w-0.5 h-3.5 bg-accent ml-1 animate-pulse align-middle" />
-            )}
+            What Sets Me Apart
           </motion.p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground" style={{ fontFamily: "'Lexend', sans-serif" }}>
             My Product <span className="text-accent">Edge</span>
