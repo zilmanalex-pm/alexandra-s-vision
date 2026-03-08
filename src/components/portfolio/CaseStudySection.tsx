@@ -16,7 +16,7 @@ const CaseStudySection = () => {
   const { data: caseStudies } = useCaseStudies();
   const cs = caseStudies?.[0];
 
-  const steps = (cs?.process_json as Array<{ label: string; desc: string }>) || fallbackSteps;
+  const steps = (cs?.process_steps as Array<{ label: string; desc: string }>) || fallbackSteps;
   const [active, setActive] = useState(0);
   const prev = () => setActive((a) => (a > 0 ? a - 1 : steps.length - 1));
   const next = () => setActive((a) => (a < steps.length - 1 ? a + 1 : 0));
@@ -24,7 +24,6 @@ const CaseStudySection = () => {
   const title = cs?.title || "TarbutON";
   const tagline = cs?.tagline || "An interactive deep-dive into cultural education transformation.";
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
-  const solution = cs?.solution_statement || "A unified platform with modular content delivery, real-time analytics dashboards, and a phased rollout strategy that achieved 3× engagement targets within the first pilot quarter.";
   const presentationLink = cs?.presentation_link;
 
   return (
@@ -74,24 +73,30 @@ const CaseStudySection = () => {
           </div>
         </motion.div>
 
-        {/* Problem / Solution */}
+        {/* Problem & Mockups */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
-          {[
-            { title: "The Problem", color: "border-destructive/30", content: problem, mockup: cs?.mobile_image_url, fallbackLabel: "📱 Mobile View" },
-            { title: "The Solution", color: "border-primary/30", content: solution, mockup: cs?.desktop_image_url, fallbackLabel: "🖥️ Desktop View" },
-          ].map((item, i) => (
-            <motion.div key={i} className={`glass-card p-8 border-l-4 ${item.color}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}>
-              <h3 className="text-xl font-semibold text-foreground mb-3">{item.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{item.content}</p>
-              <div className="mt-6 rounded-2xl bg-muted/60 border border-border h-40 flex items-center justify-center overflow-hidden">
-                {item.mockup ? (
-                  <img src={item.mockup} alt={item.title} className="w-full h-full object-cover" />
-                ) : (
-                  <span className="text-sm text-muted-foreground">{item.fallbackLabel}</span>
-                )}
-              </div>
-            </motion.div>
-          ))}
+          <motion.div className="glass-card p-8 border-l-4 border-destructive/30" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <h3 className="text-xl font-semibold text-foreground mb-3">The Problem</h3>
+            <p className="text-muted-foreground leading-relaxed">{problem}</p>
+            <div className="mt-6 rounded-2xl bg-muted/60 border border-border h-40 flex items-center justify-center overflow-hidden">
+              {cs?.mobile_image_url ? (
+                <img src={cs.mobile_image_url} alt="Mobile mockup" className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-sm text-muted-foreground">📱 Mobile View</span>
+              )}
+            </div>
+          </motion.div>
+          <motion.div className="glass-card p-8 border-l-4 border-primary/30" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
+            <h3 className="text-xl font-semibold text-foreground mb-3">The Solution</h3>
+            <p className="text-muted-foreground leading-relaxed">A unified platform with modular content delivery, real-time analytics dashboards, and a phased rollout strategy that achieved 3× engagement targets within the first pilot quarter.</p>
+            <div className="mt-6 rounded-2xl bg-muted/60 border border-border h-40 flex items-center justify-center overflow-hidden">
+              {cs?.desktop_image_url ? (
+                <img src={cs.desktop_image_url} alt="Desktop mockup" className="w-full h-full object-cover" />
+              ) : (
+                <span className="text-sm text-muted-foreground">🖥️ Desktop View</span>
+              )}
+            </div>
+          </motion.div>
         </div>
 
         <div className="text-center">

@@ -16,139 +16,133 @@ export type Database = {
     Tables: {
       case_studies: {
         Row: {
-          created_at: string
           desktop_image_url: string | null
           id: string
+          is_featured: boolean | null
           mobile_image_url: string | null
           presentation_link: string | null
           problem_statement: string | null
-          process_json: Json | null
-          solution_statement: string | null
+          process_steps: Json | null
           tagline: string | null
-          title: string
+          title: string | null
         }
         Insert: {
-          created_at?: string
           desktop_image_url?: string | null
           id?: string
+          is_featured?: boolean | null
           mobile_image_url?: string | null
           presentation_link?: string | null
           problem_statement?: string | null
-          process_json?: Json | null
-          solution_statement?: string | null
+          process_steps?: Json | null
           tagline?: string | null
-          title: string
+          title?: string | null
         }
         Update: {
-          created_at?: string
           desktop_image_url?: string | null
           id?: string
+          is_featured?: boolean | null
           mobile_image_url?: string | null
           presentation_link?: string | null
           problem_statement?: string | null
-          process_json?: Json | null
-          solution_statement?: string | null
+          process_steps?: Json | null
           tagline?: string | null
-          title?: string
+          title?: string | null
         }
         Relationships: []
       }
       metrics: {
         Row: {
           category: string | null
-          created_at: string
           description: string | null
+          display_order: number | null
           id: string
-          label: string
-          value: string
+          label: string | null
+          value: string | null
         }
         Insert: {
           category?: string | null
-          created_at?: string
           description?: string | null
+          display_order?: number | null
           id?: string
-          label: string
-          value: string
+          label?: string | null
+          value?: string | null
         }
         Update: {
           category?: string | null
-          created_at?: string
           description?: string | null
+          display_order?: number | null
           id?: string
-          label?: string
-          value?: string
+          label?: string | null
+          value?: string | null
         }
         Relationships: []
       }
       profile: {
         Row: {
-          created_at: string
           cv_url: string | null
           email: string | null
-          full_name: string
-          hero_headline: string
+          full_name: string | null
+          hero_headline: string | null
           id: string
-          job_title: string
+          job_title: string | null
           linkedin_url: string | null
           location: string | null
           phone: string | null
-          sub_headline: string
+          sub_headline: string | null
+          updated_at: string | null
         }
         Insert: {
-          created_at?: string
           cv_url?: string | null
           email?: string | null
-          full_name?: string
-          hero_headline?: string
+          full_name?: string | null
+          hero_headline?: string | null
           id?: string
-          job_title?: string
+          job_title?: string | null
           linkedin_url?: string | null
           location?: string | null
           phone?: string | null
-          sub_headline?: string
+          sub_headline?: string | null
+          updated_at?: string | null
         }
         Update: {
-          created_at?: string
           cv_url?: string | null
           email?: string | null
-          full_name?: string
-          hero_headline?: string
+          full_name?: string | null
+          hero_headline?: string | null
           id?: string
-          job_title?: string
+          job_title?: string | null
           linkedin_url?: string | null
           location?: string | null
           phone?: string | null
-          sub_headline?: string
+          sub_headline?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
       testimonials: {
         Row: {
           category_tag: string | null
-          client_name: string
+          client_name: string | null
           client_title: string | null
           company: string | null
-          created_at: string
           id: string
-          quote_text: string
+          quote_text: string | null
         }
         Insert: {
           category_tag?: string | null
-          client_name: string
+          client_name?: string | null
           client_title?: string | null
           company?: string | null
-          created_at?: string
           id?: string
-          quote_text: string
+          quote_text?: string | null
         }
         Update: {
           category_tag?: string | null
-          client_name?: string
+          client_name?: string | null
           client_title?: string | null
           company?: string | null
-          created_at?: string
           id?: string
-          quote_text?: string
+          quote_text?: string | null
         }
         Relationships: []
       }
