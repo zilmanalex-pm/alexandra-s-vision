@@ -1,14 +1,23 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { User } from "lucide-react";
-import { useTestimonials } from "@/hooks/use-portfolio-data";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import palmFrondImg from "@/assets/palm-frond.png";
 
+type Testimonial = {
+  id: string;
+  client_name: string | null;
+  client_title: string | null;
+  company: string | null;
+  quote_text: string | null;
+  display_order: number | null;
+};
 
 const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1 } },
 };
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] } },
@@ -17,17 +26,47 @@ const fadeUp = {
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
 const TestimonialsSection = () => {
-  const { data: dbTestimonials, isLoading } = useTestimonials();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const testimonials = dbTestimonials && dbTestimonials.length > 0 ? dbTestimonials : [];
+
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      setIsLoading(true);
+
+      const { data, error } = await supabase
+        .from("testimonials")
+        .select("id, client_name, client_title, company, quote_text, display_order")
+        .order("display_order", { ascending: true });
+
+      if (error) {
+        console.error("[Testimonials] Failed to fetch testimonials table:", error);
+        setTestimonials([]);
+        setIsLoading(false);
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        console.error("[Testimonials] No rows returned from testimonials table.");
+        setTestimonials([]);
+        setIsLoading(false);
+        return;
+      }
+
+      setTestimonials(data as Testimonial[]);
+      setIsLoading(false);
+    };
+
+    fetchTestimonials();
+  }, []);
 
   return (
     <section id="testimonials" ref={sectionRef} className="relative py-28 px-6 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-accent/[0.04] blur-[140px] pointer-events-none" />
 
-      {/* Palm frond - diagonal background */}
       <motion.img
         src={palmFrondImg}
         alt=""
