@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useTestimonials } from "@/hooks/use-portfolio-data";
 
+const slow = { duration: 1, ease: [0.25, 0.1, 0.25, 1] };
+
 const fallbackTestimonials = [
   { client_name: "Moshe Yeshayahu", client_title: "Engineering Lead", quote_text: "Alexandra has an exceptional ability to translate complex technical constraints into clear, actionable product requirements." },
   { client_name: "Adam Nave", client_title: "VP Product", quote_text: "Working with Alexandra means having someone who truly understands the intersection of technology, regulation, and user experience." },
@@ -15,23 +17,24 @@ const TestimonialsSection = () => {
   const testimonials = dbTestimonials && dbTestimonials.length > 0 ? dbTestimonials : fallbackTestimonials;
 
   return (
-    <section id="testimonials" className="relative py-24 overflow-hidden">
+    <section id="testimonials" className="relative py-28 overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-accent/4 blur-[120px]" />
       <div className="container mx-auto max-w-6xl px-6 mb-12">
-        <motion.h2 className="text-3xl md:text-4xl font-bold text-center text-foreground" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-          The Wall of <span className="text-primary">Love</span>
+        <motion.h2 className="text-3xl md:text-4xl font-bold text-center text-foreground" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={slow}>
+          The Wall of <span className="text-accent">Love</span>
         </motion.h2>
         <p className="text-center text-muted-foreground mt-3">What colleagues say about working with me.</p>
       </div>
 
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
         <div className="flex animate-ticker w-max">
           {[...testimonials, ...testimonials].map((t, i) => (
             <div key={i} className="flex-shrink-0 w-80 mx-3">
               <div className="glass-card p-6 h-full">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/15 flex items-center justify-center">
                     <span className="text-sm font-bold text-primary">
                       {(t.client_name || "?").charAt(0)}
                       {(t.client_name || "").split(" ")[1]?.charAt(0) || ""}
