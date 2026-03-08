@@ -18,6 +18,7 @@ const Index = () => (
     <HeroSection />
     <WaveDivider from={teal} to={bg} />
     <AboutSection />
+    <CapabilitiesSection />
     <WaveDivider from={bg} to={teal} flip />
     <MetricsSection />
     <WaveDivider from={teal} to={bg} />
