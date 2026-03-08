@@ -126,7 +126,7 @@ const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | 
     >
       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-border/50" />
       {img ? (
-        <img src={img} alt={label} className="w-full h-full object-cover rounded-[1.2rem]" />
+        <img src={img} alt={label} className="w-full h-full object-cover rounded-[1.2rem]" loading="lazy" />
       ) : (
         <>
           <Smartphone size={20} strokeWidth={1} className="text-foreground/30 mb-2" />
