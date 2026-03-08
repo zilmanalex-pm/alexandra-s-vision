@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { Puzzle, Layers, RefreshCcw } from "lucide-react";
-import fernImg from "@/assets/fern-frond.png";
+import oliveBranchImg from "@/assets/olive-branch.png";
 
 const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
 const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
