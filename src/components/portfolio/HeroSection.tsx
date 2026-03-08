@@ -102,13 +102,6 @@ const HeroSection = () => {
               </span>
             </motion.h1>
 
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 text-lg leading-relaxed max-w-lg"
-              style={{ ...font, color: "#A3B8B8" }}
-            >
-              {subHeadline}
-            </motion.p>
           </motion.div>
 
           {/* ── Right: Glass CTA box ── */}
