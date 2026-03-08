@@ -70,7 +70,7 @@ const MetricsSection = () => {
   if (!metrics || metrics.length === 0) return null;
 
   return (
-    <section id="impact" className="relative py-28 px-6">
+    <section id="impact" className="relative py-28 px-6" style={{ background: "linear-gradient(180deg, hsl(0,0%,10.2%) 0%, #244D4D 30%, #244D4D 70%, hsl(0,0%,10.2%) 100%)" }}>
       <div className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full bg-accent/[0.05] blur-[140px] pointer-events-none" />
 
       <div className="container mx-auto max-w-5xl relative z-10">
