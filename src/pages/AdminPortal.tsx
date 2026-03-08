@@ -272,7 +272,7 @@ const TestimonialsTab = () => {
         {testimonials?.map((t) => (
           <div key={t.id} className="glass-card p-4 flex items-start justify-between gap-4">
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-foreground text-sm">{t.client_name} <span className="font-normal text-muted-foreground">— {t.client_title}</span></p>
+              <p className="font-semibold text-foreground text-sm">{t.client_name} <span className="font-normal text-muted-foreground">{t.client_title}</span></p>
               <p className="text-sm text-muted-foreground mt-1 italic truncate">"{t.quote_text}"</p>
             </div>
             <div className="flex gap-2 flex-shrink-0">

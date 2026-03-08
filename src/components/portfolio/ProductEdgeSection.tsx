@@ -37,7 +37,7 @@ const cards = [
     title: 'Evidence (The "Receipts")',
     bullets: [
       { icon: ShieldCheck, text: "21st Reporter platform success" },
-      { icon: Cpu, text: "Excellence Model — Accelerated pilots by 3 months" },
+      { icon: Cpu, text: "Excellence Model: Accelerated pilots by 3 months" },
       { icon: Briefcase, text: "Managed Recovery Task" },
     ],
   },
