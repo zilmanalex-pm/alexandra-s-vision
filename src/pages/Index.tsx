@@ -9,6 +9,7 @@ import PsychologySection from "@/components/portfolio/PsychologySection";
 import CaseStudySection from "@/components/portfolio/CaseStudySection";
 import TestimonialsSection from "@/components/portfolio/TestimonialsSection";
 import ConnectSection from "@/components/portfolio/ConnectSection";
+import BehindTheProductSection from "@/components/portfolio/BehindTheProductSection";
 import FooterSection from "@/components/portfolio/FooterSection";
 
 const Divider = () => (
