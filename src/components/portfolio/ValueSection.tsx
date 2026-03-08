@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { Puzzle, Layers, RefreshCcw } from "lucide-react";
-import fernImg from "@/assets/fern-frond.png";
+import oliveBranchImg from "@/assets/olive-branch.png";
 
 const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
 const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
@@ -106,8 +106,8 @@ const ValueSection = () => {
                 }}
               />
               <img
-                src={fernImg}
-                alt="Fern frond"
+                src={oliveBranchImg}
+                alt="Olive branch"
                 className="w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain relative z-10"
                 style={{
                   opacity: 0.9,
