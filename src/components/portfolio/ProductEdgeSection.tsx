@@ -112,7 +112,7 @@ const ProductEdgeSection = () => (
         {cards.map((card, i) => (
           <motion.div key={i} variants={fadeUp} className="h-full">
             <TiltCard>
-              <div className="glass-card glass-card-hover p-8 min-h-[340px] flex flex-col group">
+              <div className="glass-card glass-card-hover p-8 h-full flex flex-col group">
                 <div className="mb-6">
                   <FloatingIcon icon={card.icon} />
                 </div>
