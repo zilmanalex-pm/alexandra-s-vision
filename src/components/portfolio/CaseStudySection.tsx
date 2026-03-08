@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { MapPin, AlertTriangle, Lightbulb, Route, BarChart3, GitBranch, Download, Monitor, Smartphone, ChevronDown } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone, ChevronDown } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import leafVeinImg from "@/assets/leaf-vein.png";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
@@ -14,28 +14,26 @@ const fadeUp = {
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
-const stepIcons = [MapPin, AlertTriangle, Lightbulb, Route, BarChart3, GitBranch];
+const stepIcons = [Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge];
 
 const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string; details?: string }; index: number }) => {
-  const [expanded, setExpanded] = useState(false);
-  const Icon = stepIcons[index] || MapPin;
+  const Icon = stepIcons[index] || Compass;
 
   return (
     <motion.div
       variants={fadeUp}
       whileHover={{ scale: 1.03, boxShadow: "0 0 24px hsla(36, 90%, 44%, 0.25)" }}
-      className="rounded-2xl p-6 flex flex-col relative overflow-hidden group cursor-pointer transition-colors duration-300"
+      className="rounded-2xl p-6 flex flex-col relative overflow-hidden transition-colors duration-300"
       style={{
         background: "hsla(0, 0%, 12%, 0.9)",
         border: "1px solid hsla(180, 43%, 30%, 0.15)",
         minHeight: "200px",
       }}
-      onClick={() => step.details && setExpanded(!expanded)}
     >
-      {/* Burnt orange step number */}
+      {/* Muted teal step number */}
       <span
         className="absolute top-4 right-5 text-4xl font-black select-none"
-        style={{ ...font, color: "hsla(25, 85%, 55%, 0.25)" }}
+        style={{ ...font, color: "hsla(180, 43%, 30%, 0.2)" }}
       >
         {index + 1}
       </span>
@@ -45,48 +43,24 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
         className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
         style={{ background: "hsla(180, 43%, 30%, 0.12)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
       >
-        <Icon size={18} strokeWidth={1.5} className="text-accent" />
+        <Icon size={18} strokeWidth={1} className="text-white" />
       </div>
 
       {/* Label */}
       <h4 className="text-base font-semibold text-accent mb-2" style={font}>{step.label}</h4>
 
-      {/* Short description */}
+      {/* Description — always fully visible */}
       <p className="text-sm leading-relaxed flex-1" style={{ ...font, color: "hsla(180, 30%, 75%, 1)" }}>{step.desc}</p>
 
-      {/* Expand toggle */}
+      {/* Details — always fully visible */}
       {step.details && (
-        <div className="mt-3 flex items-center gap-1.5">
-          <span className="text-xs font-medium" style={{ ...font, color: "hsla(25, 85%, 55%, 0.8)" }}>
-            {expanded ? "Show less" : "Read more"}
-          </span>
-          <ChevronDown
-            size={14}
-            className="transition-transform duration-300"
-            style={{ color: "hsla(25, 85%, 55%, 0.8)", transform: expanded ? "rotate(180deg)" : "rotate(0)" }}
-          />
+        <div
+          className="mt-3 pt-3 text-sm leading-relaxed"
+          style={{ ...font, color: "hsla(180, 30%, 80%, 0.9)", borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}
+        >
+          {step.details}
         </div>
       )}
-
-      {/* Expanded details */}
-      <AnimatePresence>
-        {expanded && step.details && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-            className="overflow-hidden"
-          >
-            <div
-              className="mt-3 pt-3 text-sm leading-relaxed"
-              style={{ ...font, color: "hsla(180, 30%, 80%, 0.9)", borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}
-            >
-              {step.details}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   );
 };
