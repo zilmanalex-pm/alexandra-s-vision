@@ -120,6 +120,7 @@ const CaseStudySection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const cs = caseStudies?.[0];
 
   const title = cs?.title || "TarbutON";
@@ -127,6 +128,12 @@ const CaseStudySection = () => {
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
   const desktopImg = null;
   const mobileImg = null;
+
+  const lightboxItems = [
+    { element: <DesktopMockup img={desktopImg} title={title} />, caption: "TarbutON Dashboard — Admin Overview" },
+    { element: <MobileMockup img={mobileImg} label="TarbutON Mobile App" />, caption: "TarbutON Mobile Discovery Flow" },
+    { element: <MobileMockup img={null} label="TarbutON Mobile App" offset />, caption: "User Journey Mapping — Mobile View" },
+  ];
   const dbSteps = cs?.process_steps as Array<{ label: string; desc: string; details?: string }> | null;
 
   const defaultSteps = [
