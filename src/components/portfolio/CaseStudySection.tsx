@@ -1,9 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone, ChevronDown } from "lucide-react";
+import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
-import leafVeinImg from "@/assets/leaf-vein.png";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
+import ScreenshotLightbox from "./ScreenshotLightbox";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
