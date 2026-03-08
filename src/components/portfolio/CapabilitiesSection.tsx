@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ShieldCheck, BarChart3, Landmark, Rocket, Globe } from "lucide-react";
 import { useCapabilities } from "@/hooks/use-portfolio-data";
+import { useRef } from "react";
+import monsteraImg from "@/assets/monstera-leaf.png";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
