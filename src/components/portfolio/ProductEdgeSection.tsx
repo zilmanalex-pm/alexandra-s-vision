@@ -27,8 +27,8 @@ const cards = [
     icon: Cpu,
     title: "My Product Tool Kit",
     bullets: [
-      { icon: Compass, text: "Stakeholder Alignment — roadmap management" },
-      { icon: TrendingUp, text: "Execution Tools — Metrics-driven, UX-focused" },
+      { icon: Compass, text: "Stakeholder Alignment & Roadmap Management" },
+      { icon: TrendingUp, text: "Execution Tools: Metrics-driven, UX-focused" },
       { icon: Users2, text: "Change Management" },
     ],
   },
