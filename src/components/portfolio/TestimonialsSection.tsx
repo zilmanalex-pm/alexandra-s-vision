@@ -64,7 +64,9 @@ const TestimonialsSection = () => {
                 }}
                 variants={fadeUp}
               >
-                <Quote size={20} strokeWidth={1.5} className="text-accent/40 mb-3 flex-shrink-0" />
+                <div className="w-10 h-10 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center mb-3 flex-shrink-0" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                  <Quote size={16} strokeWidth={1.5} className="text-foreground" />
+                </div>
 
                 <p className="text-foreground/80 leading-relaxed italic mb-5 flex-1" style={font}>
                   "{t.quote_text}"

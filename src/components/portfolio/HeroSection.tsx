@@ -117,7 +117,7 @@ const HeroSection = () => {
                 href={cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-2xl hover:opacity-90 transition-opacity"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-accent text-accent-foreground font-semibold rounded-2xl hover:opacity-90 transition-opacity border-0"
                 style={font}
               >
                 <Download size={18} strokeWidth={1.5} />

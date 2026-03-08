@@ -155,8 +155,8 @@ const CaseStudySection = () => {
                     minHeight: "220px",
                   }}
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-accent/15 border border-accent/25 flex items-center justify-center mb-5">
-                    <Icon size={22} strokeWidth={1.5} className="text-accent" />
+                  <div className="w-12 h-12 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center mb-5" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                    <Icon size={22} strokeWidth={1.5} className="text-foreground" />
                   </div>
                   <h4 className="text-lg font-semibold text-white mb-3" style={font}>{step.label}</h4>
                   <p className="text-sm leading-relaxed mt-auto" style={{ ...font, color: "hsla(180, 30%, 80%, 1)" }}>{step.desc}</p>

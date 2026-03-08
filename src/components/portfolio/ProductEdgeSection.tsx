@@ -82,8 +82,8 @@ const TiltCard = ({ children }: { children: React.ReactNode }) => {
 
 /* ─── Bullet icon ─── */
 const BulletIcon = ({ icon: Icon }: { icon: typeof ShieldCheck }) => (
-  <div className="flex-shrink-0 w-7 h-7 rounded-full bg-primary/[0.1] border border-primary/[0.15] flex items-center justify-center mt-0.5">
-    <Icon size={14} strokeWidth={1} className="text-primary" />
+  <div className="flex-shrink-0 w-7 h-7 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center mt-0.5" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+    <Icon size={14} strokeWidth={1} className="text-foreground" />
   </div>
 );
 

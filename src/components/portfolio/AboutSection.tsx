@@ -68,8 +68,8 @@ const AboutSection = () => (
           </motion.h2>
           {values.map((v, i) => (
             <motion.div key={i} className="flex items-start gap-5" variants={fadeUp}>
-              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
-                <v.icon size={22} strokeWidth={1.5} className="text-primary" />
+              <div className="flex-shrink-0 w-12 h-12 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                <v.icon size={22} strokeWidth={1.5} className="text-foreground" />
               </div>
               <p className="text-lg text-muted-foreground leading-relaxed pt-2">{v.text}</p>
             </motion.div>

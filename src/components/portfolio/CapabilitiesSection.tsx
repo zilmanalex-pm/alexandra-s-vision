@@ -100,7 +100,9 @@ const CapabilitiesSection = () => (
                   boxShadow: "0 0 18px hsla(180, 43%, 30%, 0.2), inset 0 1px 0 hsla(180, 43%, 30%, 0.08)",
                 }}
               >
-                <Globe size={18} strokeWidth={1.5} className="text-primary flex-shrink-0" />
+                <div className="flex-shrink-0 w-8 h-8 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                  <Globe size={16} strokeWidth={1.5} className="text-foreground" />
+                </div>
                 <span className="text-sm font-medium flex-1">{l.lang}</span>
                 <span className="text-xs text-muted-foreground">{l.level}</span>
               </motion.div>
