@@ -34,8 +34,6 @@ const Index = () => (
     <Divider />
     <TestimonialsSection />
     <Divider />
-    <ConnectSection />
-    <Divider />
     <FooterSection />
   </div>
 );
