@@ -7,6 +7,8 @@ import eucalyptusImg from "@/assets/eucalyptus-branch.png";
 import tarbutonDashboard from "@/assets/tarbuton-dashboard.png";
 import tarbutonEvent from "@/assets/tarbuton-event.png";
 import tarbutonProfile from "@/assets/tarbuton-profile.png";
+import tarbutonMobileEvent from "@/assets/tarbuton-mobile-event.png";
+import tarbutonMobileHome from "@/assets/tarbuton-mobile-home.png";
 import ScreenshotLightbox from "./ScreenshotLightbox";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
