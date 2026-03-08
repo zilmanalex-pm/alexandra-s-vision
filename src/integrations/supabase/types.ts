@@ -88,6 +88,7 @@ export type Database = {
           linkedin_url: string | null
           location: string | null
           phone: string | null
+          photo_url: string | null
           sub_headline: string | null
           updated_at: string | null
         }
@@ -101,6 +102,7 @@ export type Database = {
           linkedin_url?: string | null
           location?: string | null
           phone?: string | null
+          photo_url?: string | null
           sub_headline?: string | null
           updated_at?: string | null
         }
@@ -114,6 +116,7 @@ export type Database = {
           linkedin_url?: string | null
           location?: string | null
           phone?: string | null
+          photo_url?: string | null
           sub_headline?: string | null
           updated_at?: string | null
         }
