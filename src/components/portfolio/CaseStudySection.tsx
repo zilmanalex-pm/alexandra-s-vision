@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Lightbulb, Settings, Route, Download, Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
+import leafVeinImg from "@/assets/leaf-vein.png";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const iconMap: Record<string, typeof MapPin> = { Mapping: MapPin, Insights: Lightbulb, Solutions: Settings, Roadmap: Route };
