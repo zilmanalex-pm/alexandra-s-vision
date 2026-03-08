@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
+
+const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -10,12 +12,14 @@ const fadeUp = {
 const FooterSection = () => {
   const { data: profile } = useProfile();
 
-  const phone = profile?.phone || "+1 (234) 567-890";
-  const email = profile?.email || "alex.zilman@gmail.com";
-  const location = profile?.location || "Tel Aviv, Israel";
+  const phone = profile?.phone || "+972545464305";
+  const email = profile?.email || "zilman.alex@gmail.com";
+  const location = profile?.location || "Israel";
+
+  const whatsappUrl = `https://wa.me/${phone.replace(/[^0-9]/g, "")}`;
 
   return (
-    <footer id="contact" className="py-16 px-6 border-t border-border">
+    <footer id="contact" className="py-16 px-6 border-t border-primary/20">
       <motion.div
         className="container mx-auto max-w-4xl text-center"
         initial="hidden"
@@ -23,9 +27,14 @@ const FooterSection = () => {
         viewport={{ once: true }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
       >
-        <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-8 mb-8">
-          <a href={`tel:${phone}`} className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors">
-            <Phone size={18} strokeWidth={1.5} /> {phone}
+        <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-8" style={font}>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
+          >
+            <MessageCircle size={18} strokeWidth={1.5} /> {phone}
           </a>
           <a href={`mailto:${email}`} className="flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors">
             <Mail size={18} strokeWidth={1.5} /> {email}
@@ -34,7 +43,6 @@ const FooterSection = () => {
             <MapPin size={18} strokeWidth={1.5} /> {location}
           </span>
         </motion.div>
-        <motion.p variants={fadeUp} className="text-sm text-muted-foreground/60">© 2026 Alexandra Zilman. Built for the future of SaaS.</motion.p>
       </motion.div>
     </footer>
   );

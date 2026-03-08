@@ -116,6 +116,8 @@ export type Database = {
           id: string
           job_title: string | null
           linkedin_url: string | null
+          location: string | null
+          phone: string | null
           sub_headline: string | null
           value_statement: string | null
         }
@@ -127,6 +129,8 @@ export type Database = {
           id?: string
           job_title?: string | null
           linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
           sub_headline?: string | null
           value_statement?: string | null
         }
@@ -138,6 +142,8 @@ export type Database = {
           id?: string
           job_title?: string | null
           linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
           sub_headline?: string | null
           value_statement?: string | null
         }
