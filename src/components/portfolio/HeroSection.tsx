@@ -135,18 +135,22 @@ const HeroSection = () => {
         style={{ bottom: "5%", right: "-5%" }}
       />
 
-      {/* Semi-transparent monstera background */}
+      {/* Monstera background — immersive bleed */}
       <div
-        className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none hidden lg:block"
+        className="absolute -right-20 top-0 bottom-0 w-[65%] pointer-events-none hidden lg:block"
         style={{
-          maskImage: "linear-gradient(to left, transparent 0%, black 30%, black 70%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to left, transparent 0%, black 30%, black 70%, transparent 100%)",
+          maskImage: "linear-gradient(to left, black 0%, black 50%, transparent 90%)",
+          WebkitMaskImage: "linear-gradient(to left, black 0%, black 50%, transparent 90%)",
         }}
       >
         <img
           src={monsteraImg}
           alt=""
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-auto opacity-[0.12]"
+          className="absolute -right-16 top-1/2 -translate-y-1/2 w-[700px] h-auto opacity-[0.35]"
+          style={{
+            mixBlendMode: "screen",
+            filter: "drop-shadow(0 0 40px hsla(180, 43%, 30%, 0.35)) drop-shadow(0 0 80px hsla(180, 43%, 30%, 0.15))",
+          }}
         />
       </div>
 
