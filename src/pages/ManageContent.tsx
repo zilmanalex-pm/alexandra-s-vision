@@ -180,7 +180,7 @@ const MetricsTab = () => {
           <div key={m.id} className="glass-card p-4 flex items-center justify-between">
             <div>
               <span className="font-semibold text-foreground">{m.value}</span>
-              <span className="text-muted-foreground ml-2">— {m.label}</span>
+              <span className="text-muted-foreground ml-2">{m.label}</span>
             </div>
             <div className="flex gap-2">
               <button onClick={() => startEdit(m)} className="p-2 rounded-lg hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"><Pencil size={15} strokeWidth={1.5} /></button>
