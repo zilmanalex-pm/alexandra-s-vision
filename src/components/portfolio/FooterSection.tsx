@@ -5,7 +5,7 @@ const FooterSection = () => {
   const { data: profile } = useProfile();
 
   const phone = profile?.phone || "+1 (234) 567-890";
-  const email = profile?.email || "alexandra@zilman.dev";
+  const email = profile?.email || "alex.zilman@gmail.com";
   const location = profile?.location || "Tel Aviv, Israel";
 
   return (
