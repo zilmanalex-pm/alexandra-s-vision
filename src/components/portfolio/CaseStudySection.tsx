@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { MapPin, AlertTriangle, Lightbulb, Route, BarChart3, GitBranch, Download, Monitor, Smartphone, ChevronDown } from "lucide-react";
+import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone, ChevronDown } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import leafVeinImg from "@/assets/leaf-vein.png";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
