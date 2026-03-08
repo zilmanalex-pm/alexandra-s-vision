@@ -116,7 +116,7 @@ const CaseStudySection = () => {
 
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-accent/30 to-transparent" />
+            <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-foreground/30 via-foreground/15 to-transparent" />
 
             {steps.map((step, i) => {
               const Icon = iconMap[step.label] || MapPin;
