@@ -15,7 +15,7 @@ const fadeUp = {
 
 const cards = [
   {
-    icon: Compass,
+    icon: ShieldCheck,
     title: "The Comprehensive Vision",
     bullets: [
       { icon: ShieldCheck, text: "Navigating Regulation & Gov-tech/Military" },
@@ -24,7 +24,7 @@ const cards = [
     ],
   },
   {
-    icon: Briefcase,
+    icon: Cpu,
     title: "My Product Tool Kit",
     bullets: [
       { icon: Compass, text: "Stakeholder Alignment — roadmap management" },
@@ -33,7 +33,7 @@ const cards = [
     ],
   },
   {
-    icon: TrendingUp,
+    icon: Users2,
     title: 'Evidence (The "Receipts")',
     bullets: [
       { icon: ShieldCheck, text: "21st Reporter platform success" },
@@ -112,7 +112,14 @@ const ProductEdgeSection = () => (
         {cards.map((card, i) => (
           <motion.div key={i} variants={fadeUp} className="h-full">
             <TiltCard>
-              <div className="glass-card glass-card-hover p-8 h-full flex flex-col group">
+              <div
+                className="glass-card-hover p-8 flex flex-col group rounded-3xl backdrop-blur-xl"
+                style={{
+                  minHeight: "380px",
+                  background: "hsla(0, 0%, 14%, 0.6)",
+                  border: "1px solid hsla(180, 43%, 30%, 0.25)",
+                }}
+              >
                 <div className="mb-6">
                   <FloatingIcon icon={card.icon} />
                 </div>
