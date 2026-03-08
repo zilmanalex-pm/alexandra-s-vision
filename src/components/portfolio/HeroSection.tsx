@@ -5,6 +5,7 @@ import { useTypingEffect } from "@/hooks/use-typing-effect";
 import monsteraHeroImg from "@/assets/monstera-leaf.png";
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
+const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.18 } } };
 const fadeUp = {
