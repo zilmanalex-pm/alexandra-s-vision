@@ -33,9 +33,9 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
         <Icon size={18} strokeWidth={1} className="text-white" />
       </div>
       <h4 className="text-base font-semibold text-accent mb-2" style={font}>{step.label}</h4>
-      <p className="text-sm leading-relaxed flex-1" style={{ ...font, color: "hsla(180, 30%, 75%, 1)" }}>{step.desc}</p>
+      <p className="text-[14px] leading-relaxed flex-1" style={{ ...font, color: "#E2E8F0", opacity: 0.85 }}>{step.desc}</p>
       {step.details && (
-        <div className="mt-3 pt-3 text-sm leading-relaxed" style={{ ...font, color: "hsla(180, 30%, 80%, 0.9)", borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}>
+        <div className="mt-3 pt-3 text-[14px] leading-relaxed" style={{ ...font, color: "#E2E8F0", opacity: 0.85, borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}>
           {step.details}
         </div>
       )}
