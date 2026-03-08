@@ -39,6 +39,7 @@ export type Database = {
         Row: {
           id: string
           is_featured: boolean | null
+          measurable_impact: Json | null
           problem_statement: string | null
           process_steps: Json | null
           title: string | null
@@ -46,6 +47,7 @@ export type Database = {
         Insert: {
           id?: string
           is_featured?: boolean | null
+          measurable_impact?: Json | null
           problem_statement?: string | null
           process_steps?: Json | null
           title?: string | null
@@ -53,6 +55,7 @@ export type Database = {
         Update: {
           id?: string
           is_featured?: boolean | null
+          measurable_impact?: Json | null
           problem_statement?: string | null
           process_steps?: Json | null
           title?: string | null

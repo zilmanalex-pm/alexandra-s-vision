@@ -64,20 +64,20 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section id="testimonials" ref={sectionRef} className="relative py-28 px-6" style={{ overflow: "visible" }}>
+    <section id="testimonials" ref={sectionRef} className="relative py-28 px-6 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-accent/[0.04] blur-[140px] pointer-events-none" />
 
       <motion.img
         src={palmFrondImg}
         alt=""
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] object-contain pointer-events-none select-none"
+        className="absolute inset-0 w-full h-full object-contain pointer-events-none select-none"
         style={{
           opacity: 0.7,
           mixBlendMode: "screen",
           y: parallaxY,
           rotate: -25,
           filter: "drop-shadow(0 0 40px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 80px hsla(180, 43%, 30%, 0.25)) brightness(0.5) saturate(1.4)",
-          zIndex: -1,
+          zIndex: 0,
         }}
       />
 

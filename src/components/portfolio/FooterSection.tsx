@@ -43,6 +43,10 @@ const FooterSection = () => {
             <MapPin size={18} strokeWidth={1.5} /> {location}
           </span>
         </motion.div>
+
+        <motion.p variants={fadeUp} className="mt-8 text-muted-foreground/50 leading-relaxed" style={{ ...font, fontSize: "12px" }}>
+          Privacy Note: This site uses anonymous session tracking solely to measure page views and traffic sources. No personal data is collected or stored. All analytics data is aggregated and used only for portfolio performance insights.
+        </motion.p>
       </motion.div>
     </footer>
   );
