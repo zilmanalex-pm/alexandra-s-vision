@@ -167,8 +167,21 @@ const CaseStudySection = () => {
   const steps = dbSteps && dbSteps.length > 0 ? dbSteps : defaultSteps;
 
   return (
-    <section id="casestudy" className="relative py-28 px-6" style={{ background: "#1A1A1B" }}>
+    <section id="casestudy" ref={sectionRef} className="relative py-28 px-6 overflow-hidden" style={{ background: "#1A1A1B" }}>
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-primary/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: "6s" }} />
+
+      {/* Eucalyptus branch - right edge */}
+      <motion.img
+        src={eucalyptusImg}
+        alt=""
+        className="absolute top-1/2 -right-8 w-[280px] h-auto object-contain pointer-events-none select-none hidden lg:block"
+        style={{
+          opacity: 0.18,
+          y: parallaxY,
+          translateY: "-50%",
+          filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.4)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.2))",
+        }}
+      />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}

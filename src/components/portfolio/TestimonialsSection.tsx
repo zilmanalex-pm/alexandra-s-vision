@@ -23,8 +23,21 @@ const TestimonialsSection = () => {
   const testimonials = dbTestimonials && dbTestimonials.length > 0 ? dbTestimonials : [];
 
   return (
-    <section id="testimonials" className="relative py-28 px-6 overflow-hidden">
+    <section id="testimonials" ref={sectionRef} className="relative py-28 px-6 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-accent/[0.04] blur-[140px] pointer-events-none" />
+
+      {/* Palm frond - diagonal background */}
+      <motion.img
+        src={palmFrondImg}
+        alt=""
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] object-contain pointer-events-none select-none"
+        style={{
+          opacity: 0.11,
+          y: parallaxY,
+          rotate: -25,
+          filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.4)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.2))",
+        }}
+      />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
