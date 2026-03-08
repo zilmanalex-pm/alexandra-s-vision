@@ -64,7 +64,7 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section id="testimonials" ref={sectionRef} className="relative py-28 px-6 overflow-hidden">
+    <section id="testimonials" ref={sectionRef} className="relative py-28 px-6" style={{ overflow: "visible" }}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-accent/[0.04] blur-[140px] pointer-events-none" />
 
       <motion.img
@@ -77,7 +77,7 @@ const TestimonialsSection = () => {
           y: parallaxY,
           rotate: -25,
           filter: "drop-shadow(0 0 40px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 80px hsla(180, 43%, 30%, 0.25)) brightness(0.5) saturate(1.4)",
-          zIndex: 0,
+          zIndex: -1,
         }}
       />
 
