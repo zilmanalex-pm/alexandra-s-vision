@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useTypingEffect } from "@/hooks/use-typing-effect";
+
 import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
