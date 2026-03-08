@@ -151,13 +151,13 @@ const CaseStudySection = () => {
   const title = cs?.title || "TarbutON";
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
   const desktopImg = tarbutonDashboard;
-  const mobileImg1 = tarbutonEvent;
-  const mobileImg2 = tarbutonProfile;
+  const mobileImg1 = tarbutonMobileHome;
+  const mobileImg2 = tarbutonMobileEvent;
 
   const lightboxItems = [
     { element: <DesktopMockup img={desktopImg} title={title} />, caption: "TarbutON Dashboard — Homepage & Discovery" },
-    { element: <MobileMockup img={mobileImg1} label="Event Detail" />, caption: "TarbutON — Event Detail with VIP Planning Tools" },
-    { element: <MobileMockup img={mobileImg2} label="User Profile" offset />, caption: "TarbutON — User Profile & Saved Events" },
+    { element: <MobileMockup img={mobileImg1} label="Mobile Home" />, caption: "TarbutON — Mobile Homepage & Featured Events" },
+    { element: <MobileMockup img={mobileImg2} label="Event Detail" offset />, caption: "TarbutON — Mobile Event Detail & Ticketing" },
   ];
   const dbSteps = cs?.process_steps as Array<{ label: string; desc: string; details?: string }> | null;
 
