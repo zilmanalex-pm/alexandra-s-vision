@@ -60,7 +60,7 @@ const TestimonialsSection = () => {
                 className="rounded-3xl backdrop-blur-xl p-6 flex flex-col"
                 style={{
                   background: "hsla(0, 0%, 14%, 0.6)",
-                  border: "1px solid hsla(180, 43%, 30%, 0.25)",
+                  border: "1px solid hsla(180, 43%, 30%, 0.15)",
                 }}
                 variants={fadeUp}
               >
