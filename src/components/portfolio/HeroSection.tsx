@@ -5,6 +5,7 @@ import { useTypingEffect } from "@/hooks/use-typing-effect";
 import monsteraHeroImg from "@/assets/monstera-leaf.png";
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
+const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
 
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.18 } } };
 const fadeUp = {
@@ -55,7 +56,7 @@ const HeroSection = () => {
           >
             <motion.h2
               variants={fadeUp}
-              className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-2"
+              className="text-[32px] md:text-[40px] lg:text-[48px] font-bold tracking-tight text-foreground mb-2"
               style={font}
             >
               {fullName}
@@ -74,7 +75,7 @@ const HeroSection = () => {
 
             <motion.h1
               variants={fadeUp}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-foreground"
+              className="text-[40px] md:text-[56px] lg:text-[64px] font-bold leading-[1.1] tracking-tight text-foreground"
               style={font}
             >
               Simplifying the complex.{" "}

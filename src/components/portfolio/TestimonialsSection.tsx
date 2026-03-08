@@ -112,7 +112,7 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
+          <h2 className="text-[32px] md:text-[48px] font-bold text-foreground" style={font}>
             My Customers <span className="text-accent">Speak</span>
           </h2>
         </motion.div>

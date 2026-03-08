@@ -33,9 +33,9 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
         <Icon size={18} strokeWidth={1} className="text-white" />
       </div>
       <h4 className="text-base font-semibold text-accent mb-2" style={font}>{step.label}</h4>
-      <p className="text-sm leading-relaxed flex-1" style={{ ...font, color: "hsla(180, 30%, 75%, 1)" }}>{step.desc}</p>
+      <p className="text-[14px] leading-relaxed flex-1" style={{ ...font, color: "#E2E8F0", opacity: 0.85 }}>{step.desc}</p>
       {step.details && (
-        <div className="mt-3 pt-3 text-sm leading-relaxed" style={{ ...font, color: "hsla(180, 30%, 80%, 0.9)", borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}>
+        <div className="mt-3 pt-3 text-[14px] leading-relaxed" style={{ ...font, color: "#E2E8F0", opacity: 0.85, borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}>
           {step.details}
         </div>
       )}
@@ -192,7 +192,7 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
+          <h2 className="text-[32px] md:text-[48px] font-bold text-foreground" style={font}>
             Case Study: <span className="text-accent">TarbutON</span>
           </h2>
           <p className="mt-3 max-w-2xl mx-auto" style={{ ...font, color: "#A3B8B8" }}>
@@ -209,14 +209,14 @@ const CaseStudySection = () => {
           transition={slow}
         >
           <div className="relative z-10">
-            <h3 className="text-xl font-semibold text-white mb-3" style={font}>The Problem</h3>
+            <h3 className="text-[20px] md:text-[24px] font-semibold text-white mb-3" style={font}>The Problem</h3>
             <p className="leading-relaxed text-lg" style={{ ...font, color: "#E2E8F0" }}>{problem}</p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8 [&>a]:w-full [&>a]:sm:w-auto">
               <a
                 href="https://tarbut-on.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_20px_hsla(36,90%,44%,0.5)] hover:brightness-110"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-lg font-bold text-white transition-all duration-300 hover:shadow-[0_0_20px_hsla(36,90%,44%,0.5)] hover:brightness-110"
                 style={{
                   ...font,
                   background: "#D97706",
@@ -232,7 +232,7 @@ const CaseStudySection = () => {
                 href="https://drive.google.com/file/d/1fnYSeSOG5GMBHTSftxqFcb-nQcpGOCS-/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:bg-primary/10"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-lg font-bold text-white transition-all duration-300 hover:bg-primary/10"
                 style={{
                   ...font,
                   background: "transparent",
@@ -252,7 +252,7 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <h3 className="text-2xl font-bold text-foreground text-center mb-10" style={font}>
+          <h3 className="text-[20px] md:text-[24px] font-bold text-foreground text-center mb-10" style={font}>
             Process <span className="text-accent">Steps</span>
           </h3>
 

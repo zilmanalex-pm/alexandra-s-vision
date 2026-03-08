@@ -71,7 +71,7 @@ const CapabilitiesSection = () => {
 
       <div className="container mx-auto max-w-5xl relative z-10">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-16 text-foreground"
+          className="text-[32px] md:text-[48px] font-bold text-center mb-16 text-foreground"
           style={font}
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

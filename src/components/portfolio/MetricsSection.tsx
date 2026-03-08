@@ -39,7 +39,7 @@ const MetricCard = ({ m, i }: { m: any; i: number }) => {
       </p>
       <p className="font-semibold text-foreground mt-4 text-base" style={font}>{m.label}</p>
       {m.description && (
-        <p className="text-sm mt-2 leading-relaxed" style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}>
+        <p className="text-[14px] mt-2 leading-relaxed" style={{ ...font, color: "#E2E8F0", opacity: 0.85 }}>
           {m.description}
         </p>
       )}
@@ -108,7 +108,7 @@ const MetricsSection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
+          <h2 className="text-[32px] md:text-[48px] font-bold text-foreground" style={font}>
             Measurable <span className="text-accent">Impact</span>
           </h2>
           <p className="mt-3 max-w-lg mx-auto" style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}>
