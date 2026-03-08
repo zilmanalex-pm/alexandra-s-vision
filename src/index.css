@@ -53,10 +53,11 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fraunces', serif;
+    letter-spacing: -0.025em;
   }
   html {
     scroll-behavior: smooth;
