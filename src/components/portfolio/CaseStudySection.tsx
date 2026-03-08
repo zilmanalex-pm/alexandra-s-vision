@@ -7,6 +7,8 @@ import eucalyptusImg from "@/assets/eucalyptus-branch.png";
 import tarbutonDashboard from "@/assets/tarbuton-dashboard.png";
 import tarbutonEvent from "@/assets/tarbuton-event.png";
 import tarbutonProfile from "@/assets/tarbuton-profile.png";
+import tarbutonMobileEvent from "@/assets/tarbuton-mobile-event.png";
+import tarbutonMobileHome from "@/assets/tarbuton-mobile-home.png";
 import ScreenshotLightbox from "./ScreenshotLightbox";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
@@ -149,13 +151,13 @@ const CaseStudySection = () => {
   const title = cs?.title || "TarbutON";
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
   const desktopImg = tarbutonDashboard;
-  const mobileImg1 = tarbutonEvent;
-  const mobileImg2 = tarbutonProfile;
+  const mobileImg1 = tarbutonMobileHome;
+  const mobileImg2 = tarbutonMobileEvent;
 
   const lightboxItems = [
     { element: <DesktopMockup img={desktopImg} title={title} />, caption: "TarbutON Dashboard — Homepage & Discovery" },
-    { element: <MobileMockup img={mobileImg1} label="Event Detail" />, caption: "TarbutON — Event Detail with VIP Planning Tools" },
-    { element: <MobileMockup img={mobileImg2} label="User Profile" offset />, caption: "TarbutON — User Profile & Saved Events" },
+    { element: <MobileMockup img={mobileImg1} label="Mobile Home" />, caption: "TarbutON — Mobile Homepage & Featured Events" },
+    { element: <MobileMockup img={mobileImg2} label="Event Detail" offset />, caption: "TarbutON — Mobile Event Detail & Ticketing" },
   ];
   const dbSteps = cs?.process_steps as Array<{ label: string; desc: string; details?: string }> | null;
 
@@ -289,8 +291,8 @@ const CaseStudySection = () => {
             <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
           <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center items-center gap-5 hover:border-primary/30 transition-colors h-[60vh] md:h-auto" style={{ background: "hsla(0, 0%, 12%, 0.8)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <MobileMockup img={mobileImg1} label="Event Detail" onClick={() => setLightboxIndex(1)} />
-            <MobileMockup img={mobileImg2} label="User Profile" offset onClick={() => setLightboxIndex(2)} />
+            <MobileMockup img={mobileImg1} label="Mobile Home" onClick={() => setLightboxIndex(1)} />
+            <MobileMockup img={mobileImg2} label="Event Detail" offset onClick={() => setLightboxIndex(2)} />
           </div>
         </motion.div>
       </div>
