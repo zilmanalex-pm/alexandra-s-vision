@@ -51,41 +51,66 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <div className="flex flex-col md:flex-row items-end justify-center gap-6">
-            {/* Desktop mockup */}
+          <div className="flex flex-col md:flex-row items-end justify-center gap-8">
+            {/* MacBook mockup */}
             <div className="relative w-full md:w-3/5">
-              <div className="rounded-t-xl bg-secondary/80 border border-border px-4 py-2 flex items-center gap-2">
+              <div className="rounded-t-xl bg-secondary/80 border border-border px-4 py-2.5 flex items-center gap-2">
                 <div className="flex gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-destructive/50" />
                   <span className="w-2.5 h-2.5 rounded-full bg-accent/50" />
                   <span className="w-2.5 h-2.5 rounded-full bg-primary/50" />
                 </div>
-                <span className="text-[10px] text-muted-foreground ml-2 truncate">tarbuton.app</span>
+                <span className="text-[10px] text-muted-foreground ml-2 truncate">tarbuton.app/dashboard</span>
               </div>
-              <div className="rounded-b-xl bg-secondary/40 border border-t-0 border-border aspect-video flex items-center justify-center overflow-hidden">
+              <div
+                className="rounded-b-xl border border-t-0 border-border aspect-video flex flex-col items-center justify-center overflow-hidden"
+                style={{ background: "linear-gradient(135deg, #244D4D 0%, #1a3a3a 50%, #2D6A6A 100%)" }}
+              >
                 {desktopImg ? (
                   <img src={desktopImg} alt={`${title} desktop view`} className="w-full h-full object-cover" />
                 ) : (
-                  <div className="text-center text-muted-foreground">
-                    <Monitor size={32} strokeWidth={1.5} className="mx-auto mb-2 text-primary/40" />
-                    <span className="text-sm">Desktop View</span>
-                  </div>
+                  <>
+                    <Monitor size={36} strokeWidth={1} className="text-foreground/30 mb-3" />
+                    <span className="text-sm font-medium text-foreground/50">TarbutON Dashboard</span>
+                    <span className="text-[10px] text-foreground/30 mt-1">Screenshot placeholder</span>
+                  </>
                 )}
               </div>
+              {/* MacBook base */}
+              <div className="mx-auto w-[60%] h-2 bg-secondary/60 rounded-b-lg border border-t-0 border-border" />
             </div>
 
-            {/* Mobile mockup */}
-            <div className="relative w-32 md:w-36 flex-shrink-0">
-              <div className="rounded-[1.2rem] bg-secondary/40 border-2 border-border aspect-[9/19] flex items-center justify-center overflow-hidden relative">
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full bg-border" />
-                {mobileImg ? (
-                  <img src={mobileImg} alt={`${title} mobile view`} className="w-full h-full object-cover rounded-[1rem]" />
-                ) : (
-                  <div className="text-center text-muted-foreground">
-                    <Smartphone size={20} strokeWidth={1.5} className="mx-auto mb-1 text-primary/40" />
-                    <span className="text-[10px]">Mobile</span>
-                  </div>
-                )}
+            {/* Two iPhone mockups */}
+            <div className="flex gap-4 flex-shrink-0">
+              {/* iPhone 1 */}
+              <div className="relative w-28 md:w-32">
+                <div
+                  className="rounded-[1.4rem] border-2 border-border aspect-[9/19] flex flex-col items-center justify-center overflow-hidden relative"
+                  style={{ background: "linear-gradient(180deg, #244D4D 0%, #2D6A6A 100%)" }}
+                >
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-border/50" />
+                  {mobileImg ? (
+                    <img src={mobileImg} alt={`${title} mobile view`} className="w-full h-full object-cover rounded-[1.2rem]" />
+                  ) : (
+                    <>
+                      <Smartphone size={20} strokeWidth={1} className="text-foreground/30 mb-2" />
+                      <span className="text-[9px] font-medium text-foreground/50 px-2 text-center">TarbutON Mobile App</span>
+                    </>
+                  )}
+                </div>
+              </div>
+              {/* iPhone 2 */}
+              <div className="relative w-28 md:w-32 mt-6">
+                <div
+                  className="rounded-[1.4rem] border-2 border-border aspect-[9/19] flex flex-col items-center justify-center overflow-hidden relative"
+                  style={{ background: "linear-gradient(180deg, #2D6A6A 0%, #244D4D 100%)" }}
+                >
+                  <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-border/50" />
+                  <>
+                    <Smartphone size={20} strokeWidth={1} className="text-foreground/30 mb-2" />
+                    <span className="text-[9px] font-medium text-foreground/50 px-2 text-center">TarbutON Mobile App</span>
+                  </>
+                </div>
               </div>
             </div>
           </div>
