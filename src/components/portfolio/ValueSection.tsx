@@ -39,15 +39,7 @@ const ValueSection = () => {
           transition={slow}
         >
           The Value I{" "}
-          <span
-            style={{
-              backgroundImage: "linear-gradient(135deg, #D97706, #B45309)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Bring
-          </span>
+          <span className="text-accent">Bring</span>
         </motion.h2>
 
         <motion.div
