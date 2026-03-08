@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Quote } from "lucide-react";
+import { User } from "lucide-react";
 import { useTestimonials } from "@/hooks/use-portfolio-data";
 import { useRef } from "react";
 import palmFrondImg from "@/assets/palm-frond.png";
@@ -84,20 +84,15 @@ const TestimonialsSection = () => {
                 }}
                 variants={fadeUp}
               >
-                <div className="w-10 h-10 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center mb-3 flex-shrink-0" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
-                  <Quote size={16} strokeWidth={1.5} className="text-foreground" />
-                </div>
-
-                <p className="text-foreground/80 leading-relaxed italic mb-5 flex-1" style={font}>
-                  "{t.quote_text}"
+                <p className="text-foreground/90 leading-relaxed italic flex-1" style={font}>
+                  <span className="text-accent text-xl font-bold not-italic">"</span>
+                  {t.quote_text}
+                  <span className="text-accent text-xl font-bold not-italic">"</span>
                 </p>
 
-                <div className="flex items-center gap-3 pt-3 border-t border-border">
+                <div className="flex items-center gap-3 pt-4 mt-4 border-t border-border">
                   <div className="w-9 h-9 rounded-full bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0">
-                    <span className="text-xs font-bold text-primary" style={font}>
-                      {(t.client_name || "?").charAt(0)}
-                      {(t.client_name || "").split(" ")[1]?.charAt(0) || ""}
-                    </span>
+                    <User size={16} strokeWidth={1.5} className="text-white" />
                   </div>
                   <div>
                     <p className="font-semibold text-foreground text-sm leading-tight" style={font}>{t.client_name}</p>
@@ -106,11 +101,6 @@ const TestimonialsSection = () => {
                       {t.company ? ` · ${t.company}` : ""}
                     </p>
                   </div>
-                  {t.category_tag && (
-                    <span className="ml-auto text-[10px] uppercase tracking-wider text-primary/60 bg-primary/[0.06] px-2 py-0.5 rounded-full" style={font}>
-                      {t.category_tag}
-                    </span>
-                  )}
                 </div>
               </motion.div>
             ))}
