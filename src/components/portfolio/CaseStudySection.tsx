@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { MapPin, AlertTriangle, Lightbulb, Route, BarChart3, GitBranch, Download, Monitor, Smartphone, ChevronDown } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import leafVeinImg from "@/assets/leaf-vein.png";
+import eucalyptusImg from "@/assets/eucalyptus-branch.png";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
@@ -142,6 +143,9 @@ const MobileMockup = ({ img, label, offset = false }: { img?: string | null; lab
 
 const CaseStudySection = () => {
   const { data: caseStudies } = useCaseStudies();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const cs = caseStudies?.[0];
 
   const title = cs?.title || "TarbutON";
@@ -163,8 +167,21 @@ const CaseStudySection = () => {
   const steps = dbSteps && dbSteps.length > 0 ? dbSteps : defaultSteps;
 
   return (
-    <section id="casestudy" className="relative py-28 px-6" style={{ background: "#1A1A1B" }}>
+    <section id="casestudy" ref={sectionRef} className="relative py-28 px-6 overflow-hidden" style={{ background: "#1A1A1B" }}>
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-primary/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: "6s" }} />
+
+      {/* Eucalyptus branch - right edge */}
+      <motion.img
+        src={eucalyptusImg}
+        alt=""
+        className="absolute top-1/2 -right-8 w-[280px] h-auto object-contain pointer-events-none select-none hidden lg:block"
+        style={{
+          opacity: 0.18,
+          y: parallaxY,
+          translateY: "-50%",
+          filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.4)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.2))",
+        }}
+      />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         {/* Header */}

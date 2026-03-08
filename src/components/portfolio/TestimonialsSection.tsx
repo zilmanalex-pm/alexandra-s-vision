@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Quote } from "lucide-react";
 import { useTestimonials } from "@/hooks/use-portfolio-data";
+import { useRef } from "react";
+import palmFrondImg from "@/assets/palm-frond.png";
 
 const stagger = {
   hidden: {},
@@ -15,11 +17,27 @@ const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
 const TestimonialsSection = () => {
   const { data: dbTestimonials, isLoading } = useTestimonials();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [60, -60]);
   const testimonials = dbTestimonials && dbTestimonials.length > 0 ? dbTestimonials : [];
 
   return (
-    <section id="testimonials" className="relative py-28 px-6 overflow-hidden">
+    <section id="testimonials" ref={sectionRef} className="relative py-28 px-6 overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-accent/[0.04] blur-[140px] pointer-events-none" />
+
+      {/* Palm frond - diagonal background */}
+      <motion.img
+        src={palmFrondImg}
+        alt=""
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] object-contain pointer-events-none select-none"
+        style={{
+          opacity: 0.11,
+          y: parallaxY,
+          rotate: -25,
+          filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.4)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.2))",
+        }}
+      />
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div

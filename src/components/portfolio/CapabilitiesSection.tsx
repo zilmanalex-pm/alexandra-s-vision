@@ -1,6 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ShieldCheck, BarChart3, Landmark, Rocket, Globe } from "lucide-react";
 import { useCapabilities } from "@/hooks/use-portfolio-data";
+import { useRef } from "react";
+import monsteraImg from "@/assets/monstera-leaf.png";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } };
@@ -32,6 +34,9 @@ const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
 const CapabilitiesSection = () => {
   const { data: capabilities } = useCapabilities();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   const dbSkills = capabilities?.filter((c: any) => c.category === "skill") ?? [];
   const dbLanguages = capabilities?.filter((c: any) => c.category === "language") ?? [];
@@ -45,9 +50,22 @@ const CapabilitiesSection = () => {
     : fallbackLanguages;
 
   return (
-    <section id="capabilities" className="relative py-28 px-6">
+    <section id="capabilities" ref={sectionRef} className="relative py-28 px-6 overflow-hidden">
       <div className="absolute top-0 left-1/4 w-80 h-80 rounded-full bg-primary/[0.04] blur-[120px] animate-blob pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-72 h-72 rounded-full bg-accent/[0.04] blur-[100px] animate-blob pointer-events-none" style={{ animationDelay: "6s" }} />
+
+      {/* Monstera leaf - bottom left corner */}
+      <motion.img
+        src={monsteraImg}
+        alt=""
+        className="absolute -bottom-16 -left-16 w-[380px] h-[380px] object-contain pointer-events-none select-none"
+        style={{
+          opacity: 0.15,
+          y: parallaxY,
+          filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.4)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.2))",
+          transform: "rotate(-15deg)",
+        }}
+      />
 
       <div className="container mx-auto max-w-5xl relative z-10">
         <motion.h2
