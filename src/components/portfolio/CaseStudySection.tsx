@@ -184,7 +184,7 @@ const CaseStudySection = () => {
         >
           <div className="relative z-10">
             <h3 className="text-xl font-semibold text-white mb-3" style={font}>The Problem</h3>
-            <p className="leading-relaxed text-lg" style={{ ...font, color: "#A3B8B8" }}>{problem}</p>
+            <p className="leading-relaxed text-lg" style={{ ...font, color: "#E2E8F0" }}>{problem}</p>
           </div>
         </motion.div>
 
