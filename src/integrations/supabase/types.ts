@@ -14,72 +14,53 @@ export type Database = {
   }
   public: {
     Tables: {
-      case_studies: {
+      capabilities: {
         Row: {
-          desktop_image_url: string | null
+          category: string | null
           id: string
-          is_featured: boolean | null
-          mobile_image_url: string | null
-          presentation_link: string | null
-          problem_statement: string | null
-          process_steps: Json | null
-          tagline: string | null
-          title: string | null
+          proficiency_label: string | null
+          skill_name: string | null
         }
         Insert: {
-          desktop_image_url?: string | null
+          category?: string | null
           id?: string
-          is_featured?: boolean | null
-          mobile_image_url?: string | null
-          presentation_link?: string | null
-          problem_statement?: string | null
-          process_steps?: Json | null
-          tagline?: string | null
-          title?: string | null
+          proficiency_label?: string | null
+          skill_name?: string | null
         }
         Update: {
-          desktop_image_url?: string | null
+          category?: string | null
           id?: string
-          is_featured?: boolean | null
-          mobile_image_url?: string | null
-          presentation_link?: string | null
-          problem_statement?: string | null
-          process_steps?: Json | null
-          tagline?: string | null
-          title?: string | null
+          proficiency_label?: string | null
+          skill_name?: string | null
         }
         Relationships: []
       }
-      experience: {
+      case_studies: {
         Row: {
-          company: string | null
-          description: string | null
-          display_order: number | null
           id: string
-          role: string | null
-          years: string | null
+          is_featured: boolean | null
+          problem_statement: string | null
+          process_steps: Json | null
+          title: string | null
         }
         Insert: {
-          company?: string | null
-          description?: string | null
-          display_order?: number | null
           id?: string
-          role?: string | null
-          years?: string | null
+          is_featured?: boolean | null
+          problem_statement?: string | null
+          process_steps?: Json | null
+          title?: string | null
         }
         Update: {
-          company?: string | null
-          description?: string | null
-          display_order?: number | null
           id?: string
-          role?: string | null
-          years?: string | null
+          is_featured?: boolean | null
+          problem_statement?: string | null
+          process_steps?: Json | null
+          title?: string | null
         }
         Relationships: []
       }
       metrics: {
         Row: {
-          category: string | null
           description: string | null
           display_order: number | null
           id: string
@@ -87,7 +68,6 @@ export type Database = {
           value: string | null
         }
         Insert: {
-          category?: string | null
           description?: string | null
           display_order?: number | null
           id?: string
@@ -95,12 +75,35 @@ export type Database = {
           value?: string | null
         }
         Update: {
-          category?: string | null
           description?: string | null
           display_order?: number | null
           id?: string
           label?: string | null
           value?: string | null
+        }
+        Relationships: []
+      }
+      product_edge: {
+        Row: {
+          bullet_points: Json | null
+          display_order: number | null
+          icon_name: string | null
+          id: string
+          title: string | null
+        }
+        Insert: {
+          bullet_points?: Json | null
+          display_order?: number | null
+          icon_name?: string | null
+          id?: string
+          title?: string | null
+        }
+        Update: {
+          bullet_points?: Json | null
+          display_order?: number | null
+          icon_name?: string | null
+          id?: string
+          title?: string | null
         }
         Relationships: []
       }
@@ -113,11 +116,8 @@ export type Database = {
           id: string
           job_title: string | null
           linkedin_url: string | null
-          location: string | null
-          phone: string | null
-          photo_url: string | null
           sub_headline: string | null
-          updated_at: string | null
+          value_statement: string | null
         }
         Insert: {
           cv_url?: string | null
@@ -127,11 +127,8 @@ export type Database = {
           id?: string
           job_title?: string | null
           linkedin_url?: string | null
-          location?: string | null
-          phone?: string | null
-          photo_url?: string | null
           sub_headline?: string | null
-          updated_at?: string | null
+          value_statement?: string | null
         }
         Update: {
           cv_url?: string | null
@@ -141,36 +138,33 @@ export type Database = {
           id?: string
           job_title?: string | null
           linkedin_url?: string | null
-          location?: string | null
-          phone?: string | null
-          photo_url?: string | null
           sub_headline?: string | null
-          updated_at?: string | null
+          value_statement?: string | null
         }
         Relationships: []
       }
       testimonials: {
         Row: {
-          category_tag: string | null
           client_name: string | null
           client_title: string | null
           company: string | null
+          display_order: number | null
           id: string
           quote_text: string | null
         }
         Insert: {
-          category_tag?: string | null
           client_name?: string | null
           client_title?: string | null
           company?: string | null
+          display_order?: number | null
           id?: string
           quote_text?: string | null
         }
         Update: {
-          category_tag?: string | null
           client_name?: string | null
           client_title?: string | null
           company?: string | null
+          display_order?: number | null
           id?: string
           quote_text?: string | null
         }
