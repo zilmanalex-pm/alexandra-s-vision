@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
-import { Puzzle, Layers, RefreshCcw } from "lucide-react";
-import oliveBranchImg from "@/assets/olive-branch.png";
+import { Puzzle, Layers, RefreshCcw, UserRound } from "lucide-react";
 
 const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
 const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
@@ -93,27 +92,25 @@ const ValueSection = () => {
 
             {/* Right column — 40% (2/5) */}
             <motion.div
-              className="lg:col-span-2 flex items-center justify-center p-8 lg:p-6 lg:pr-14 relative overflow-visible"
+              className="lg:col-span-2 flex items-center justify-center p-8 lg:p-6 relative"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
             >
               <div
-                className="absolute inset-0 pointer-events-none overflow-visible"
+                className="w-56 md:w-64 lg:w-72 aspect-[3/4] rounded-3xl backdrop-blur-xl flex flex-col items-center justify-center gap-4"
                 style={{
-                  background: "radial-gradient(circle at center, hsla(180, 43%, 30%, 0.15) 0%, transparent 70%)",
+                  background: "hsla(0, 0%, 14%, 0.5)",
+                  border: "1px solid hsla(180, 43%, 30%, 0.2)",
+                  boxShadow: "0 8px 32px hsla(180, 43%, 30%, 0.08), inset 0 1px 0 hsla(0, 0%, 100%, 0.04)",
                 }}
-              />
-              <img
-                src={oliveBranchImg}
-                alt="Olive branch"
-                className="w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain relative z-10"
-                style={{
-                  opacity: 0.9,
-                  filter: "drop-shadow(0 0 35px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 70px hsla(180, 43%, 30%, 0.25)) brightness(0.85) saturate(1.4)",
-                }}
-              />
+              >
+                <UserRound size={64} strokeWidth={0.8} className="text-white/60" />
+                <span className="text-xs text-muted-foreground tracking-wide" style={headingFont}>
+                  Upload Professional Photo
+                </span>
+              </div>
             </motion.div>
           </div>
         </motion.div>
