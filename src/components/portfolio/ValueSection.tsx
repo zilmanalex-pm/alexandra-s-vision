@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useValues } from "@/hooks/use-portfolio-data";
+import { useProfile } from "@/hooks/use-portfolio-data";
 import fernImg from "@/assets/fern-frond.png";
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
@@ -10,17 +10,20 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } },
 };
 
-const fallbackValues = [
-  "Specializing in high-stakes execution within regulated B2B SaaS and GovTech.",
-  "I bridge the gap between deep technical constraints and user needs, building product structures that reduce support friction and drive long-term platform health.",
-  "I thrive where requirements are messy and stakeholders are many.",
-  "Expertise in resolving fragmented signals into scalable platform logic.",
-  "I own the lifecycle of adoption, bridging the gap between technical constraints and user needs.",
-];
+const fallbackText = `Specializing in high-stakes execution within regulated B2B SaaS and GovTech.
+
+I bridge the gap between deep technical constraints and user needs, building product structures that reduce support friction and drive long-term platform health.
+
+I thrive where requirements are messy and stakeholders are many.
+
+Expertise in resolving fragmented signals into scalable platform logic.
+
+I own the lifecycle of adoption, bridging the gap between technical constraints and user needs.`;
 
 const ValueSection = () => {
-  const { data: dbValues } = useValues();
-  const values = dbValues && dbValues.length > 0 ? dbValues.map((v) => v.text ?? "") : fallbackValues;
+  const { data: profile } = useProfile();
+  const valueStatement = profile?.value_statement || fallbackText;
+  const paragraphs = valueStatement.split("\n").filter((p: string) => p.trim().length > 0);
 
   return (
     <section id="value" className="relative py-28 px-6">
@@ -50,7 +53,6 @@ const ValueSection = () => {
           transition={slow}
         >
           <div className="flex flex-col lg:flex-row">
-            {/* Left: Text */}
             <motion.div
               className="flex-1 p-10 md:p-14 lg:p-16"
               variants={stagger}
@@ -59,7 +61,7 @@ const ValueSection = () => {
               viewport={{ once: true }}
             >
               <div className="space-y-5">
-                {values.map((text, i) => (
+                {paragraphs.map((text: string, i: number) => (
                   <motion.p
                     key={i}
                     variants={fadeUp}
@@ -72,7 +74,6 @@ const ValueSection = () => {
               </div>
             </motion.div>
 
-            {/* Right: Fern frond */}
             <motion.div
               className="flex-shrink-0 lg:w-[340px] flex items-center justify-center p-8 lg:p-10 relative"
               initial={{ opacity: 0, scale: 0.9 }}
