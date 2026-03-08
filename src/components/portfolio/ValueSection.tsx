@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { Puzzle, Layers, RefreshCcw } from "lucide-react";
 import profileImg from "@/assets/alexandra-profile.jpg";
+ 
 
 
 const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
