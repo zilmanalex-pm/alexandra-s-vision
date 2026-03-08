@@ -285,10 +285,10 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-4 md:p-8 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-4 md:p-8 hover:border-primary/30 transition-colors max-h-[60vh] md:max-h-none flex items-center" style={{ background: "hsla(0, 0%, 12%, 0.8)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
             <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
-          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center gap-5 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center items-center gap-5 hover:border-primary/30 transition-colors h-[60vh] md:h-auto" style={{ background: "hsla(0, 0%, 12%, 0.8)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
             <MobileMockup img={mobileImg1} label="Event Detail" onClick={() => setLightboxIndex(1)} />
             <MobileMockup img={mobileImg2} label="User Profile" offset onClick={() => setLightboxIndex(2)} />
           </div>
