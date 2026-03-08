@@ -193,7 +193,7 @@ const CaseStudySection = () => {
           transition={slow}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
-            Case <span className="text-accent">Study</span>
+            Case Study: <span className="text-accent">TarbutON</span>
           </h2>
           <p className="mt-3 max-w-2xl mx-auto" style={{ ...font, color: "#A3B8B8" }}>
             An interactive deep-dive into cultural education transformation.
@@ -211,6 +211,37 @@ const CaseStudySection = () => {
           <div className="relative z-10">
             <h3 className="text-xl font-semibold text-white mb-3" style={font}>The Problem</h3>
             <p className="leading-relaxed text-lg" style={{ ...font, color: "#E2E8F0" }}>{problem}</p>
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+              <a
+                href="https://tarbut-on.lovable.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:shadow-[0_0_20px_hsla(36,90%,44%,0.5)] hover:brightness-110"
+                style={{
+                  ...font,
+                  background: "#D97706",
+                  backgroundImage: "linear-gradient(110deg, transparent 33%, hsla(0,0%,100%,0.15) 50%, transparent 67%)",
+                  backgroundSize: "300% 100%",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget.style.backgroundPosition = "100% 0"); }}
+                onMouseLeave={(e) => { (e.currentTarget.style.backgroundPosition = "0% 0"); }}
+              >
+                Go to TarbutON
+              </a>
+              <a
+                href="https://drive.google.com/file/d/1fnYSeSOG5GMBHTSftxqFcb-nQcpGOCS-/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:bg-primary/10"
+                style={{
+                  ...font,
+                  background: "transparent",
+                  border: "1.5px solid hsl(var(--primary))",
+                }}
+              >
+                Download TarbutON Case Study PPT
+              </a>
+            </div>
           </div>
         </motion.div>
 
