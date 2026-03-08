@@ -11,6 +11,7 @@ import TestimonialsSection from "@/components/portfolio/TestimonialsSection";
 import ConnectSection from "@/components/portfolio/ConnectSection";
 import BehindTheProductSection from "@/components/portfolio/BehindTheProductSection";
 import FooterSection from "@/components/portfolio/FooterSection";
+import ScrollNav from "@/components/portfolio/ScrollNav";
 
 const Divider = () => (
   <div className="w-full px-6">
