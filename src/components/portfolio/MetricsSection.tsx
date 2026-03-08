@@ -87,7 +87,7 @@ const MetricsSection = () => {
             Measurable <span className="text-accent">Impact</span>
           </h2>
           <p className="text-muted-foreground mt-3 max-w-lg mx-auto">
-            Real outcomes from real products — numbers that moved the needle.
+            Real outcomes from real products. Numbers that moved the needle.
           </p>
         </motion.div>
 

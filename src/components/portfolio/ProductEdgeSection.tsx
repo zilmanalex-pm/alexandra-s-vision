@@ -27,8 +27,8 @@ const cards = [
     icon: Cpu,
     title: "My Product Tool Kit",
     bullets: [
-      { icon: Compass, text: "Stakeholder Alignment — roadmap management" },
-      { icon: TrendingUp, text: "Execution Tools — Metrics-driven, UX-focused" },
+      { icon: Compass, text: "Stakeholder Alignment & Roadmap Management" },
+      { icon: TrendingUp, text: "Execution Tools: Metrics-driven, UX-focused" },
       { icon: Users2, text: "Change Management" },
     ],
   },
@@ -37,7 +37,7 @@ const cards = [
     title: 'Evidence (The "Receipts")',
     bullets: [
       { icon: ShieldCheck, text: "21st Reporter platform success" },
-      { icon: Cpu, text: "Excellence Model — Accelerated pilots by 3 months" },
+      { icon: Cpu, text: "Excellence Model: Accelerated pilots by 3 months" },
       { icon: Briefcase, text: "Managed Recovery Task" },
     ],
   },

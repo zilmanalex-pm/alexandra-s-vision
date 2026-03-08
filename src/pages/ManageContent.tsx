@@ -180,7 +180,7 @@ const MetricsTab = () => {
           <div key={m.id} className="glass-card p-4 flex items-center justify-between">
             <div>
               <span className="font-semibold text-foreground">{m.value}</span>
-              <span className="text-muted-foreground ml-2">— {m.label}</span>
+              <span className="text-muted-foreground ml-2">{m.label}</span>
             </div>
             <div className="flex gap-2">
               <button onClick={() => startEdit(m)} className="p-2 rounded-lg hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors"><Pencil size={15} strokeWidth={1.5} /></button>
@@ -253,7 +253,7 @@ const TestimonialsTab = () => {
         {testimonials?.map((t) => (
           <div key={t.id} className="glass-card p-4 flex items-start justify-between gap-4">
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-foreground text-sm">{t.client_name} <span className="font-normal text-muted-foreground">— {t.client_title}</span></p>
+              <p className="font-semibold text-foreground text-sm">{t.client_name} <span className="font-normal text-muted-foreground">{t.client_title}</span></p>
               <p className="text-sm text-muted-foreground mt-1 italic truncate">"{t.quote_text}"</p>
             </div>
             <div className="flex gap-2 flex-shrink-0">
