@@ -30,7 +30,7 @@ const Index = () => (
     <PsychologySection />
     <Divider />
     <CaseStudySection />
-    <TealFadeDivider />
+    <Divider />
     <TestimonialsSection />
     <Divider />
     <FooterSection />
