@@ -42,8 +42,8 @@ const HeroSection = () => {
 
   const headline = profile?.hero_headline || "Simplifying the complex. Delivering what matters.";
   const subHeadline = profile?.sub_headline || "Alexandra Zilman — Product Manager specializing in high-stakes execution within regulated B2B SaaS and GovTech.";
-  const cvUrl = profile?.cv_url;
-  const linkedinUrl = profile?.linkedin_url;
+  const cvUrl = profile?.cv_url || "https://drive.google.com/file/d/16-ZXZKiDFk0hHNDCVRnRLVZT_GPJXnqX/view?usp=drive_link";
+  const linkedinUrl = profile?.linkedin_url || "https://www.linkedin.com/in/alexandra-zilman-33770a11/";
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-24">
