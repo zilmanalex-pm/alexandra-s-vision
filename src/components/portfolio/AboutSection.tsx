@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Puzzle, Layers, Repeat } from "lucide-react";
+import { Puzzle, Layers, Repeat, UserRound } from "lucide-react";
 
 const stagger = {
   hidden: {},
@@ -28,13 +28,19 @@ const AboutSection = () => (
         viewport={{ once: true, margin: "-80px" }}
       >
         {/* Headshot */}
-        <motion.div className="flex-shrink-0" variants={fadeUp}>
-          <div className="relative w-56 h-56 md:w-64 md:h-64">
-            <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/20 to-accent/15 blur-2xl" />
-            <div className="relative w-full h-full rounded-full bg-secondary flex items-center justify-center border border-border overflow-hidden">
-              <span className="text-5xl font-bold text-primary/30 select-none">AZ</span>
+        <motion.div className="flex-shrink-0 text-center" variants={fadeUp}>
+          <div className="relative w-56 h-56 md:w-64 md:h-64 mx-auto">
+            {/* Teal outer glow */}
+            <div className="absolute -inset-4 rounded-full bg-gradient-to-br from-primary/25 to-accent/20 blur-2xl" />
+            {/* Glassmorphism frame */}
+            <div
+              className="relative w-full h-full rounded-full flex items-center justify-center border border-white/[0.12] overflow-hidden backdrop-blur-xl"
+              style={{ background: "hsla(0, 0%, 14%, 0.5)" }}
+            >
+              <UserRound size={80} strokeWidth={1} className="text-accent/70" />
             </div>
           </div>
+          <p className="mt-4 text-sm text-muted-foreground italic">Upload Photo Here</p>
         </motion.div>
 
         {/* Value Props */}
