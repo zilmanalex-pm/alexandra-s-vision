@@ -252,7 +252,7 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <h3 className="text-2xl font-bold text-foreground text-center mb-10" style={font}>
+          <h3 className="text-[20px] md:text-[24px] font-bold text-foreground text-center mb-10" style={font}>
             Process <span className="text-accent">Steps</span>
           </h3>
 
