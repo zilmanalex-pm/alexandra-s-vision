@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Users, Zap, Target, BarChart3 } from "lucide-react";
 import { useMetrics } from "@/hooks/use-portfolio-data";
-import { useTypingEffect } from "@/hooks/use-typing-effect";
+
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
@@ -20,7 +20,7 @@ const fadeUp = {
 
 const MetricsSection = () => {
   const { data: metrics } = useMetrics();
-  const metricsTyping = useTypingEffect("Real outcomes from real products. Numbers that moved the needle.", 40, true);
+  
 
   if (!metrics || metrics.length === 0) return null;
 
@@ -37,11 +37,8 @@ const MetricsSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
             Measurable <span className="text-accent">Impact</span>
           </h2>
-          <p ref={metricsTyping.ref as any} className="mt-3 max-w-lg mx-auto h-7" style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}>
-            {metricsTyping.displayed}
-            {!metricsTyping.done && metricsTyping.displayed.length > 0 && (
-              <span className="inline-block w-0.5 h-4 bg-accent ml-1 animate-pulse align-middle" />
-            )}
+          <p className="mt-3 max-w-lg mx-auto" style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}>
+            Real outcomes from real products. Numbers that moved the needle.
           </p>
         </motion.div>
 

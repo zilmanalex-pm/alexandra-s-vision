@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useTypingEffect } from "@/hooks/use-typing-effect";
+
 import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
@@ -118,7 +118,7 @@ const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | 
 
 const CaseStudySection = () => {
   const { data: caseStudies } = useCaseStudies();
-  const caseTyping = useTypingEffect("An interactive deep-dive into cultural education transformation.", 40, true);
+  
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
@@ -179,11 +179,8 @@ const CaseStudySection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground" style={font}>
             Case <span className="text-accent">Study</span>
           </h2>
-          <p ref={caseTyping.ref as any} className="mt-3 max-w-2xl mx-auto h-7" style={{ ...font, color: "#A3B8B8" }}>
-            {caseTyping.displayed}
-            {!caseTyping.done && caseTyping.displayed.length > 0 && (
-              <span className="inline-block w-0.5 h-4 bg-accent ml-1 animate-pulse align-middle" />
-            )}
+          <p className="mt-3 max-w-2xl mx-auto" style={{ ...font, color: "#A3B8B8" }}>
+            An interactive deep-dive into cultural education transformation.
           </p>
         </motion.div>
 
