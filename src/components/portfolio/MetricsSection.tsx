@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { TrendingUp, Users, Zap } from "lucide-react";
 import { useMetrics } from "@/hooks/use-portfolio-data";
 import { useRef, useState } from "react";
+import FloatingLeaves from "./FloatingLeaves";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 
