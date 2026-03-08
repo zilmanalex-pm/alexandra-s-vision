@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Quote } from "lucide-react";
+import { User } from "lucide-react";
 import { useTestimonials } from "@/hooks/use-portfolio-data";
 import { useRef } from "react";
 import palmFrondImg from "@/assets/palm-frond.png";
