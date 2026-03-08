@@ -46,14 +46,15 @@ const cards = [
 /* ─── Animated Icon Container ─── */
 const FloatingIcon = ({ icon: Icon, size = 26 }: { icon: typeof ShieldCheck; size?: number }) => (
   <motion.div
-    className="w-14 h-14 rounded-full bg-primary/[0.15] border border-primary/[0.2] flex items-center justify-center group-hover:shadow-[0_0_20px_hsla(36,90%,44%,0.25)] transition-shadow duration-500 relative"
+    className="w-14 h-14 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center group-hover:shadow-[0_0_20px_hsla(36,90%,44%,0.25)] transition-shadow duration-500 relative"
+    style={{ background: "hsla(0, 0%, 100%, 0.08)" }}
     animate={{ y: [0, -4, 0] }}
     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
   >
     <Icon
       size={size}
       strokeWidth={1}
-      className="text-primary group-hover:text-accent group-hover:scale-110 transition-all duration-500"
+      className="text-foreground group-hover:text-accent group-hover:scale-110 transition-all duration-500"
     />
   </motion.div>
 );
