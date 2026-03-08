@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import AdminPortal from "./pages/AdminPortal";
+import ManageContent from "./pages/ManageContent";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/admin-portal" element={<AdminPortal />} />
+          <Route path="/manage-content" element={<ManageContent />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

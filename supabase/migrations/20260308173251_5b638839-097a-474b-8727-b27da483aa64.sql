@@ -1,0 +1,1 @@
+ALTER TABLE public.profile ADD COLUMN photo_url text;
