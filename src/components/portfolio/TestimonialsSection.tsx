@@ -33,8 +33,8 @@ const TestimonialsSection = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="text-sm font-bold text-primary">
-                      {t.client_name.charAt(0)}
-                      {t.client_name.split(" ")[1]?.charAt(0)}
+                      {(t.client_name || "?").charAt(0)}
+                      {(t.client_name || "").split(" ")[1]?.charAt(0) || ""}
                     </span>
                   </div>
                   <div>
