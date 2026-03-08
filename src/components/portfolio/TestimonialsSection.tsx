@@ -11,14 +11,11 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] } },
 };
 
-const fallbackTestimonials = [
-  { id: "1", client_name: "Moshe Yeshayahu", client_title: "General Manager", company: "Qmarkets", quote_text: "Alexandra brings a strong product mindset... she has a knack for turning fuzzy problems into practical solutions.", category_tag: "Strategy" },
-  { id: "2", client_name: "Adam Nave", client_title: "Project Success Manager", company: "GovTech Solutions", quote_text: "Transforming insights into actionable resources seamlessly.", category_tag: "Execution" },
-];
+const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
 const TestimonialsSection = () => {
-  const { data: dbTestimonials } = useTestimonials();
-  const testimonials = dbTestimonials && dbTestimonials.length > 0 ? dbTestimonials : fallbackTestimonials;
+  const { data: dbTestimonials, isLoading } = useTestimonials();
+  const testimonials = dbTestimonials && dbTestimonials.length > 0 ? dbTestimonials : [];
 
   return (
     <section id="testimonials" className="relative py-28 px-6 overflow-hidden">
@@ -32,55 +29,71 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-            Wall of <span className="text-accent">Love</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground" style={font}>
+            My Customers <span className="text-accent">Speak</span>
           </h2>
-          <p className="text-muted-foreground mt-3">What colleagues and stakeholders say about working together.</p>
         </motion.div>
 
-        {/* Masonry Grid with staggered fade-up */}
-        <motion.div
-          className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={t.id || i}
-              className="glass-card glass-card-hover p-6 break-inside-avoid"
-              variants={fadeUp}
-            >
-              <Quote size={20} strokeWidth={1.5} className="text-accent/40 mb-3" />
-
-              <p className="text-foreground/80 leading-relaxed italic mb-5">
-                "{t.quote_text}"
-              </p>
-
-              <div className="flex items-center gap-3 pt-3 border-t border-border">
-                <div className="w-9 h-9 rounded-full bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0">
-                  <span className="text-xs font-bold text-primary">
-                    {(t.client_name || "?").charAt(0)}
-                    {(t.client_name || "").split(" ")[1]?.charAt(0) || ""}
-                  </span>
-                </div>
-                <div>
-                  <p className="font-semibold text-foreground text-sm leading-tight">{t.client_name}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {t.client_title}
-                    {t.company ? ` · ${t.company}` : ""}
-                  </p>
-                </div>
-                {t.category_tag && (
-                  <span className="ml-auto text-[10px] uppercase tracking-wider text-primary/60 bg-primary/[0.06] px-2 py-0.5 rounded-full">
-                    {t.category_tag}
-                  </span>
-                )}
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="rounded-3xl backdrop-blur-xl p-6 animate-pulse" style={{ background: "hsla(0,0%,14%,0.6)", border: "1px solid hsla(180,43%,30%,0.2)" }}>
+                <div className="h-4 bg-muted rounded w-3/4 mb-3" />
+                <div className="h-4 bg-muted rounded w-full mb-2" />
+                <div className="h-4 bg-muted rounded w-2/3" />
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </div>
+        ) : testimonials.length === 0 ? (
+          <p className="text-center text-muted-foreground" style={font}>No testimonials yet.</p>
+        ) : (
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={t.id || i}
+                className="rounded-3xl backdrop-blur-xl p-6 flex flex-col"
+                style={{
+                  background: "hsla(0, 0%, 14%, 0.6)",
+                  border: "1px solid hsla(180, 43%, 30%, 0.25)",
+                }}
+                variants={fadeUp}
+              >
+                <Quote size={20} strokeWidth={1.5} className="text-accent/40 mb-3 flex-shrink-0" />
+
+                <p className="text-foreground/80 leading-relaxed italic mb-5 flex-1" style={font}>
+                  "{t.quote_text}"
+                </p>
+
+                <div className="flex items-center gap-3 pt-3 border-t border-border">
+                  <div className="w-9 h-9 rounded-full bg-primary/10 border border-primary/15 flex items-center justify-center flex-shrink-0">
+                    <span className="text-xs font-bold text-primary" style={font}>
+                      {(t.client_name || "?").charAt(0)}
+                      {(t.client_name || "").split(" ")[1]?.charAt(0) || ""}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-foreground text-sm leading-tight" style={font}>{t.client_name}</p>
+                    <p className="text-xs text-muted-foreground" style={font}>
+                      {t.client_title}
+                      {t.company ? ` · ${t.company}` : ""}
+                    </p>
+                  </div>
+                  {t.category_tag && (
+                    <span className="ml-auto text-[10px] uppercase tracking-wider text-primary/60 bg-primary/[0.06] px-2 py-0.5 rounded-full" style={font}>
+                      {t.category_tag}
+                    </span>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );
