@@ -279,18 +279,18 @@ const CaseStudySection = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={slow}
         >
-          <div className="rounded-3xl p-6 md:p-8 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-4 md:p-8 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
             <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
-          <div className="rounded-3xl p-8 md:p-10 flex justify-center gap-5 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <MobileMockup img={mobileImg} label="TarbutON Mobile App" onClick={() => setLightboxIndex(1)} />
-            <MobileMockup img={null} label="TarbutON Mobile App" offset onClick={() => setLightboxIndex(2)} />
+          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center gap-5 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <MobileMockup img={mobileImg1} label="Event Detail" onClick={() => setLightboxIndex(1)} />
+            <MobileMockup img={mobileImg2} label="User Profile" offset onClick={() => setLightboxIndex(2)} />
           </div>
         </motion.div>
       </div>
