@@ -39,7 +39,7 @@ const MetricCard = ({ m, i }: { m: any; i: number }) => {
       </p>
       <p className="font-semibold text-foreground mt-4 text-base" style={font}>{m.label}</p>
       {m.description && (
-        <p className="text-sm mt-2 leading-relaxed" style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}>
+        <p className="text-[14px] mt-2 leading-relaxed" style={{ ...font, color: "#E2E8F0", opacity: 0.85 }}>
           {m.description}
         </p>
       )}
