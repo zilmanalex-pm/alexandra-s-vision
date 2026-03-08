@@ -156,7 +156,7 @@ const CaseStudySection = () => {
                     className="rounded-3xl p-7 flex flex-col"
                     style={{
                       background: "hsla(180, 30%, 16%, 0.85)",
-                      border: "1px solid hsla(180, 43%, 30%, 0.25)",
+                      border: "1px solid hsla(180, 43%, 30%, 0.15)",
                       minHeight: "220px",
                     }}
                   >
