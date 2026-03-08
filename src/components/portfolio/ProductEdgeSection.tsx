@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Cpu, Users2, TrendingUp, Compass, Briefcase } from "lucide-react";
 import { useRef, useState } from "react";
 import { useProductEdge } from "@/hooks/use-portfolio-data";
+import oliveBranchImg from "@/assets/olive-branch.png";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 
