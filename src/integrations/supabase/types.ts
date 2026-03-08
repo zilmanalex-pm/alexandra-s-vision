@@ -14,7 +14,144 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      case_studies: {
+        Row: {
+          created_at: string
+          desktop_image_url: string | null
+          id: string
+          mobile_image_url: string | null
+          presentation_link: string | null
+          problem_statement: string | null
+          process_json: Json | null
+          solution_statement: string | null
+          tagline: string | null
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          desktop_image_url?: string | null
+          id?: string
+          mobile_image_url?: string | null
+          presentation_link?: string | null
+          problem_statement?: string | null
+          process_json?: Json | null
+          solution_statement?: string | null
+          tagline?: string | null
+          title: string
+        }
+        Update: {
+          created_at?: string
+          desktop_image_url?: string | null
+          id?: string
+          mobile_image_url?: string | null
+          presentation_link?: string | null
+          problem_statement?: string | null
+          process_json?: Json | null
+          solution_statement?: string | null
+          tagline?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
+      metrics: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          id: string
+          label: string
+          value: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          label: string
+          value: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          label?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      profile: {
+        Row: {
+          created_at: string
+          cv_url: string | null
+          email: string | null
+          full_name: string
+          hero_headline: string
+          id: string
+          job_title: string
+          linkedin_url: string | null
+          location: string | null
+          phone: string | null
+          sub_headline: string
+        }
+        Insert: {
+          created_at?: string
+          cv_url?: string | null
+          email?: string | null
+          full_name?: string
+          hero_headline?: string
+          id?: string
+          job_title?: string
+          linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
+          sub_headline?: string
+        }
+        Update: {
+          created_at?: string
+          cv_url?: string | null
+          email?: string | null
+          full_name?: string
+          hero_headline?: string
+          id?: string
+          job_title?: string
+          linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
+          sub_headline?: string
+        }
+        Relationships: []
+      }
+      testimonials: {
+        Row: {
+          category_tag: string | null
+          client_name: string
+          client_title: string | null
+          company: string | null
+          created_at: string
+          id: string
+          quote_text: string
+        }
+        Insert: {
+          category_tag?: string | null
+          client_name: string
+          client_title?: string | null
+          company?: string | null
+          created_at?: string
+          id?: string
+          quote_text: string
+        }
+        Update: {
+          category_tag?: string | null
+          client_name?: string
+          client_title?: string | null
+          company?: string | null
+          created_at?: string
+          id?: string
+          quote_text?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
