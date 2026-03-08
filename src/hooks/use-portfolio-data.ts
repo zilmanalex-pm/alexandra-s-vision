@@ -7,7 +7,7 @@ export const useProfile = () =>
     queryFn: async () => {
       const { data, error } = await supabase.from("profile").select("*").limit(1).maybeSingle();
       if (error) throw error;
-      return data;
+      return data as any;
     },
   });
 
@@ -17,7 +17,7 @@ export const useTestimonials = () =>
     queryFn: async () => {
       const { data, error } = await supabase.from("testimonials").select("*");
       if (error) throw error;
-      return data ?? [];
+      return (data ?? []) as any[];
     },
   });
 
@@ -27,7 +27,7 @@ export const useCaseStudies = () =>
     queryFn: async () => {
       const { data, error } = await supabase.from("case_studies").select("*");
       if (error) throw error;
-      return data ?? [];
+      return (data ?? []) as any[];
     },
   });
 
@@ -37,7 +37,7 @@ export const useMetrics = () =>
     queryFn: async () => {
       const { data, error } = await supabase.from("metrics").select("*").order("display_order");
       if (error) throw error;
-      return data ?? [];
+      return (data ?? []) as any[];
     },
   });
 
@@ -47,6 +47,26 @@ export const useValues = () =>
     queryFn: async () => {
       const { data, error } = await supabase.from("values").select("*").order("display_order");
       if (error) throw error;
-      return data ?? [];
+      return (data ?? []) as any[];
+    },
+  });
+
+export const useCapabilities = () =>
+  useQuery({
+    queryKey: ["capabilities"],
+    queryFn: async () => {
+      const { data, error } = await (supabase as any).from("capabilities").select("*");
+      if (error) throw error;
+      return (data ?? []) as any[];
+    },
+  });
+
+export const useProductEdge = () =>
+  useQuery({
+    queryKey: ["product_edge"],
+    queryFn: async () => {
+      const { data, error } = await (supabase as any).from("product_edge").select("*").order("display_order");
+      if (error) throw error;
+      return (data ?? []) as any[];
     },
   });
