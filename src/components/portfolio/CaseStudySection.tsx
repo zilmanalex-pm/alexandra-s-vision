@@ -4,6 +4,9 @@ import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor,
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import { useIsMobile } from "@/hooks/use-mobile";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
+import tarbutonDashboard from "@/assets/tarbuton-dashboard.png";
+import tarbutonEvent from "@/assets/tarbuton-event.png";
+import tarbutonProfile from "@/assets/tarbuton-profile.png";
 import ScreenshotLightbox from "./ScreenshotLightbox";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
@@ -99,7 +102,7 @@ const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: st
       style={{ background: "linear-gradient(135deg, #244D4D 0%, #1a3a3a 50%, #2D6A6A 100%)", border: "1px solid hsla(180, 43%, 30%, 0.15)", borderTop: "none" }}
     >
       {img ? (
-        <img src={img} alt={`${title} desktop`} className="w-full h-full object-cover" />
+        <img src={img} alt={`${title} desktop`} className="w-full h-full object-cover" loading="lazy" />
       ) : (
         <>
           <Monitor size={36} strokeWidth={1} className="text-foreground/30 mb-3" />
@@ -123,7 +126,7 @@ const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | 
     >
       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-border/50" />
       {img ? (
-        <img src={img} alt={label} className="w-full h-full object-cover rounded-[1.2rem]" />
+        <img src={img} alt={label} className="w-full h-full object-cover rounded-[1.2rem]" loading="lazy" />
       ) : (
         <>
           <Smartphone size={20} strokeWidth={1} className="text-foreground/30 mb-2" />
@@ -145,13 +148,14 @@ const CaseStudySection = () => {
 
   const title = cs?.title || "TarbutON";
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
-  const desktopImg = null;
-  const mobileImg = null;
+  const desktopImg = tarbutonDashboard;
+  const mobileImg1 = tarbutonEvent;
+  const mobileImg2 = tarbutonProfile;
 
   const lightboxItems = [
-    { element: <DesktopMockup img={desktopImg} title={title} />, caption: "TarbutON Dashboard — Admin Overview" },
-    { element: <MobileMockup img={mobileImg} label="TarbutON Mobile App" />, caption: "TarbutON Mobile Discovery Flow" },
-    { element: <MobileMockup img={null} label="TarbutON Mobile App" offset />, caption: "User Journey Mapping — Mobile View" },
+    { element: <DesktopMockup img={desktopImg} title={title} />, caption: "TarbutON Dashboard — Homepage & Discovery" },
+    { element: <MobileMockup img={mobileImg1} label="Event Detail" />, caption: "TarbutON — Event Detail with VIP Planning Tools" },
+    { element: <MobileMockup img={mobileImg2} label="User Profile" offset />, caption: "TarbutON — User Profile & Saved Events" },
   ];
   const dbSteps = cs?.process_steps as Array<{ label: string; desc: string; details?: string }> | null;
 
@@ -275,18 +279,18 @@ const CaseStudySection = () => {
         </motion.div>
 
         <motion.div
-          className="grid md:grid-cols-2 gap-10 md:gap-16 items-center mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={slow}
         >
-          <div className="rounded-3xl p-6 md:p-8 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-4 md:p-8 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
             <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
-          <div className="rounded-3xl p-8 md:p-10 flex justify-center gap-5 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <MobileMockup img={mobileImg} label="TarbutON Mobile App" onClick={() => setLightboxIndex(1)} />
-            <MobileMockup img={null} label="TarbutON Mobile App" offset onClick={() => setLightboxIndex(2)} />
+          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center gap-5 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <MobileMockup img={mobileImg1} label="Event Detail" onClick={() => setLightboxIndex(1)} />
+            <MobileMockup img={mobileImg2} label="User Profile" offset onClick={() => setLightboxIndex(2)} />
           </div>
         </motion.div>
       </div>
