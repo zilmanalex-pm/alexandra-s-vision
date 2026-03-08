@@ -14,7 +14,7 @@ const fadeUp = {
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
-const stepIcons = [MapPin, AlertTriangle, Lightbulb, Route, BarChart3, GitBranch];
+const stepIcons = [Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge];
 
 const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string; details?: string }; index: number }) => {
   const [expanded, setExpanded] = useState(false);
