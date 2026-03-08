@@ -1,5 +1,6 @@
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
+import CapabilitiesSection from "@/components/portfolio/CapabilitiesSection";
 import MetricsSection from "@/components/portfolio/MetricsSection";
 import ProductEdgeSection from "@/components/portfolio/ProductEdgeSection";
 import PsychologySection from "@/components/portfolio/PsychologySection";
