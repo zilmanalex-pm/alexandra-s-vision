@@ -38,8 +38,8 @@ const ScreenshotLightbox = ({ items, activeIndex, onClose, onNavigate }: Screens
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-50 flex items-center justify-center"
-        style={{ background: "hsla(0, 0%, 10%, 0.92)" }}
+        className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md"
+        style={{ background: "hsla(0, 0%, 10%, 0.88)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
