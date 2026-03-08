@@ -37,19 +37,19 @@ const GlowingBrain = () => (
   </div>
 );
 
-const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] };
+const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 
 const HeroSection = () => {
   const { data: profile } = useProfile();
 
+  const fullName = profile?.full_name || "Alexandra Zilman";
   const headline = profile?.hero_headline || "Simplifying the complex. Delivering what matters.";
-  const subHeadline = profile?.sub_headline || "Alexandra Zilman — Product Manager specializing in high-stakes execution within regulated B2B SaaS and GovTech.";
+  const subHeadline = profile?.sub_headline || "Specializing in high-stakes execution within regulated B2B SaaS and GovTech.";
   const cvUrl = profile?.cv_url || "https://drive.google.com/file/d/16-ZXZKiDFk0hHNDCVRnRLVZT_GPJXnqX/view?usp=drive_link";
   const linkedinUrl = profile?.linkedin_url || "https://www.linkedin.com/in/alexandra-zilman-33770a11/";
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 py-24">
-      {/* Soft background glows */}
       <div className="absolute top-20 -left-40 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[120px] animate-blob" />
       <div className="absolute bottom-10 -right-40 w-[400px] h-[400px] rounded-full bg-accent/6 blur-[120px] animate-blob" style={{ animationDelay: "5s" }} />
 
@@ -60,6 +60,16 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={slow}
         >
+          {/* Signature name */}
+          <motion.p
+            className="text-sm md:text-base tracking-[0.3em] uppercase text-primary/70 font-medium mb-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...slow, delay: 0.2 }}
+          >
+            {fullName}
+          </motion.p>
+
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-foreground">
             {headline.includes(".") ? (
               <>
