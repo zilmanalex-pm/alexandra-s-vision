@@ -118,7 +118,6 @@ const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | 
 
 const CaseStudySection = () => {
   const { data: caseStudies } = useCaseStudies();
-  
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
