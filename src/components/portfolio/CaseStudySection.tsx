@@ -182,12 +182,6 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <img
-            src={leafVeinImg}
-            alt=""
-            className="absolute -right-8 -bottom-8 w-40 h-40 object-cover opacity-[0.08] rotate-12"
-            style={{ maskImage: "radial-gradient(circle, black 30%, transparent 70%)", WebkitMaskImage: "radial-gradient(circle, black 30%, transparent 70%)" }}
-          />
           <div className="relative z-10">
             <h3 className="text-xl font-semibold text-white mb-3" style={font}>The Problem</h3>
             <p className="leading-relaxed text-lg" style={{ ...font, color: "#A3B8B8" }}>{problem}</p>
