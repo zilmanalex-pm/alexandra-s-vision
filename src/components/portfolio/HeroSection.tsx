@@ -51,15 +51,15 @@ const HeroSection = () => {
       <motion.img
         src={monsteraHeroImg}
         alt=""
-        className="absolute -left-20 top-1/2 -translate-y-1/2 w-[600px] h-[600px] lg:w-[750px] lg:h-[750px] object-contain pointer-events-none select-none"
+        className="absolute -left-20 top-1/2 -translate-y-1/2 w-[700px] h-[700px] lg:w-[900px] lg:h-[900px] object-contain pointer-events-none select-none"
         style={{
-          opacity: 0.85,
+          opacity: 0.9,
           mixBlendMode: "screen",
-          filter: "drop-shadow(0 0 40px hsla(180, 43%, 30%, 0.5)) drop-shadow(0 0 80px hsla(180, 43%, 30%, 0.25)) brightness(0.45) saturate(1.4)",
+          filter: "drop-shadow(0 0 50px hsla(180, 43%, 30%, 0.6)) drop-shadow(0 0 100px hsla(180, 43%, 30%, 0.3)) brightness(0.45) saturate(1.5)",
           zIndex: 0,
         }}
         initial={{ opacity: 0, x: -40 }}
-        animate={{ opacity: 0.85, x: 0 }}
+        animate={{ opacity: 0.9, x: 0 }}
         transition={{ duration: 2, ease: [0.25, 0.1, 0.25, 1] }}
       />
 
