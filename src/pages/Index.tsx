@@ -52,6 +52,8 @@ const Index = () => {
     <Divider />
     <TestimonialsSection />
     <Divider />
+    <BehindTheProductSection />
+    <Divider />
     <FooterSection />
   </div>
   );
