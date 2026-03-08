@@ -3,7 +3,8 @@ import { useProfile } from "@/hooks/use-portfolio-data";
 import { Puzzle, Layers, RefreshCcw } from "lucide-react";
 import fernImg from "@/assets/fern-frond.png";
 
-const font = { fontFamily: "'Lexend', sans-serif" } as const;
+const headingFont = { fontFamily: "'Lexend', sans-serif" } as const;
+const bodyFont = { fontFamily: "'Plus Jakarta Sans', 'Lexend', sans-serif" } as const;
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
 const fadeUp = {
@@ -31,19 +32,28 @@ const ValueSection = () => {
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-center mb-16 text-foreground"
-          style={font}
+          style={headingFont}
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={slow}
         >
-          The Value I <span className="text-accent">Bring</span>
+          The Value I{" "}
+          <span
+            style={{
+              backgroundImage: "linear-gradient(135deg, #D97706, #B45309)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            Bring
+          </span>
         </motion.h2>
 
         <motion.div
           className="rounded-3xl overflow-hidden"
           style={{
-            background: "hsla(180, 30%, 16%, 0.85)",
+            background: "hsla(0, 0%, 12%, 0.9)",
             border: "1px solid hsla(180, 43%, 30%, 0.15)",
           }}
           initial={{ opacity: 0, y: 30 }}
@@ -51,24 +61,23 @@ const ValueSection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <div className="flex flex-col lg:flex-row">
+          <div className="grid grid-cols-1 lg:grid-cols-5">
+            {/* Left column — 60% (3/5) */}
             <motion.div
-              className="flex-1 p-10 md:p-14 lg:p-16"
+              className="lg:col-span-3 p-10 md:p-14 lg:p-16 flex flex-col justify-center"
               variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
             >
-              {/* Primary statement */}
               <motion.p
                 variants={fadeUp}
                 className="text-base md:text-lg leading-relaxed mb-8"
-                style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}
+                style={{ ...bodyFont, color: "hsla(180, 30%, 68%, 0.9)" }}
               >
                 {mainText}
               </motion.p>
 
-              {/* Key strengths */}
               <div className="space-y-4">
                 {strengths.map((s, i) => (
                   <motion.div
@@ -82,7 +91,7 @@ const ValueSection = () => {
                     >
                       <s.icon size={16} strokeWidth={1.5} style={{ color: "#D97706" }} />
                     </div>
-                    <p className="text-sm md:text-base leading-relaxed text-foreground/90" style={font}>
+                    <p className="text-sm md:text-base leading-relaxed text-foreground/90" style={bodyFont}>
                       {s.text}
                     </p>
                   </motion.div>
@@ -90,19 +99,27 @@ const ValueSection = () => {
               </div>
             </motion.div>
 
+            {/* Right column — 40% (2/5) */}
             <motion.div
-              className="flex-shrink-0 lg:w-[340px] flex items-center justify-center p-8 lg:p-10 relative"
+              className="lg:col-span-2 flex items-center justify-center p-8 lg:p-6 relative"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
             >
+              {/* Subtle teal glow behind fern */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle at center, hsla(180, 43%, 30%, 0.08) 0%, transparent 70%)",
+                }}
+              />
               <img
                 src={fernImg}
                 alt="Fern frond"
-                className="w-56 h-56 md:w-64 md:h-64 object-contain"
+                className="w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 object-contain relative z-10"
                 style={{
-                  filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.35)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.15)) brightness(0.9) saturate(1.3)",
+                  filter: "drop-shadow(0 0 25px hsla(180, 43%, 30%, 0.3)) drop-shadow(0 0 50px hsla(180, 43%, 30%, 0.12)) brightness(0.9) saturate(1.3)",
                 }}
               />
             </motion.div>
