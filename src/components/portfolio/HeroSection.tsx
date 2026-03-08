@@ -1,27 +1,8 @@
 import { motion } from "framer-motion";
 import { Download, Linkedin } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
-import { useState, useEffect } from "react";
+import { useTypingEffect } from "@/hooks/use-typing-effect";
 import monsteraHeroImg from "@/assets/monstera-leaf.png";
-
-const useTypingEffect = (text: string, speed = 60) => {
-  const [displayed, setDisplayed] = useState("");
-  const [done, setDone] = useState(false);
-
-  useEffect(() => {
-    setDisplayed("");
-    setDone(false);
-    let i = 0;
-    const timer = setInterval(() => {
-      i++;
-      setDisplayed(text.slice(0, i));
-      if (i >= text.length) { clearInterval(timer); setDone(true); }
-    }, speed);
-    return () => clearInterval(timer);
-  }, [text, speed]);
-
-  return { displayed, done };
-};
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
