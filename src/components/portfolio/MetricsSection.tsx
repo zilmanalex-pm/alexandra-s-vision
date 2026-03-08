@@ -22,7 +22,7 @@ const MetricCard = ({ m, i }: { m: any; i: number }) => {
   const Icon = iconPool[i % iconPool.length];
   return (
     <div
-      className="rounded-2xl p-8 text-center cursor-default transition-colors duration-300 h-full"
+      className="rounded-2xl p-10 text-center cursor-default transition-colors duration-300 h-full"
       style={{
         background: "hsla(0, 0%, 12%, 0.9)",
         border: "1px solid hsla(180, 43%, 30%, 0.15)"
