@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ValueSection from "@/components/portfolio/ValueSection";
 import CapabilitiesSection from "@/components/portfolio/CapabilitiesSection";
