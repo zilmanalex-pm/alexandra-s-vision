@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useValues } from "@/hooks/use-portfolio-data";
-import compassImg from "@/assets/compass-botanical.png";
+import fernImg from "@/assets/fern-frond.png";
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
@@ -42,7 +42,7 @@ const ValueSection = () => {
           className="rounded-3xl overflow-hidden"
           style={{
             background: "hsla(180, 30%, 16%, 0.85)",
-            border: "1px solid hsla(180, 43%, 30%, 0.25)",
+            border: "1px solid hsla(180, 43%, 30%, 0.15)",
           }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ const ValueSection = () => {
           transition={slow}
         >
           <div className="flex flex-col lg:flex-row">
-            {/* Left — Text */}
+            {/* Left: Text */}
             <motion.div
               className="flex-1 p-10 md:p-14 lg:p-16"
               variants={stagger}
@@ -72,20 +72,20 @@ const ValueSection = () => {
               </div>
             </motion.div>
 
-            {/* Right — Compass illustration */}
+            {/* Right: Fern frond */}
             <motion.div
-              className="flex-shrink-0 lg:w-[320px] flex items-center justify-center p-10 lg:p-14"
+              className="flex-shrink-0 lg:w-[340px] flex items-center justify-center p-8 lg:p-10 relative"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1], delay: 0.3 }}
             >
               <img
-                src={compassImg}
-                alt="Botanical compass illustration"
-                className="w-48 h-48 md:w-56 md:h-56 object-contain opacity-60"
+                src={fernImg}
+                alt="Fern frond"
+                className="w-56 h-56 md:w-64 md:h-64 object-contain"
                 style={{
-                  filter: "brightness(2) invert(1)",
+                  filter: "drop-shadow(0 0 30px hsla(180, 43%, 30%, 0.35)) drop-shadow(0 0 60px hsla(180, 43%, 30%, 0.15)) brightness(0.9) saturate(1.3)",
                 }}
               />
             </motion.div>
