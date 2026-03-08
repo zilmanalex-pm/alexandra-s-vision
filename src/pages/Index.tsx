@@ -23,10 +23,13 @@ const Index = () => {
     const key = "analytics_session_logged";
     if (!sessionStorage.getItem(key)) {
       sessionStorage.setItem(key, "1");
+      const params = new URLSearchParams(window.location.search);
+      const source = params.get("source") || null;
       supabase.from("site_analytics").insert({
         page_path: window.location.pathname,
         user_agent: navigator.userAgent,
-      }).then(() => {});
+        source,
+      } as any).then(() => {});
     }
   }, []);
 
