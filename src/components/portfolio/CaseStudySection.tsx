@@ -19,11 +19,10 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
   const Icon = stepIcons[index] || Compass;
   return (
     <div
-      className="rounded-2xl p-6 flex flex-col relative overflow-hidden transition-colors duration-300 h-full"
+      className="rounded-2xl p-10 flex flex-col relative overflow-hidden transition-colors duration-300 h-full"
       style={{
         background: "hsla(0, 0%, 12%, 0.9)",
         border: "1px solid hsla(180, 43%, 30%, 0.15)",
-        minHeight: "200px",
       }}
     >
       <span className="absolute top-4 right-5 text-4xl font-black select-none" style={{ ...font, color: "hsla(36, 90%, 44%, 0.25)" }}>
