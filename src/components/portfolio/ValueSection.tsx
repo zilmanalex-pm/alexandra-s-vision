@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useProfile } from "@/hooks/use-portfolio-data";
+import { Puzzle, Layers, RefreshCcw } from "lucide-react";
 import fernImg from "@/assets/fern-frond.png";
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
@@ -10,20 +11,18 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } },
 };
 
-const fallbackText = `Specializing in high-stakes execution within regulated B2B SaaS and GovTech.
+const primaryText =
+  "Specializing in high-stakes execution within regulated B2B SaaS and GovTech. I bridge the gap between deep technical constraints and user needs, building product structures that reduce support friction and drive long-term platform health.";
 
-I bridge the gap between deep technical constraints and user needs, building product structures that reduce support friction and drive long-term platform health.
-
-I thrive where requirements are messy and stakeholders are many.
-
-Expertise in resolving fragmented signals into scalable platform logic.
-
-I own the lifecycle of adoption, bridging the gap between technical constraints and user needs.`;
+const strengths = [
+  { icon: Puzzle, text: "I thrive where requirements are messy and stakeholders are many." },
+  { icon: Layers, text: "Expertise in resolving fragmented signals into scalable platform logic." },
+  { icon: RefreshCcw, text: "I own the lifecycle of adoption, bridging the gap between technical constraints and user needs." },
+];
 
 const ValueSection = () => {
   const { data: profile } = useProfile();
-  const valueStatement = profile?.value_statement || fallbackText;
-  const paragraphs = valueStatement.split("\n").filter((p: string) => p.trim().length > 0);
+  const mainText = profile?.value_statement || primaryText;
 
   return (
     <section id="value" className="relative py-28 px-6">
@@ -60,16 +59,33 @@ const ValueSection = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <div className="space-y-5">
-                {paragraphs.map((text: string, i: number) => (
-                  <motion.p
+              {/* Primary statement */}
+              <motion.p
+                variants={fadeUp}
+                className="text-base md:text-lg leading-relaxed mb-8"
+                style={{ ...font, color: "hsla(180, 30%, 68%, 0.9)" }}
+              >
+                {mainText}
+              </motion.p>
+
+              {/* Key strengths */}
+              <div className="space-y-4">
+                {strengths.map((s, i) => (
+                  <motion.div
                     key={i}
                     variants={fadeUp}
-                    className="text-foreground/90 leading-relaxed text-base md:text-lg"
-                    style={font}
+                    className="flex items-start gap-3.5"
                   >
-                    {text}
-                  </motion.p>
+                    <div
+                      className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
+                      style={{ background: "hsla(180, 43%, 30%, 0.12)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
+                    >
+                      <s.icon size={16} strokeWidth={1.5} style={{ color: "#D97706" }} />
+                    </div>
+                    <p className="text-sm md:text-base leading-relaxed text-foreground/90" style={font}>
+                      {s.text}
+                    </p>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
