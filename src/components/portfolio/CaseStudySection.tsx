@@ -209,7 +209,7 @@ const CaseStudySection = () => {
           transition={slow}
         >
           <div className="relative z-10">
-            <h3 className="text-xl font-semibold text-white mb-3" style={font}>The Problem</h3>
+            <h3 className="text-[20px] md:text-[24px] font-semibold text-white mb-3" style={font}>The Problem</h3>
             <p className="leading-relaxed text-lg" style={{ ...font, color: "#E2E8F0" }}>{problem}</p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8 [&>a]:w-full [&>a]:sm:w-auto">
               <a
