@@ -116,17 +116,17 @@ const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: st
 );
 
 const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | null; label: string; offset?: boolean; onClick?: () => void }) => (
-  <div className={`relative w-28 md:w-36 ${offset ? "mt-8" : ""} ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
+  <div className={`relative ${offset ? "mt-8" : ""} ${onClick ? "cursor-pointer" : ""}`} style={{ width: "clamp(7rem, 30vw, 9rem)" }} onClick={onClick}>
     <div
-      className="rounded-[1.4rem] aspect-[9/19] flex flex-col items-center justify-center overflow-hidden relative"
+      className="rounded-[1.4rem] aspect-[9/16] flex items-center justify-center overflow-hidden relative"
       style={{
-        background: offset ? "linear-gradient(180deg, #2D6A6A 0%, #244D4D 100%)" : "linear-gradient(180deg, #244D4D 0%, #2D6A6A 100%)",
+        background: "hsla(0, 0%, 12%, 0.95)",
         border: "1px solid hsla(180, 43%, 30%, 0.15)",
       }}
     >
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-border/50" />
+      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-border/50 z-10" />
       {img ? (
-        <img src={img} alt={label} className="w-full h-full object-cover rounded-[1.2rem]" loading="lazy" />
+        <img src={img} alt={label} className="w-full h-full object-contain rounded-[1.2rem]" loading="lazy" />
       ) : (
         <>
           <Smartphone size={20} strokeWidth={1} className="text-foreground/30 mb-2" />
