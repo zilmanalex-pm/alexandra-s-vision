@@ -50,6 +50,7 @@ const Index = () => {
     <Divider />
     <FooterSection />
   </div>
-);
+  );
+};
 
 export default Index;
