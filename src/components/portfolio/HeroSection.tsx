@@ -192,12 +192,12 @@ const HeroSection = () => {
 
           <motion.p
             variants={fadeUp}
-            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl mx-auto leading-relaxed"
           >
             {subHeadline}
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4 justify-center lg:justify-start">
+          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4 justify-center">
             <PulsingCVButton href={cvUrl} />
             <a
               href={linkedinUrl}
@@ -212,7 +212,7 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          className="flex-shrink-0"
+          className="mt-12"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ ...slow, delay: 0.6 }}
