@@ -1,9 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone, ChevronDown } from "lucide-react";
+import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
-import leafVeinImg from "@/assets/leaf-vein.png";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
+import ScreenshotLightbox from "./ScreenshotLightbox";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
@@ -65,8 +65,8 @@ const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string;
   );
 };
 
-const DesktopMockup = ({ img, title }: { img?: string | null; title: string }) => (
-  <div className="w-full">
+const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: string; onClick?: () => void }) => (
+  <div className={`w-full ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
     <div className="rounded-t-xl bg-secondary/80 flex items-center gap-2 px-4 py-2.5" style={{ border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
       <div className="flex gap-1.5">
         <span className="w-2.5 h-2.5 rounded-full bg-destructive/50" />
@@ -93,8 +93,8 @@ const DesktopMockup = ({ img, title }: { img?: string | null; title: string }) =
   </div>
 );
 
-const MobileMockup = ({ img, label, offset = false }: { img?: string | null; label: string; offset?: boolean }) => (
-  <div className={`relative w-28 md:w-36 ${offset ? "mt-8" : ""}`}>
+const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | null; label: string; offset?: boolean; onClick?: () => void }) => (
+  <div className={`relative w-28 md:w-36 ${offset ? "mt-8" : ""} ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
     <div
       className="rounded-[1.4rem] aspect-[9/19] flex flex-col items-center justify-center overflow-hidden relative"
       style={{
@@ -120,6 +120,7 @@ const CaseStudySection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const cs = caseStudies?.[0];
 
   const title = cs?.title || "TarbutON";
@@ -127,6 +128,12 @@ const CaseStudySection = () => {
   const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
   const desktopImg = null;
   const mobileImg = null;
+
+  const lightboxItems = [
+    { element: <DesktopMockup img={desktopImg} title={title} />, caption: "TarbutON Dashboard — Admin Overview" },
+    { element: <MobileMockup img={mobileImg} label="TarbutON Mobile App" />, caption: "TarbutON Mobile Discovery Flow" },
+    { element: <MobileMockup img={null} label="TarbutON Mobile App" offset />, caption: "User Journey Mapping — Mobile View" },
+  ];
   const dbSteps = cs?.process_steps as Array<{ label: string; desc: string; details?: string }> | null;
 
   const defaultSteps = [
@@ -221,15 +228,24 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <div className="rounded-3xl p-6 md:p-8" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <DesktopMockup img={desktopImg} title={title} />
+          <div className="rounded-3xl p-6 md:p-8 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
-          <div className="rounded-3xl p-8 md:p-10 flex justify-center gap-5" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <MobileMockup img={mobileImg} label="TarbutON Mobile App" />
-            <MobileMockup img={null} label="TarbutON Mobile App" offset />
+          <div className="rounded-3xl p-8 md:p-10 flex justify-center gap-5 hover:border-primary/30 transition-colors" style={{ background: "hsla(180, 30%, 16%, 0.5)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <MobileMockup img={mobileImg} label="TarbutON Mobile App" onClick={() => setLightboxIndex(1)} />
+            <MobileMockup img={null} label="TarbutON Mobile App" offset onClick={() => setLightboxIndex(2)} />
           </div>
         </motion.div>
       </div>
+
+      {lightboxIndex !== null && (
+        <ScreenshotLightbox
+          items={lightboxItems}
+          activeIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </section>
   );
 };
