@@ -83,7 +83,7 @@ const CaseStudySection = () => {
     : processSteps;
 
   return (
-    <section id="casestudy" className="relative py-28 px-6" style={{ background: "linear-gradient(180deg, hsl(0,0%,10.2%) 0%, #B45309 25%, #B45309 75%, hsl(0,0%,10.2%) 100%)" }}>
+    <section id="casestudy" className="relative py-28 px-6" style={{ background: "#1A1A1B" }}>
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-primary/5 blur-[120px] animate-blob pointer-events-none" style={{ animationDelay: "6s" }} />
 
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -130,40 +130,46 @@ const CaseStudySection = () => {
           viewport={{ once: true }}
           transition={slow}
         >
-          <h3 className="text-2xl font-bold text-white text-center mb-10" style={font}>
+          <h3 className="text-2xl font-bold text-foreground text-center mb-10" style={font}>
             Process <span className="text-accent">Steps</span>
           </h3>
 
-          <motion.div
-            className="gap-6"
-            style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {steps.map((step, i) => {
-              const Icon = processSteps[i]?.icon || MapPin;
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="rounded-3xl p-7 flex flex-col"
-                  style={{
-                    background: "hsla(180, 30%, 16%, 0.85)",
-                    border: "1px solid hsla(180, 43%, 30%, 0.25)",
-                    minHeight: "220px",
-                  }}
-                >
-                  <div className="w-12 h-12 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center mb-5" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
-                    <Icon size={22} strokeWidth={1.5} className="text-foreground" />
-                  </div>
-                  <h4 className="text-lg font-semibold text-white mb-3" style={font}>{step.label}</h4>
-                  <p className="text-sm leading-relaxed mt-auto" style={{ ...font, color: "hsla(180, 30%, 80%, 1)" }}>{step.desc}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          {/* Connector line + cards */}
+          <div className="relative">
+            {/* Horizontal connector line (desktop only) */}
+            <div className="hidden md:block absolute top-[56px] left-[16.67%] right-[16.67%] h-0.5 bg-accent/40 z-0" />
+
+            <motion.div
+              className="gap-6 relative z-10"
+              style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)" }}
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              {steps.map((step, i) => {
+                const Icon = processSteps[i]?.icon || MapPin;
+                return (
+                  <motion.div
+                    key={i}
+                    variants={fadeUp}
+                    className="rounded-3xl p-7 flex flex-col"
+                    style={{
+                      background: "hsla(180, 30%, 16%, 0.85)",
+                      border: "1px solid hsla(180, 43%, 30%, 0.25)",
+                      minHeight: "220px",
+                    }}
+                  >
+                    <div className="w-12 h-12 rounded-full backdrop-blur-xl border border-primary/30 flex items-center justify-center mb-5" style={{ background: "hsla(0, 0%, 100%, 0.08)" }}>
+                      <Icon size={22} strokeWidth={1.5} className="text-foreground" />
+                    </div>
+                    <h4 className="text-lg font-semibold text-accent mb-3" style={font}>{step.label}</h4>
+                    <p className="text-sm leading-relaxed mt-auto" style={{ ...font, color: "hsla(180, 30%, 80%, 1)" }}>{step.desc}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* ═══ Device Mockups — Z-Pattern ═══ */}
