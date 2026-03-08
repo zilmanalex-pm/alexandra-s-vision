@@ -135,6 +135,21 @@ const HeroSection = () => {
         style={{ bottom: "5%", right: "-5%" }}
       />
 
+      {/* Semi-transparent monstera background */}
+      <div
+        className="absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none hidden lg:block"
+        style={{
+          maskImage: "linear-gradient(to left, transparent 0%, black 30%, black 70%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to left, transparent 0%, black 30%, black 70%, transparent 100%)",
+        }}
+      >
+        <img
+          src={monsteraImg}
+          alt=""
+          className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-auto opacity-[0.12]"
+        />
+      </div>
+
       <div className="container mx-auto max-w-6xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
         <motion.div
           className="flex-1 text-center lg:text-left"
