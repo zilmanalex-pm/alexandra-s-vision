@@ -1,18 +1,31 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { MapPin, Lightbulb, Settings, Route, Download, ChevronLeft, ChevronRight } from "lucide-react";
+import { useCaseStudies } from "@/hooks/use-portfolio-data";
 
-const steps = [
-  { icon: MapPin, label: "Mapping", desc: "Comprehensive stakeholder landscape analysis and regulatory framework review across government sectors." },
-  { icon: Lightbulb, label: "Insights", desc: "Deep-dive user research uncovering fragmented workflows and adoption barriers in legacy systems." },
-  { icon: Settings, label: "Solutions", desc: "Designed modular platform architecture enabling rapid iteration under strict compliance constraints." },
-  { icon: Route, label: "Roadmap", desc: "Phased delivery plan balancing quick wins with long-term platform scalability and stakeholder buy-in." },
+const iconMap: Record<string, typeof MapPin> = { Mapping: MapPin, Insights: Lightbulb, Solutions: Settings, Roadmap: Route };
+
+const fallbackSteps = [
+  { label: "Mapping", desc: "Comprehensive stakeholder landscape analysis and regulatory framework review across government sectors." },
+  { label: "Insights", desc: "Deep-dive user research uncovering fragmented workflows and adoption barriers in legacy systems." },
+  { label: "Solutions", desc: "Designed modular platform architecture enabling rapid iteration under strict compliance constraints." },
+  { label: "Roadmap", desc: "Phased delivery plan balancing quick wins with long-term platform scalability and stakeholder buy-in." },
 ];
 
 const CaseStudySection = () => {
+  const { data: caseStudies } = useCaseStudies();
+  const cs = caseStudies?.[0];
+
+  const steps = (cs?.process_json as Array<{ label: string; desc: string }>) || fallbackSteps;
   const [active, setActive] = useState(0);
   const prev = () => setActive((a) => (a > 0 ? a - 1 : steps.length - 1));
   const next = () => setActive((a) => (a < steps.length - 1 ? a + 1 : 0));
+
+  const title = cs?.title || "TarbutON";
+  const tagline = cs?.tagline || "An interactive deep-dive into cultural education transformation.";
+  const problem = cs?.problem_statement || "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts.";
+  const solution = cs?.solution_statement || "A unified platform with modular content delivery, real-time analytics dashboards, and a phased rollout strategy that achieved 3× engagement targets within the first pilot quarter.";
+  const presentationLink = cs?.presentation_link;
 
   return (
     <section id="casestudy" className="relative py-24 px-6">
@@ -24,46 +37,36 @@ const CaseStudySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          Case Study — <span className="text-primary">TarbutON</span>
+          Case Study — <span className="text-primary">{title}</span>
         </motion.h2>
-        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">An interactive deep-dive into cultural education transformation.</p>
+        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">{tagline}</p>
 
         {/* Process Carousel */}
-        <motion.div
-          className="glass-card p-8 md:p-12 mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          {/* Step indicators */}
-          <div className="flex items-center justify-center gap-3 mb-8">
-            {steps.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
-                  i === active ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-primary/10"
-                }`}
-              >
-                <s.icon size={16} />
-                <span className="hidden sm:inline">{s.label}</span>
-              </button>
-            ))}
+        <motion.div className="glass-card p-8 md:p-12 mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <div className="flex items-center justify-center gap-3 mb-8 flex-wrap">
+            {steps.map((s, i) => {
+              const Icon = iconMap[s.label] || MapPin;
+              return (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                    i === active ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:bg-primary/10"
+                  }`}
+                >
+                  <Icon size={16} />
+                  <span className="hidden sm:inline">{s.label}</span>
+                </button>
+              );
+            })}
           </div>
-
           <div className="relative min-h-[120px] flex items-center">
             <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
               <ChevronLeft size={20} className="text-foreground" />
             </button>
-            <motion.div
-              key={active}
-              className="text-center px-14 w-full"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.35 }}
-            >
-              <h3 className="text-2xl font-semibold text-foreground mb-3">{steps[active].label}</h3>
-              <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">{steps[active].desc}</p>
+            <motion.div key={active} className="text-center px-14 w-full" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.35 }}>
+              <h3 className="text-2xl font-semibold text-foreground mb-3">{steps[active]?.label}</h3>
+              <p className="text-muted-foreground max-w-lg mx-auto leading-relaxed">{steps[active]?.desc}</p>
             </motion.div>
             <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
               <ChevronRight size={20} className="text-foreground" />
@@ -74,35 +77,31 @@ const CaseStudySection = () => {
         {/* Problem / Solution */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {[
-            { title: "The Problem", color: "border-destructive/30", content: "Cultural education platforms lacked cohesive digital infrastructure, resulting in low adoption, fragmented user journeys, and poor stakeholder alignment across districts." },
-            { title: "The Solution", color: "border-primary/30", content: "A unified platform with modular content delivery, real-time analytics dashboards, and a phased rollout strategy that achieved 3× engagement targets within the first pilot quarter." },
+            { title: "The Problem", color: "border-destructive/30", content: problem, mockup: cs?.mobile_image_url, fallbackLabel: "📱 Mobile View" },
+            { title: "The Solution", color: "border-primary/30", content: solution, mockup: cs?.desktop_image_url, fallbackLabel: "🖥️ Desktop View" },
           ].map((item, i) => (
-            <motion.div
-              key={i}
-              className={`glass-card p-8 border-l-4 ${item.color}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-            >
+            <motion.div key={i} className={`glass-card p-8 border-l-4 ${item.color}`} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }}>
               <h3 className="text-xl font-semibold text-foreground mb-3">{item.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{item.content}</p>
-              {/* Device mockup frame */}
-              <div className="mt-6 rounded-2xl bg-muted/60 border border-border h-40 flex items-center justify-center">
-                <span className="text-sm text-muted-foreground">
-                  {i === 0 ? "📱 Mobile View" : "🖥️ Desktop View"}
-                </span>
+              <div className="mt-6 rounded-2xl bg-muted/60 border border-border h-40 flex items-center justify-center overflow-hidden">
+                {item.mockup ? (
+                  <img src={item.mockup} alt={item.title} className="w-full h-full object-cover" />
+                ) : (
+                  <span className="text-sm text-muted-foreground">{item.fallbackLabel}</span>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Download CTA */}
         <div className="text-center">
-          <button className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-2xl animate-pulse-glow hover:opacity-90 transition-opacity text-lg">
+          <a
+            href={presentationLink || "#"}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-2xl animate-pulse-glow hover:opacity-90 transition-opacity text-lg"
+          >
             <Download size={20} />
             Download Full Case Study
-          </button>
+          </a>
         </div>
       </div>
     </section>
