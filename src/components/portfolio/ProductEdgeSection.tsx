@@ -83,7 +83,6 @@ const BulletIcon = ({ icon: Icon }: { icon: typeof ShieldCheck }) => (
 
 const ProductEdgeSection = () => {
   const { data: dbCards } = useProductEdge();
-  
 
   const cards = dbCards && dbCards.length > 0
     ? dbCards.map((c: any) => ({
