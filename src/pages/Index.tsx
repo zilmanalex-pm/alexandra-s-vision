@@ -14,6 +14,10 @@ const Divider = () => (
   </div>
 );
 
+const TealFadeDivider = () => (
+  <div className="w-full h-16" style={{ background: "linear-gradient(180deg, #1A1A1B 0%, hsl(180, 30%, 12%) 50%, hsl(0, 0%, 10.2%) 100%)" }} />
+);
+
 const Index = () => (
   <div className="min-h-screen bg-background">
     <HeroSection />
