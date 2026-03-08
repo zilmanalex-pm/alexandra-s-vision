@@ -175,7 +175,7 @@ const CaseStudySection = () => {
         {/* Problem Statement */}
         <motion.div
           className="rounded-3xl p-8 md:p-10 mb-16 max-w-3xl mx-auto relative overflow-hidden"
-          style={{ background: "hsla(180, 30%, 16%, 0.7)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
+          style={{ background: "#242426", border: "none" }}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -189,7 +189,7 @@ const CaseStudySection = () => {
           />
           <div className="relative z-10">
             <h3 className="text-xl font-semibold text-white mb-3" style={font}>The Problem</h3>
-            <p className="leading-relaxed text-lg text-white/90" style={font}>{problem}</p>
+            <p className="leading-relaxed text-lg" style={{ ...font, color: "#A3B8B8" }}>{problem}</p>
           </div>
         </motion.div>
 
