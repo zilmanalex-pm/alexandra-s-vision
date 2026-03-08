@@ -122,13 +122,27 @@ const ProductEdgeSection = () => {
           </h2>
         </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <div className="relative">
+          {/* Olive branch backdrop */}
+          <img
+            src={oliveBranchImg}
+            alt=""
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] object-contain pointer-events-none select-none"
+            style={{
+              opacity: 0.25,
+              mixBlendMode: "screen",
+              filter: "brightness(0.6) saturate(1.3)",
+              zIndex: 0,
+            }}
+          />
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10"
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
           {cards.map((card: any, i: number) => {
             const CardIcon = iconMap[card.icon_name] || ShieldCheck;
             return (
