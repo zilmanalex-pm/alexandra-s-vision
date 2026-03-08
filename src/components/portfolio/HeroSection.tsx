@@ -2,6 +2,7 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { Download, Linkedin } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { useState, useEffect, useRef } from "react";
+import monsteraImg from "@/assets/monstera-hero.png";
 
 const GlowingBrain = () => (
   <div className="relative w-64 h-64 md:w-80 md:h-80 animate-float">
