@@ -132,7 +132,7 @@ const ProductEdgeSection = () => (
                   display: "flex",
                   flexDirection: "column",
                   background: "hsla(0, 0%, 14%, 0.7)",
-                  border: "1px solid hsla(180, 43%, 30%, 0.3)",
+                  border: "1px solid hsla(180, 43%, 30%, 0.15)",
                   boxShadow: "0 4px 40px hsla(180, 43%, 30%, 0.06), inset 0 1px 0 hsla(0, 0%, 100%, 0.04)",
                 }}
               >
