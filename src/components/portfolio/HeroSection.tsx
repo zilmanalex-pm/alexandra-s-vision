@@ -150,28 +150,28 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="container mx-auto max-w-6xl flex flex-col lg:flex-row items-center gap-12 lg:gap-20 relative z-10">
+      <div className="container mx-auto max-w-6xl flex flex-col items-center relative z-10">
         <motion.div
-          className="flex-1 text-center lg:text-left"
+          className="text-center max-w-3xl"
           variants={stagger}
           initial="hidden"
           animate="visible"
         >
-          {/* Signature name */}
-          <motion.p
+          {/* Name - prominent and centered */}
+          <motion.h2
             variants={fadeUp}
-            className="text-sm md:text-base tracking-[0.3em] uppercase text-primary/70 font-medium mb-2"
+            className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-3"
           >
             {fullName}
-          </motion.p>
+          </motion.h2>
 
           {/* Typing job title */}
           <motion.p
             variants={fadeUp}
-            className="text-base text-accent font-medium mb-5 h-6"
+            className="text-xl md:text-2xl tracking-[0.15em] uppercase text-accent font-medium mb-10 h-8"
           >
             {typedTitle}
-            {!typingDone && <span className="inline-block w-0.5 h-5 bg-accent ml-0.5 animate-pulse align-middle" />}
+            {!typingDone && <span className="inline-block w-0.5 h-6 bg-accent ml-1 animate-pulse align-middle" />}
           </motion.p>
 
           <motion.h1
