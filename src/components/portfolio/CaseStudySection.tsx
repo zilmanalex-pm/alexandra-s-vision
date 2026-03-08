@@ -102,7 +102,7 @@ const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: st
       style={{ background: "linear-gradient(135deg, #244D4D 0%, #1a3a3a 50%, #2D6A6A 100%)", border: "1px solid hsla(180, 43%, 30%, 0.15)", borderTop: "none" }}
     >
       {img ? (
-        <img src={img} alt={`${title} desktop`} className="w-full h-full object-cover" />
+        <img src={img} alt={`${title} desktop`} className="w-full h-full object-cover" loading="lazy" />
       ) : (
         <>
           <Monitor size={36} strokeWidth={1} className="text-foreground/30 mb-3" />
