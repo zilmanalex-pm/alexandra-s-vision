@@ -291,8 +291,8 @@ const CaseStudySection = () => {
             <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
           <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center items-center gap-5 hover:border-primary/30 transition-colors h-[60vh] md:h-auto" style={{ background: "hsla(0, 0%, 12%, 0.8)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <MobileMockup img={mobileImg1} label="Event Detail" onClick={() => setLightboxIndex(1)} />
-            <MobileMockup img={mobileImg2} label="User Profile" offset onClick={() => setLightboxIndex(2)} />
+            <MobileMockup img={mobileImg1} label="Mobile Home" onClick={() => setLightboxIndex(1)} />
+            <MobileMockup img={mobileImg2} label="Event Detail" offset onClick={() => setLightboxIndex(2)} />
           </div>
         </motion.div>
       </div>
