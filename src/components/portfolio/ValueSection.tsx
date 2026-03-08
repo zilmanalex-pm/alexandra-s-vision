@@ -33,7 +33,7 @@ const ValueSection = () => {
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-16 text-foreground"
+          className="text-[32px] md:text-[48px] font-bold text-center mb-16 text-foreground"
           style={headingFont}
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -25,7 +25,7 @@ const ConnectSection = () => (
       >
         {/* Left column */}
         <motion.div variants={fadeUp}>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6" style={font}>
+          <h2 className="text-[32px] md:text-[48px] font-bold text-foreground mb-6" style={font}>
             Ready to simplify{" "}
             <span className="text-accent">the complex?</span>
           </h2>

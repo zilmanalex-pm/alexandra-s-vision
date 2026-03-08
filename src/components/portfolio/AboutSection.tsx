@@ -63,7 +63,7 @@ const AboutSection = () => (
 
         {/* Value Props */}
         <div className="flex-1 space-y-8">
-          <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-bold text-foreground">
+          <motion.h2 variants={fadeUp} className="text-[32px] md:text-[48px] font-bold text-foreground">
             The Value I <span className="text-accent">Bring</span>
           </motion.h2>
           {values.map((v, i) => (
