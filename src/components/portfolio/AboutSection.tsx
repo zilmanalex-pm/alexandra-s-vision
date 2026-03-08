@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Puzzle, Layers, Repeat } from "lucide-react";
+import { Puzzle, Layers, Repeat, UserRound } from "lucide-react";
 
 const stagger = {
   hidden: {},
