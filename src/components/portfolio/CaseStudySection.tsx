@@ -5,8 +5,6 @@ import { useCaseStudies } from "@/hooks/use-portfolio-data";
 import { useIsMobile } from "@/hooks/use-mobile";
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
 import tarbutonDashboard from "@/assets/tarbuton-dashboard.png";
-import tarbutonEvent from "@/assets/tarbuton-event.png";
-import tarbutonProfile from "@/assets/tarbuton-profile.png";
 import tarbutonMobileEvent from "@/assets/tarbuton-mobile-event.png";
 import tarbutonMobileHome from "@/assets/tarbuton-mobile-home.png";
 import ScreenshotLightbox from "./ScreenshotLightbox";
@@ -117,25 +115,108 @@ const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: st
   </div>
 );
 
-const MobileMockup = ({ img, label, offset = false, onClick }: { img?: string | null; label: string; offset?: boolean; onClick?: () => void }) => (
-  <div className={`relative ${offset ? "mt-8" : ""} ${onClick ? "cursor-pointer" : ""}`} style={{ width: "clamp(7rem, 30vw, 9rem)" }} onClick={onClick}>
+/** iPhone 15 Pro realistic frame */
+const IPhoneFrame = ({
+  img,
+  label,
+  offset = false,
+  onClick,
+}: {
+  img?: string | null;
+  label: string;
+  offset?: boolean;
+  onClick?: () => void;
+}) => (
+  <div
+    className={`relative ${offset ? "mt-8" : ""} ${onClick ? "cursor-zoom-in" : ""}`}
+    style={{ width: "clamp(8rem, 32vw, 11rem)" }}
+    onClick={onClick}
+  >
+    {/* Teal outer glow */}
     <div
-      className="rounded-[1.4rem] aspect-[9/16] flex items-center justify-center overflow-hidden relative"
+      className="absolute inset-0 rounded-[2.2rem] pointer-events-none"
       style={{
-        background: "hsla(0, 0%, 12%, 0.95)",
-        border: "1px solid hsla(180, 43%, 30%, 0.15)",
+        boxShadow:
+          "0 0 30px hsla(180, 50%, 40%, 0.35), 0 0 60px hsla(180, 50%, 40%, 0.15), 0 0 100px hsla(180, 50%, 40%, 0.08)",
+      }}
+    />
+
+    {/* Titanium frame body */}
+    <div
+      className="relative rounded-[2.2rem] overflow-hidden"
+      style={{
+        background: "linear-gradient(145deg, #8E8E93, #636366, #8E8E93)",
+        padding: "3px",
+        boxShadow:
+          "inset 0 1px 0 hsla(0, 0%, 100%, 0.3), inset 0 -1px 0 hsla(0, 0%, 0%, 0.3), 0 4px 16px hsla(0, 0%, 0%, 0.5)",
       }}
     >
-      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-10 h-1 rounded-full bg-border/50 z-10" />
-      {img ? (
-        <img src={img} alt={label} className="w-full h-full object-contain rounded-[1.2rem]" loading="lazy" />
-      ) : (
-        <>
-          <Smartphone size={20} strokeWidth={1} className="text-foreground/30 mb-2" />
-          <span className="text-[9px] font-medium text-foreground/50 px-2 text-center">{label}</span>
-        </>
-      )}
+      {/* Inner bezel */}
+      <div
+        className="rounded-[2rem] overflow-hidden relative"
+        style={{
+          background: "#000",
+          padding: "10px 4px 10px 4px",
+        }}
+      >
+        {/* Dynamic Island */}
+        <div
+          className="absolute top-[6px] left-1/2 -translate-x-1/2 z-20 rounded-full"
+          style={{
+            width: "28%",
+            height: "8px",
+            background: "#1C1C1E",
+            border: "1px solid hsla(0, 0%, 20%, 0.5)",
+          }}
+        />
+
+        {/* Screen area */}
+        <div className="rounded-[1.6rem] overflow-hidden aspect-[9/19.5] relative bg-black">
+          {img ? (
+            <img
+              src={img}
+              alt={label}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <div className="flex flex-col items-center justify-center h-full">
+              <Smartphone size={20} strokeWidth={1} className="text-foreground/30 mb-2" />
+              <span className="text-[9px] font-medium text-foreground/50 px-2 text-center">{label}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Home indicator */}
+        <div
+          className="mx-auto mt-2 rounded-full"
+          style={{
+            width: "30%",
+            height: "4px",
+            background: "hsla(0, 0%, 100%, 0.25)",
+          }}
+        />
+      </div>
     </div>
+
+    {/* Side buttons - volume */}
+    <div
+      className="absolute left-[-2px] top-[22%] w-[2px] h-[8%] rounded-l-sm"
+      style={{ background: "linear-gradient(180deg, #8E8E93, #636366)" }}
+    />
+    <div
+      className="absolute left-[-2px] top-[33%] w-[2px] h-[6%] rounded-l-sm"
+      style={{ background: "linear-gradient(180deg, #8E8E93, #636366)" }}
+    />
+    <div
+      className="absolute left-[-2px] top-[41%] w-[2px] h-[6%] rounded-l-sm"
+      style={{ background: "linear-gradient(180deg, #8E8E93, #636366)" }}
+    />
+    {/* Side button - power */}
+    <div
+      className="absolute right-[-2px] top-[30%] w-[2px] h-[10%] rounded-r-sm"
+      style={{ background: "linear-gradient(180deg, #8E8E93, #636366)" }}
+    />
   </div>
 );
 
@@ -155,9 +236,9 @@ const CaseStudySection = () => {
   const mobileImg2 = tarbutonMobileEvent;
 
   const lightboxItems = [
-    { element: <DesktopMockup img={desktopImg} title={title} />, caption: "TarbutON Dashboard — Homepage & Discovery" },
-    { element: <MobileMockup img={mobileImg1} label="Mobile Home" />, caption: "TarbutON — Mobile Homepage & Featured Events" },
-    { element: <MobileMockup img={mobileImg2} label="Event Detail" offset />, caption: "TarbutON — Mobile Event Detail & Ticketing" },
+    { src: desktopImg, caption: "TarbutON Dashboard — Homepage & Discovery", type: "desktop" as const },
+    { src: mobileImg1, caption: "TarbutON — Mobile Homepage & Featured Events", type: "mobile" as const },
+    { src: mobileImg2, caption: "TarbutON — Mobile Event Detail & Ticketing", type: "mobile" as const },
   ];
   const dbSteps = cs?.process_steps as Array<{ label: string; desc: string; details?: string }> | null;
 
@@ -290,9 +371,9 @@ const CaseStudySection = () => {
           <div className="w-[90%] md:w-full mx-auto rounded-3xl p-4 md:p-8 hover:border-primary/30 transition-colors max-h-[60vh] md:max-h-none flex items-center" style={{ background: "hsla(0, 0%, 12%, 0.8)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
             <DesktopMockup img={desktopImg} title={title} onClick={() => setLightboxIndex(0)} />
           </div>
-          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center items-center gap-5 hover:border-primary/30 transition-colors h-[60vh] md:h-auto" style={{ background: "hsla(0, 0%, 12%, 0.8)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-            <MobileMockup img={mobileImg1} label="Mobile Home" onClick={() => setLightboxIndex(1)} />
-            <MobileMockup img={mobileImg2} label="Event Detail" offset onClick={() => setLightboxIndex(2)} />
+          <div className="w-[90%] md:w-full mx-auto rounded-3xl p-6 md:p-10 flex justify-center items-center gap-6 md:gap-8 hover:border-primary/30 transition-colors h-[60vh] md:h-auto" style={{ background: "hsla(0, 0%, 12%, 0.8)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
+            <IPhoneFrame img={mobileImg1} label="Mobile Home" onClick={() => setLightboxIndex(1)} />
+            <IPhoneFrame img={mobileImg2} label="Event Detail" offset onClick={() => setLightboxIndex(2)} />
           </div>
         </motion.div>
       </div>

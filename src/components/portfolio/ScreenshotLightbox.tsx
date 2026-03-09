@@ -6,8 +6,9 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
 interface LightboxItem {
-  element: React.ReactNode;
+  src: string;
   caption: string;
+  type: "desktop" | "mobile";
 }
 
 interface ScreenshotLightboxProps {
@@ -42,12 +43,10 @@ const ScreenshotLightbox = ({ items, activeIndex, onClose, onNavigate }: Screens
     };
   }, [handleKeyDown]);
 
-  // Reset scale on navigation
   useEffect(() => {
     setScale(1);
   }, [activeIndex]);
 
-  // Pinch-to-zoom handlers
   const onTouchStart = useCallback((e: React.TouchEvent) => {
     if (e.touches.length === 2) {
       const dx = e.touches[0].clientX - e.touches[1].clientX;
@@ -72,11 +71,14 @@ const ScreenshotLightbox = ({ items, activeIndex, onClose, onNavigate }: Screens
     initialDistance.current = null;
   }, []);
 
+  const currentItem = items[activeIndex];
+  const isMobileScreenshot = currentItem.type === "mobile";
+
   return (
     <AnimatePresence>
       <motion.div
         className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md"
-        style={{ background: "hsla(0, 0%, 10%, 0.88)" }}
+        style={{ background: "hsla(0, 0%, 6%, 0.92)" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -117,7 +119,12 @@ const ScreenshotLightbox = ({ items, activeIndex, onClose, onNavigate }: Screens
         <motion.div
           key={activeIndex}
           ref={contentRef}
-          className="w-full max-w-4xl mx-8 flex flex-col items-center touch-none"
+          className="flex flex-col items-center touch-none cursor-zoom-in"
+          style={{
+            maxHeight: "90vh",
+            width: isMobileScreenshot ? "auto" : (isMobile ? "95vw" : "90vw"),
+            maxWidth: isMobileScreenshot ? (isMobile ? "85vw" : "400px") : "1400px",
+          }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
@@ -128,13 +135,26 @@ const ScreenshotLightbox = ({ items, activeIndex, onClose, onNavigate }: Screens
           onTouchEnd={onTouchEnd}
         >
           <div
-            className="w-full transition-transform duration-100"
-            style={{ transform: `scale(${scale})` }}
+            className="transition-transform duration-100"
+            style={{
+              transform: `scale(${scale})`,
+              maxHeight: "85vh",
+            }}
           >
-            {items[activeIndex].element}
+            <img
+              src={currentItem.src}
+              alt={currentItem.caption}
+              className="object-contain rounded-lg"
+              style={{
+                maxHeight: isMobile ? "80vh" : "85vh",
+                width: "100%",
+                border: "3px solid hsla(0, 0%, 100%, 0.9)",
+                boxShadow: "0 0 40px hsla(0, 0%, 0%, 0.5)",
+              }}
+            />
           </div>
           <p className="mt-4 text-sm text-foreground/70 text-center" style={font}>
-            {items[activeIndex].caption}
+            {currentItem.caption}
           </p>
           <div className="flex items-center gap-2 mt-1">
             <p className="text-xs text-muted-foreground" style={font}>
