@@ -55,7 +55,7 @@ export const useCapabilities = () =>
   useQuery({
     queryKey: ["capabilities"],
     queryFn: async () => {
-      const { data, error } = await (supabase as any).from("capabilities").select("*");
+      const { data, error } = await supabase.from("capabilities").select("*");
       if (error) throw error;
       return (data ?? []) as any[];
     },
@@ -65,7 +65,7 @@ export const useProductEdge = () =>
   useQuery({
     queryKey: ["product_edge"],
     queryFn: async () => {
-      const { data, error } = await (supabase as any).from("product_edge").select("*").order("display_order");
+      const { data, error } = await supabase.from("product_edge").select("*").order("display_order");
       if (error) throw error;
       return (data ?? []) as any[];
     },
