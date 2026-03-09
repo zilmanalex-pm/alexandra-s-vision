@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Globe } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
@@ -8,6 +8,12 @@ const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] } },
 };
+
+const languages = [
+  { lang: "English", level: "Native" },
+  { lang: "Hebrew", level: "Native" },
+  { lang: "Russian", level: "Native" },
+];
 
 const FooterSection = () => {
   const { data: profile } = useProfile();
@@ -42,6 +48,17 @@ const FooterSection = () => {
           <span className="flex items-center gap-2 text-muted-foreground">
             <MapPin size={18} strokeWidth={1.5} /> {location}
           </span>
+        </motion.div>
+
+        {/* Languages sub-section */}
+        <motion.div variants={fadeUp} className="mt-6 flex flex-wrap items-center justify-center gap-4" style={font}>
+          <Globe size={16} strokeWidth={1.5} className="text-muted-foreground/60" />
+          {languages.map((l, i) => (
+            <span key={l.lang} className="text-sm text-muted-foreground/70">
+              {l.lang} <span className="text-muted-foreground/40">({l.level})</span>
+              {i < languages.length - 1 && <span className="ml-4 text-muted-foreground/30">·</span>}
+            </span>
+          ))}
         </motion.div>
 
         <motion.p variants={fadeUp} className="mt-8 text-muted-foreground/50 leading-relaxed" style={{ ...font, fontSize: "12px" }}>
