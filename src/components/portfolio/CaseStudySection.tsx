@@ -92,7 +92,6 @@ const MacBookFrame = ({ img, title, onClick }: { img?: string | null; title: str
   <div
     className={`w-full ${onClick ? "cursor-zoom-in" : ""}`}
     onClick={onClick}
-    onClick={onClick}
   >
     {/* Teal screen glow */}
     <div
