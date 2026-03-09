@@ -87,31 +87,78 @@ const MobileStepsCarousel = ({ steps }: { steps: Array<{ label: string; desc: st
   );
 };
 
-const DesktopMockup = ({ img, title, onClick }: { img?: string | null; title: string; onClick?: () => void }) => (
-  <div className={`w-full ${onClick ? "cursor-pointer" : ""}`} onClick={onClick}>
-    <div className="rounded-t-xl bg-secondary/80 flex items-center gap-2 px-4 py-2.5" style={{ border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-      <div className="flex gap-1.5">
-        <span className="w-2.5 h-2.5 rounded-full bg-destructive/50" />
-        <span className="w-2.5 h-2.5 rounded-full bg-accent/50" />
-        <span className="w-2.5 h-2.5 rounded-full bg-primary/50" />
-      </div>
-      <span className="text-[10px] text-muted-foreground ml-2 truncate">tarbuton.app/dashboard</span>
-    </div>
+/** Realistic MacBook Pro 16" (Space Gray) frame */
+const MacBookFrame = ({ img, title, onClick }: { img?: string | null; title: string; onClick?: () => void }) => (
+  <div
+    className={`w-full ${onClick ? "cursor-zoom-in" : ""}`}
+    style={{ transform: "rotate(-2deg)", transformOrigin: "center center" }}
+    onClick={onClick}
+  >
+    {/* Teal screen glow */}
     <div
-      className="rounded-b-xl aspect-video flex items-center justify-center overflow-hidden"
-      style={{ background: "hsla(0, 0%, 12%, 0.95)", border: "1px solid hsla(180, 43%, 30%, 0.15)", borderTop: "none" }}
-    >
-      {img ? (
-        <img src={img} alt={`${title} desktop`} className="w-full h-full object-contain" loading="lazy" />
-      ) : (
-        <>
-          <Monitor size={36} strokeWidth={1} className="text-foreground/30 mb-3" />
-          <span className="text-sm font-medium text-foreground/50">TarbutON Dashboard</span>
-          <span className="text-[10px] text-foreground/30 mt-1">Screenshot placeholder</span>
-        </>
-      )}
+      className="absolute -bottom-4 left-[10%] right-[10%] h-16 rounded-full pointer-events-none z-0"
+      style={{
+        background: "hsla(180, 50%, 40%, 0.25)",
+        filter: "blur(30px)",
+      }}
+    />
+
+    <div className="relative z-10">
+      {/* Screen bezel */}
+      <div
+        className="rounded-t-xl overflow-hidden"
+        style={{
+          background: "linear-gradient(180deg, #2C2C2E, #1C1C1E)",
+          padding: "8px 8px 0 8px",
+          boxShadow: "0 -1px 0 hsla(0,0%,100%,0.08) inset",
+        }}
+      >
+        {/* Camera notch */}
+        <div className="flex justify-center mb-1">
+          <div className="w-2 h-2 rounded-full" style={{ background: "#0A0A0A", border: "1px solid #3A3A3C" }} />
+        </div>
+
+        {/* Screen */}
+        <div className="rounded-t-md aspect-video overflow-hidden relative" style={{ background: "#0A0A0A" }}>
+          {img ? (
+            <img src={img} alt={`${title} desktop`} className="w-full h-full object-contain" loading="lazy" />
+          ) : (
+            <div className="flex flex-col items-center justify-center h-full">
+              <Monitor size={36} strokeWidth={1} className="text-foreground/30 mb-3" />
+              <span className="text-sm font-medium text-foreground/50">TarbutON Dashboard</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Bottom chassis */}
+      <div
+        className="rounded-b-xl relative"
+        style={{
+          height: "14px",
+          background: "linear-gradient(180deg, #3A3A3C, #2C2C2E, #1C1C1E)",
+          boxShadow: "0 2px 8px hsla(0,0%,0%,0.5), 0 1px 0 hsla(0,0%,100%,0.06) inset",
+        }}
+      >
+        {/* Hinge notch */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 rounded-b-md"
+          style={{ width: "18%", height: "4px", background: "#48484A" }}
+        />
+      </div>
+
+      {/* Base / keyboard deck */}
+      <div className="mx-auto" style={{ width: "75%", marginTop: "-1px" }}>
+        <div
+          className="rounded-b-lg"
+          style={{
+            height: "6px",
+            background: "linear-gradient(180deg, #3A3A3C, #2C2C2E)",
+            boxShadow: "0 2px 6px hsla(0,0%,0%,0.4)",
+          }}
+        />
+      </div>
     </div>
-    <div className="mx-auto w-[60%] h-2 bg-secondary/60 rounded-b-lg" style={{ border: "1px solid hsla(180, 43%, 30%, 0.15)", borderTop: "none" }} />
   </div>
 );
 
