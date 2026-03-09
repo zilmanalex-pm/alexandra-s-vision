@@ -91,7 +91,7 @@ const MobileStepsCarousel = ({ steps }: { steps: Array<{ label: string; desc: st
 const MacBookFrame = ({ img, title, onClick }: { img?: string | null; title: string; onClick?: () => void }) => (
   <div
     className={`w-full ${onClick ? "cursor-zoom-in" : ""}`}
-    style={{ transform: "rotate(-2deg)", transformOrigin: "center center" }}
+    onClick={onClick}
     onClick={onClick}
   >
     {/* Teal screen glow */}
