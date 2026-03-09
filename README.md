@@ -1,73 +1,28 @@
-# Welcome to your Lovable project
+# Alexandra Zilman | Product Manager Portfolio
+**Specializing in High-Stakes Execution & GovTech Strategy**
 
-## Project info
+## 🚀 The Product Vision
+This portfolio is a live proof-of-concept in rapid product deployment. It demonstrates my ability to take a complex professional identity—spanning **Psychology**, **B2B SaaS**, and **GovTech**—and translate it into a high-performance, database-driven digital experience.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🛠️ Technical Stack (AI-First)
+- **Frontend:** React + Tailwind CSS via Lovable (Rapid Prototyping).
+- **Backend:** Supabase (Real-time data management & Analytics).
+- **Deployment:** Vercel / Netlify.
+- **Key Feature:** Custom-built **Source Tracking** via URL parameters (e.g., `?source=cv`) to monitor acquisition channels without third-party cookies.
 
-## How can I edit this code?
+## 📂 Case Study: TarbutON
+A deep dive into bridging the gap between fragmented cultural education platforms and cohesive digital infrastructure.
+- **Measurable Impact:** 87% reduction in monthly support tickets.
+- **Scaling:** From zero to 3,000+ active users.
+- **Efficiency:** Stakeholder evaluation cycle cut by 80% (60 days down to 12).
+- [View Live App](https://tarbut-on.lovable.app/)
 
-There are several ways of editing your application.
+## 🌍 About Me
+- **Core Skillset:** RBAC, GovTech Compliance, Data-Driven Decision Making.
+- **Languages:** Native-level fluency in English, Hebrew, and Russian.
+- **Philosophy:** Applying psychological principles to product execution to simplify complex user journeys.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📮 Contact
+- **Location:** Israel.
+- **Email:** zilman.alex@gmail.com.
+- **WhatsApp:** [+972545464305](https://wa.me/972545464305).
