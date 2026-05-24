@@ -19,11 +19,11 @@ import monsteraImg from "@/assets/monstera-leaf.png";
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 1, y: 0 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] } },
 };
 const popIn = {
-  hidden: { opacity: 0, scale: 1 },
+  hidden: { opacity: 1, scale: 1 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.25, 0.1, 1] } },
 };
 
@@ -87,23 +87,22 @@ const CapabilitiesSection = () => {
         <motion.h2
           className="text-[32px] md:text-[48px] font-bold text-center mb-16 text-foreground"
           style={font}
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
           transition={slow}
         >
           Core <span className="text-accent">Capabilities</span>
         </motion.h2>
 
-        <motion.div
-          className="grid md:grid-cols-3 gap-8 lg:gap-10"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {columns.map((col) => (
-            <div key={col.title}>
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+          {columns.map((col, colIdx) => (
+            <motion.div
+              key={col.title}
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+            >
               <motion.h3
                 variants={fadeUp}
                 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6"
@@ -140,9 +139,9 @@ const CapabilitiesSection = () => {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
