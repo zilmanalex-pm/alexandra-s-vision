@@ -27,7 +27,7 @@ const cards: LabCard[] = [
     icon: Workflow,
     title: "Operational Automation & Data Routing Engine",
     subtitle: "Project: 'Pomogusha' / Make.com Architecture",
-    imageUrl: "/lovable-uploads/ba9071a5-0a0f-4cf2-8a63-2caecf341c37.png",
+    imageUrl: "/lovable-uploads/06a16af7-874e-40a4-a931-4db57bcdc7db.png",
     challenge:
       "Managing multi-stakeholder personal and professional operations efficiently without manual overhead.",
     solution:
