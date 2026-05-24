@@ -76,7 +76,7 @@ const cards: LabCard[] = [
     icon: Globe2,
     title: "Bilingual Client Platform Delivery",
     subtitle: "Live Product: Psychotherapist Production Site",
-    imageUrl: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "/lovable-uploads/Bilingual Prod site.png",
     challenge:
       "Launching a highly specialized, human-centric professional digital presence within tight timeline constraints while ensuring localization across multiple languages.",
     solution:
