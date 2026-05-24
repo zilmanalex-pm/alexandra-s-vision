@@ -16,6 +16,7 @@ type LabCard = {
   icon: typeof Terminal;
   title: string;
   subtitle: string;
+  imageUrl: string;
   challenge: string;
   solution: string;
   skills: string[];
@@ -26,6 +27,7 @@ const cards: LabCard[] = [
     icon: Workflow,
     title: "Operational Automation & Data Routing Engine",
     subtitle: "Project: 'Pomogusha' / Make.com Architecture",
+    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
     challenge:
       "Managing multi-stakeholder personal and professional operations efficiently without manual overhead.",
     solution:
@@ -36,6 +38,7 @@ const cards: LabCard[] = [
     icon: Bot,
     title: "AI Persona Engineering & Workflow Automation",
     subtitle: "Project: My LinkedIn Engine / Autonomous Agent Engine",
+    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=800&q=80",
     challenge:
       "Scaling professional presence and content creation while maintaining a highly specific, authentic individual brand voice and rigorous quality control.",
     solution:
@@ -46,6 +49,7 @@ const cards: LabCard[] = [
     icon: FlaskConical,
     title: "Enterprise Transformation: AI-Powered QA Orchestration",
     subtitle: "Framework: Feature Testing Complete Lifecycle",
+    imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
     challenge:
       "Accelerating the enterprise testing cycle without sacrificing quality benchmarks or alignment across cross-functional R&D and Product teams.",
     solution:
@@ -56,6 +60,7 @@ const cards: LabCard[] = [
     icon: GitBranch,
     title: "AI Skill Architecture & GitOps Framework",
     subtitle: "Repository: cowork-skills / Safe Harbor Project",
+    imageUrl: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=800&q=80",
     challenge:
       "Version-controlling prompt variations, agent personas, and systemic AI rules without losing track of code deployments.",
     solution:
@@ -71,6 +76,7 @@ const cards: LabCard[] = [
     icon: Globe2,
     title: "Bilingual Client Platform Delivery",
     subtitle: "Live Product: Psychotherapist Production Site",
+    imageUrl: "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&w=800&q=80",
     challenge:
       "Launching a highly specialized, human-centric professional digital presence within tight timeline constraints while ensuring localization across multiple languages.",
     solution:
@@ -192,12 +198,12 @@ const AILabSection = () => {
                       backgroundSize: "24px 24px",
                     }}
                   />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-foreground/30">
-                    <ImageIcon size={32} strokeWidth={1} />
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-mono">
-                      screenshot placeholder
-                    </span>
-                  </div>
+                  <img
+                    src={card.imageUrl}
+                    alt={card.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+                    loading="lazy"
+                  />
                   {/* scanline */}
                   <div
                     className="absolute inset-0 opacity-[0.04] pointer-events-none"
