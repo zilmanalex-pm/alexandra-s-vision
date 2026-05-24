@@ -103,7 +103,7 @@ const CapabilitiesSection = () => {
                   const Icon = col.Icon;
                   return (
                     <motion.div
-                      key={item.label}
+                      key={item}
                       variants={popIn}
                       whileHover={{ scale: 1.02, boxShadow: "0 0 20px hsla(36, 90%, 44%, 0.2)" }}
                       className="flex items-center gap-3 px-4 py-3 rounded-xl text-foreground/90 cursor-default transition-colors duration-300 backdrop-blur-md"
@@ -122,7 +122,7 @@ const CapabilitiesSection = () => {
                       >
                         <Icon size={14} strokeWidth={1.5} className="text-foreground" />
                       </div>
-                      <span className="text-sm font-medium leading-snug">{item.label}</span>
+                      <span className="text-sm font-medium leading-snug">{item}</span>
                     </motion.div>
                   );
                 })}
