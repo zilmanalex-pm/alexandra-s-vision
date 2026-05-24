@@ -38,7 +38,7 @@ const cards: LabCard[] = [
     icon: Bot,
     title: "AI Persona Engineering & Workflow Automation",
     subtitle: "Project: My LinkedIn Engine / Autonomous Agent Engine",
-    imageUrl: "/lovable-uploads/LinkedIN Engine.png",
+    imageUrl: "/lovable-uploads/LinkedIN%20Engine.png",
     challenge:
       "Scaling professional presence and content creation while maintaining a highly specific, authentic individual brand voice and rigorous quality control.",
     solution:
@@ -49,7 +49,7 @@ const cards: LabCard[] = [
     icon: FlaskConical,
     title: "Enterprise Transformation: AI-Powered QA Orchestration",
     subtitle: "Framework: Feature Testing Complete Lifecycle",
-    imageUrl: "/lovable-uploads/Feature Testing.png",
+    imageUrl: "/lovable-uploads/Feature%20Testing.png",
     challenge:
       "Accelerating the enterprise testing cycle without sacrificing quality benchmarks or alignment across cross-functional R&D and Product teams.",
     solution:
@@ -60,7 +60,7 @@ const cards: LabCard[] = [
     icon: GitBranch,
     title: "AI Skill Architecture & GitOps Framework",
     subtitle: "Repository: cowork-skills / Safe Harbor Project",
-    imageUrl: "/lovable-uploads/GitHub Repo.png",
+    imageUrl: "/lovable-uploads/GitHub%20Repo.png",
     challenge:
       "Version-controlling prompt variations, agent personas, and systemic AI rules without losing track of code deployments.",
     solution:
