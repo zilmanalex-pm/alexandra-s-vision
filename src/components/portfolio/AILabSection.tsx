@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Terminal, Workflow, Bot, FlaskConical, GitBranch, Globe2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Terminal, Workflow, Bot, FlaskConical, GitBranch, Globe2, X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const slow = { duration: 1.0, ease: [0.25, 0.1, 0.25, 1] as const };
 
@@ -86,6 +87,20 @@ const cards: LabCard[] = [
 ];
 
 const AILabSection = () => {
+  const [zoomed, setZoomed] = useState<{ src: string; alt: string } | null>(null);
+
+  useEffect(() => {
+    if (!zoomed) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setZoomed(null);
+    window.addEventListener("keydown", onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [zoomed]);
+
   return (
     <section
       id="ai-lab"
@@ -173,7 +188,8 @@ const AILabSection = () => {
 
                 {/* Image placeholder with terminal header */}
                 <div
-                  className="relative aspect-[16/9] overflow-hidden border-b"
+                  className="relative aspect-[16/9] overflow-hidden border-b cursor-zoom-in group/img"
+                  onClick={() => setZoomed({ src: card.imageUrl, alt: card.title })}
                   style={{
                     background:
                       "linear-gradient(135deg, hsla(180,30%,15%,0.6) 0%, hsla(220,20%,10%,0.6) 100%)",
@@ -275,6 +291,37 @@ const AILabSection = () => {
           })}
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {zoomed && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 bg-black/90 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            onClick={() => setZoomed(null)}
+          >
+            <button
+              onClick={(e) => { e.stopPropagation(); setZoomed(null); }}
+              className="absolute top-5 right-5 z-10 w-10 h-10 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all"
+              aria-label="Close"
+            >
+              <X size={20} strokeWidth={1.5} />
+            </button>
+            <motion.img
+              src={zoomed.src}
+              alt={zoomed.alt}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
