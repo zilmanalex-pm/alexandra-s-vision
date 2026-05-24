@@ -17,22 +17,12 @@ const popIn = {
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
-type ColumnKey = "skill" | "ai" | "trait";
-
-const COLUMN_META: Record<ColumnKey, { title: string; icon: typeof Target }> = {
-  skill: { title: "Core PM Capabilities", icon: Target },
-  ai: { title: "AI & Technical Architecture", icon: Bot },
-  trait: { title: "Personal Abilities", icon: Sparkles },
-};
-
-const COLUMN_ORDER: ColumnKey[] = ["skill", "ai", "trait"];
-
-const classifyCategory = (raw: string | null | undefined): ColumnKey => {
-  const c = (raw ?? "").trim().toLowerCase();
-  if (c === "skill" || c === "pm" || c === "core") return "skill";
-  if (c === "ai" || c.includes("tech")) return "ai";
-  return "trait";
-};
+const TRAIT_ITEMS = [
+  "Self-Driven Continuous Learning Loops",
+  "Independent & First-Principles Thinking",
+  "Cross-Functional Complex Collaboration",
+  "High-Complexity Problem Specialization",
+];
 
 const CapabilitiesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -41,26 +31,25 @@ const CapabilitiesSection = () => {
   const { data: capabilities } = useCapabilities();
 
   const columns = useMemo(() => {
-    const buckets: Record<ColumnKey, { label: string }[]> = { skill: [], ai: [], trait: [] };
+    const skillItems: string[] = [];
+    const aiItems: string[] = [];
+
     (capabilities ?? []).forEach((row: any) => {
       const label = (row?.skill_name ?? "").toString().trim();
       if (!label) return;
-      buckets[classifyCategory(row?.category)].push({ label });
+      const cat = (row?.category ?? "").toString().trim().toLowerCase();
+      if (cat === "skill" || cat === "pm" || cat === "core") {
+        skillItems.push(label);
+      } else if (cat === "ai" || cat.includes("tech")) {
+        aiItems.push(label);
+      }
     });
-    if (buckets.trait.length === 0) {
-      buckets.trait = [
-        { label: "Self-Driven Continuous Learning Loops" },
-        { label: "Independent & First-Principles Thinking" },
-        { label: "Cross-Functional Complex Collaboration" },
-        { label: "High-Complexity Problem Specialization" },
-      ];
-    }
-    return COLUMN_ORDER.map((key) => ({
-      key,
-      title: COLUMN_META[key].title,
-      Icon: COLUMN_META[key].icon,
-      items: buckets[key],
-    })).filter((col) => col.items.length > 0);
+
+    return [
+      { key: "skill", title: "Core PM Capabilities", Icon: Target, items: skillItems },
+      { key: "ai", title: "AI & Technical Architecture", Icon: Bot, items: aiItems },
+      { key: "trait", title: "Core Personal Traits", Icon: Sparkles, items: TRAIT_ITEMS },
+    ];
   }, [capabilities]);
 
   return (
@@ -93,7 +82,7 @@ const CapabilitiesSection = () => {
           Core <span className="text-accent">Capabilities</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {columns.map((col) => (
             <motion.div
               key={col.key}
@@ -114,7 +103,7 @@ const CapabilitiesSection = () => {
                   const Icon = col.Icon;
                   return (
                     <motion.div
-                      key={item.label}
+                      key={item}
                       variants={popIn}
                       whileHover={{ scale: 1.02, boxShadow: "0 0 20px hsla(36, 90%, 44%, 0.2)" }}
                       className="flex items-center gap-3 px-4 py-3 rounded-xl text-foreground/90 cursor-default transition-colors duration-300 backdrop-blur-md"
@@ -133,7 +122,7 @@ const CapabilitiesSection = () => {
                       >
                         <Icon size={14} strokeWidth={1.5} className="text-foreground" />
                       </div>
-                      <span className="text-sm font-medium leading-snug">{item.label}</span>
+                      <span className="text-sm font-medium leading-snug">{item}</span>
                     </motion.div>
                   );
                 })}
