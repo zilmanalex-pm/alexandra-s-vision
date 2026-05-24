@@ -47,6 +47,14 @@ const CapabilitiesSection = () => {
       if (!label) return;
       buckets[classifyCategory(row?.category)].push({ label });
     });
+    if (buckets.trait.length === 0) {
+      buckets.trait = [
+        { label: "Self-Driven Continuous Learning Loops" },
+        { label: "Independent & First-Principles Thinking" },
+        { label: "Cross-Functional Complex Collaboration" },
+        { label: "High-Complexity Problem Specialization" },
+      ];
+    }
     return COLUMN_ORDER.map((key) => ({
       key,
       title: COLUMN_META[key].title,
@@ -85,7 +93,7 @@ const CapabilitiesSection = () => {
           Core <span className="text-accent">Capabilities</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {columns.map((col) => (
             <motion.div
               key={col.key}
