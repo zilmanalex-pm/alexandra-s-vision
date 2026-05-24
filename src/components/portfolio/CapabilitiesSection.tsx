@@ -1,20 +1,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  Target,
-  BarChart3,
-  Users,
-  TrendingUp,
-  Bot,
-  FileText,
-  Zap,
-  GitBranch,
-  RefreshCw,
-  Brain,
-  Users2,
-  Puzzle,
-} from "lucide-react";
-import { useRef } from "react";
+import { Target, Bot, Sparkles } from "lucide-react";
+import { useMemo, useRef } from "react";
 import monsteraImg from "@/assets/monstera-leaf.png";
+import { useCapabilities } from "@/hooks/use-portfolio-data";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
 const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } };
@@ -29,40 +17,43 @@ const popIn = {
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
 
-const columns = [
-  {
-    title: "Core PM Capabilities",
-    items: [
-      { label: "Product Strategy & Vision", icon: Target },
-      { label: "Lifecycle Management (SDLC)", icon: BarChart3 },
-      { label: "User-Centric Design & UX Mapping", icon: Users },
-      { label: "Data-Driven Decision Making", icon: TrendingUp },
-    ],
-  },
-  {
-    title: "AI & Technical Architecture",
-    items: [
-      { label: "Autonomous Agent Deployment (Manus / Claude Code)", icon: Bot },
-      { label: "Prompt Architecture & Linguistic Blueprints", icon: FileText },
-      { label: "Event-Driven Automation & Data Routing (Make.com)", icon: Zap },
-      { label: "GitOps for AI & Modular Skill Versioning (GitHub)", icon: GitBranch },
-    ],
-  },
-  {
-    title: "Core Personal Trait Vectors",
-    items: [
-      { label: "Self-Driven Continuous Learning Loops", icon: RefreshCw },
-      { label: "Independent & First-Principles Thinking", icon: Brain },
-      { label: "Cross-Functional Complex Collaboration", icon: Users2 },
-      { label: "High-Complexity Problem Specialization", icon: Puzzle },
-    ],
-  },
-];
+type ColumnKey = "skill" | "ai" | "trait";
+
+const COLUMN_META: Record<ColumnKey, { title: string; icon: typeof Target }> = {
+  skill: { title: "Core PM Capabilities", icon: Target },
+  ai: { title: "AI & Technical Architecture", icon: Bot },
+  trait: { title: "Personal Abilities", icon: Sparkles },
+};
+
+const COLUMN_ORDER: ColumnKey[] = ["skill", "ai", "trait"];
+
+const classifyCategory = (raw: string | null | undefined): ColumnKey => {
+  const c = (raw ?? "").trim().toLowerCase();
+  if (c === "skill" || c === "pm" || c === "core") return "skill";
+  if (c === "ai" || c.includes("tech")) return "ai";
+  return "trait";
+};
 
 const CapabilitiesSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const { data: capabilities } = useCapabilities();
+
+  const columns = useMemo(() => {
+    const buckets: Record<ColumnKey, { label: string }[]> = { skill: [], ai: [], trait: [] };
+    (capabilities ?? []).forEach((row: any) => {
+      const label = (row?.skill_name ?? "").toString().trim();
+      if (!label) return;
+      buckets[classifyCategory(row?.category)].push({ label });
+    });
+    return COLUMN_ORDER.map((key) => ({
+      key,
+      title: COLUMN_META[key].title,
+      Icon: COLUMN_META[key].icon,
+      items: buckets[key],
+    })).filter((col) => col.items.length > 0);
+  }, [capabilities]);
 
   return (
     <section id="capabilities" ref={sectionRef} className="relative py-24 px-6 overflow-hidden">
@@ -95,9 +86,9 @@ const CapabilitiesSection = () => {
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
-          {columns.map((col, colIdx) => (
+          {columns.map((col) => (
             <motion.div
-              key={col.title}
+              key={col.key}
               variants={stagger}
               initial="hidden"
               whileInView="visible"
@@ -112,7 +103,7 @@ const CapabilitiesSection = () => {
               </motion.h3>
               <div className="space-y-3">
                 {col.items.map((item) => {
-                  const Icon = item.icon;
+                  const Icon = col.Icon;
                   return (
                     <motion.div
                       key={item.label}
