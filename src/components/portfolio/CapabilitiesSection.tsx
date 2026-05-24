@@ -24,7 +24,7 @@ const fadeUp = {
 };
 const popIn = {
   hidden: { opacity: 1, scale: 1 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.25, 0.1, 1] } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
 };
 
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
