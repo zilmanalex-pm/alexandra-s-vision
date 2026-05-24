@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Terminal, Workflow, Bot, FlaskConical, GitBranch, Globe2, Image as ImageIcon } from "lucide-react";
+import { Terminal, Workflow, Bot, FlaskConical, GitBranch, Globe2 } from "lucide-react";
 
 const slow = { duration: 1.0, ease: [0.25, 0.1, 0.25, 1] as const };
 
