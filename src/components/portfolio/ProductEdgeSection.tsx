@@ -22,19 +22,31 @@ const iconMap: Record<string, typeof ShieldCheck> = {
 
 const fallbackCards = [
   {
-    title: "The Comprehensive Vision",
+    title: "The Tech Edge",
     icon_name: "ShieldCheck",
-    bullet_points: ["Navigating Regulation & Gov-tech/Military", "Bridging the R&D Gap", "Ensuring Sustained Adoption"],
+    bullet_points: [
+      "Closed-loop agent architecture deployment.",
+      "Event-driven automation & data routing.",
+      "Version control for prompt engineering (GitOps).",
+    ],
   },
   {
-    title: "My Product Tool Kit",
+    title: "The Execution Edge",
     icon_name: "Cpu",
-    bullet_points: ["Stakeholder Alignment (Roadmap Management)", "Execution Tools (Metrics-driven, UX-focused)", "Change Management"],
+    bullet_points: [
+      "Translating messy technical constraints into clean frameworks.",
+      "Aligning cross-functional R&D, QA, and Product teams.",
+      "Training and deploying advanced content systems.",
+    ],
   },
   {
-    title: "Evidence",
+    title: "The Proof",
     icon_name: "Users2",
-    bullet_points: ["21st Reporter platform success", "Excellence Model (Accelerated pilots by 3 months)", "Managed Recovery Task"],
+    bullet_points: [
+      "National Scale: Deployed platform from 0 to 3,000+ active users.",
+      "Velocity: Cut municipal operational readiness times by 50% (from 4 months to 2).",
+      "Delivery: Shipped localized production platform end-to-end.",
+    ],
   },
 ];
 
