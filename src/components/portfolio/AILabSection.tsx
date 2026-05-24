@@ -180,33 +180,33 @@ const AILabSection = () => {
                     borderColor: "hsla(180,43%,40%,0.15)",
                   }}
                 >
-                  {/* terminal dots */}
-                  <div className="absolute top-3 left-3 flex gap-1.5 z-10">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/70" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/70" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/70" />
-                  </div>
-                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.2em] text-foreground/40 font-mono">
-                    ~/lab/0{i + 1}
-                  </div>
-                  {/* faint grid */}
-                  <div
-                    className="absolute inset-0 opacity-30"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(hsla(180,40%,50%,0.15) 1px, transparent 1px), linear-gradient(90deg, hsla(180,40%,50%,0.15) 1px, transparent 1px)",
-                      backgroundSize: "24px 24px",
-                    }}
-                  />
                   <img
                     src={card.imageUrl}
                     alt={card.title}
                     className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                     loading="lazy"
                   />
+                  {/* terminal dots */}
+                  <div className="absolute top-3 left-3 flex gap-1.5 z-10">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]/70" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]/70" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/70" />
+                  </div>
+                  <div className="absolute top-2.5 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.2em] text-foreground/40 font-mono z-10">
+                    ~/lab/0{i + 1}
+                  </div>
+                  {/* faint grid */}
+                  <div
+                    className="absolute inset-1 opacity-30 pointer-events-none z-[1]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(hsla(180,40%,50%,0.15) 1px, transparent 1px), linear-gradient(90deg, hsla(180,40%,50%,0.15) 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
                   {/* scanline */}
                   <div
-                    className="absolute inset-0 opacity-[0.04] pointer-events-none"
+                    className="absolute inset-0 opacity-[0.04] pointer-events-none z-[1]"
                     style={{
                       backgroundImage:
                         "repeating-linear-gradient(0deg, hsl(0,0%,100%) 0px, hsl(0,0%,100%) 1px, transparent 1px, transparent 3px)",
