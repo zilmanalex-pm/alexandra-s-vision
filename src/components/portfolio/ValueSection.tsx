@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useValues } from "@/hooks/use-portfolio-data";
 import { Puzzle, Layers, RefreshCcw, Sparkles } from "lucide-react";
-import profileImg from "@/assets/alexandra-profile.jpg";
  
 
 
@@ -13,9 +12,6 @@ const fadeUp = {
   hidden: { opacity: 0, y: 25 },
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } },
 };
-
-const primaryText =
-  "I bridge the gap between complex technical systems and real business impact.";
 
 const ICONS = [Puzzle, Layers, RefreshCcw, Sparkles];
 
@@ -63,14 +59,6 @@ const ValueSection = () => {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <motion.p
-                variants={fadeUp}
-                className="text-base md:text-lg leading-relaxed mb-8"
-                style={{ ...bodyFont, color: "hsla(180, 30%, 68%, 0.9)" }}
-              >
-                {primaryText}
-              </motion.p>
-
               <div className="space-y-4">
                 {strengths.map((s, i) => (
                   <motion.div
@@ -108,7 +96,7 @@ const ValueSection = () => {
                 }}
               >
                 <img
-                  src={profileImg}
+                  src="/Alex Avatar.png"
                   alt="Alexandra Zilman"
                   className="w-full h-full object-cover object-top"
                 />
