@@ -95,15 +95,15 @@ const CapabilitiesSection = () => {
           Core <span className="text-accent">Capabilities</span>
         </motion.h2>
 
-        <motion.div
-          className="grid md:grid-cols-3 gap-8 lg:gap-10"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {columns.map((col) => (
-            <div key={col.title}>
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
+          {columns.map((col, colIdx) => (
+            <motion.div
+              key={col.title}
+              variants={stagger}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
+            >
               <motion.h3
                 variants={fadeUp}
                 className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6"
@@ -140,9 +140,9 @@ const CapabilitiesSection = () => {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
