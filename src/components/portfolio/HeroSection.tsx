@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, Linkedin } from "lucide-react";
+import { Download, Linkedin, Github } from "lucide-react";
 import { useProfile } from "@/hooks/use-portfolio-data";
 import { useTypingEffect } from "@/hooks/use-typing-effect";
 import monsteraHeroImg from "@/assets/monstera-leaf.png";
