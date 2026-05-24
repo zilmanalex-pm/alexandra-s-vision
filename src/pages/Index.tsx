@@ -7,6 +7,7 @@ import MetricsSection from "@/components/portfolio/MetricsSection";
 import ProductEdgeSection from "@/components/portfolio/ProductEdgeSection";
 import PsychologySection from "@/components/portfolio/PsychologySection";
 import CaseStudySection from "@/components/portfolio/CaseStudySection";
+import AILabSection from "@/components/portfolio/AILabSection";
 import TestimonialsSection from "@/components/portfolio/TestimonialsSection";
 import ConnectSection from "@/components/portfolio/ConnectSection";
 import BehindTheProductSection from "@/components/portfolio/BehindTheProductSection";
@@ -51,6 +52,8 @@ const Index = () => {
     <PsychologySection />
     <Divider />
     <CaseStudySection />
+    <Divider />
+    <AILabSection />
     <Divider />
     <TestimonialsSection />
     <Divider />
