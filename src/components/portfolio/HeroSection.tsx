@@ -120,6 +120,16 @@ const HeroSection = () => {
                 <Linkedin size={18} strokeWidth={1.5} />
                 LinkedIn
               </a>
+              <a
+                href="https://github.com/zilmanalex-pm"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 text-foreground font-semibold rounded-2xl transition-colors hover:border-primary/50"
+                style={{ ...font, background: "hsla(0, 0%, 14%, 0.4)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}
+              >
+                <Github size={18} strokeWidth={1.5} />
+                GitHub
+              </a>
             </div>
           </motion.div>
         </div>
