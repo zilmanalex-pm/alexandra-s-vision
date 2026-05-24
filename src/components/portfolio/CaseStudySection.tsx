@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge, Monitor, Smartphone } from "lucide-react";
+import { Monitor, Smartphone } from "lucide-react";
 import { useCaseStudies } from "@/hooks/use-portfolio-data";
-import { useIsMobile } from "@/hooks/use-mobile";
+
 import eucalyptusImg from "@/assets/eucalyptus-branch.png";
 import tarbutonDashboard from "@/assets/tarbuton-dashboard.png";
 import tarbutonMobileEvent from "@/assets/tarbuton-mobile-event.png";
@@ -10,82 +10,8 @@ import tarbutonMobileHome from "@/assets/tarbuton-mobile-home.png";
 import ScreenshotLightbox from "./ScreenshotLightbox";
 
 const slow = { duration: 1.2, ease: [0.25, 0.1, 0.25, 1] as const };
-const stagger = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.25, 0.1, 0.25, 1] } },
-};
 const font = { fontFamily: "'Lexend', sans-serif" } as const;
-const stepIcons = [Compass, AlertTriangle, Lightbulb, Route, BarChart3, GitMerge];
 
-const ProcessStepCard = ({ step, index }: { step: { label: string; desc: string; details?: string }; index: number }) => {
-  const Icon = stepIcons[index] || Compass;
-  return (
-    <div
-      className="rounded-2xl p-10 flex flex-col relative overflow-hidden transition-colors duration-300 h-full"
-      style={{
-        background: "hsla(0, 0%, 12%, 0.9)",
-        border: "1px solid hsla(180, 43%, 30%, 0.15)",
-      }}
-    >
-      <span className="absolute top-4 right-5 text-4xl font-black select-none" style={{ ...font, color: "hsla(36, 90%, 44%, 0.25)" }}>
-        {index + 1}
-      </span>
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: "hsla(180, 43%, 30%, 0.12)", border: "1px solid hsla(180, 43%, 30%, 0.15)" }}>
-        <Icon size={18} strokeWidth={1} className="text-white" />
-      </div>
-      <h4 className="text-base font-semibold text-accent mb-2" style={font}>{step.label}</h4>
-      <p className="text-[14px] leading-relaxed flex-1" style={{ ...font, color: "#E2E8F0", opacity: 0.85 }}>{step.desc}</p>
-      {step.details && (
-        <div className="mt-3 pt-3 text-[14px] leading-relaxed" style={{ ...font, color: "#E2E8F0", opacity: 0.85, borderTop: "1px solid hsla(180, 43%, 30%, 0.1)" }}>
-          {step.details}
-        </div>
-      )}
-    </div>
-  );
-};
-
-const MobileStepsCarousel = ({ steps }: { steps: Array<{ label: string; desc: string; details?: string }> }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const handleScroll = () => {
-      const cardWidth = el.offsetWidth * 0.82;
-      const idx = Math.round(el.scrollLeft / cardWidth);
-      setActiveIndex(Math.min(idx, steps.length - 1));
-    };
-    el.addEventListener("scroll", handleScroll, { passive: true });
-    return () => el.removeEventListener("scroll", handleScroll);
-  }, [steps.length]);
-
-  return (
-    <div>
-      <div
-        ref={scrollRef}
-        className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6"
-        style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
-      >
-        {steps.map((step, i) => (
-          <div key={i} className="snap-start shrink-0" style={{ width: "82%" }}>
-            <ProcessStepCard step={step} index={i} />
-          </div>
-        ))}
-      </div>
-      <div className="flex justify-center gap-2 mt-4">
-        {steps.map((_, i) => (
-          <div
-            key={i}
-            className="w-2 h-2 rounded-full transition-all duration-300"
-            style={{ background: i === activeIndex ? "hsl(36, 90%, 44%)" : "hsla(180, 43%, 30%, 0.3)" }}
-          />
-        ))}
-      </div>
-    </div>
-  );
-};
 
 /** Realistic MacBook Pro 16" (Space Gray) frame */
 const MacBookFrame = ({ img, title, onClick }: { img?: string | null; title: string; onClick?: () => void }) => (
@@ -272,7 +198,6 @@ const CaseStudySection = () => {
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const isMobile = useIsMobile();
   const cs = caseStudies?.[0];
 
   const title = cs?.title || "TarbutON";
@@ -286,18 +211,6 @@ const CaseStudySection = () => {
     { src: mobileImg1, caption: "TarbutON — Mobile Homepage & Featured Events", type: "mobile" as const },
     { src: mobileImg2, caption: "TarbutON — Mobile Event Detail & Ticketing", type: "mobile" as const },
   ];
-  const dbSteps = cs?.process_steps as Array<{ label: string; desc: string; details?: string }> | null;
-
-  const defaultSteps = [
-    { label: "Mapping", desc: "Comprehensive stakeholder landscape analysis and regulatory framework review." },
-    { label: "Pain Points", desc: "Deep-dive user research uncovering fragmented workflows and adoption barriers." },
-    { label: "Solution", desc: "Designed modular platform architecture enabling rapid iteration." },
-    { label: "Roadmap", desc: "Phased delivery plan balancing quick wins with long-term scalability." },
-    { label: "Metrics", desc: "Defined success KPIs and built measurement frameworks." },
-    { label: "Flow", desc: "End-to-end user flow optimization reducing friction." },
-  ];
-
-  const steps = dbSteps && dbSteps.length > 0 ? dbSteps : defaultSteps;
 
   return (
     <section id="casestudy" ref={sectionRef} className="relative py-28 px-6 overflow-hidden" style={{ background: "#1A1A1B" }}>
@@ -375,36 +288,6 @@ const CaseStudySection = () => {
               </a>
             </div>
           </div>
-        </motion.div>
-
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={slow}
-        >
-          <h3 className="text-[20px] md:text-[24px] font-bold text-foreground text-center mb-10" style={font}>
-            Process <span className="text-accent">Steps</span>
-          </h3>
-
-          {isMobile ? (
-            <MobileStepsCarousel steps={steps} />
-          ) : (
-            <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {steps.map((step, i) => (
-                <motion.div key={i} variants={fadeUp}>
-                  <ProcessStepCard step={step} index={i} />
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
         </motion.div>
 
         <motion.div
