@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useProfile } from "@/hooks/use-portfolio-data";
-import { Puzzle, Layers, RefreshCcw } from "lucide-react";
+import { useValues } from "@/hooks/use-portfolio-data";
+import { Puzzle, Layers, RefreshCcw, Sparkles } from "lucide-react";
 import profileImg from "@/assets/alexandra-profile.jpg";
  
 
@@ -15,17 +15,16 @@ const fadeUp = {
 };
 
 const primaryText =
-  "Specializing in high-stakes execution within regulated B2B SaaS and GovTech. I bridge the gap between deep technical constraints and user needs, building product structures that reduce support friction and drive long-term platform health.";
+  "I bridge the gap between complex technical systems and real business impact.";
 
-const strengths = [
-  { icon: Puzzle, text: "I thrive where requirements are messy and stakeholders are many." },
-  { icon: Layers, text: "Expertise in resolving fragmented signals into scalable platform logic." },
-  { icon: RefreshCcw, text: "I own the lifecycle of adoption, bridging the gap between technical constraints and user needs." },
-];
+const ICONS = [Puzzle, Layers, RefreshCcw, Sparkles];
 
 const ValueSection = () => {
-  const { data: profile } = useProfile();
-  const mainText = profile?.value_statement || primaryText;
+  const { data: valuesData } = useValues();
+  const strengths = (valuesData ?? [])
+    .filter((v: any) => v?.text)
+    .sort((a: any, b: any) => (a.display_order ?? 0) - (b.display_order ?? 0))
+    .map((v: any, i: number) => ({ icon: ICONS[i % ICONS.length], text: v.text as string }));
 
   return (
     <section id="value" className="relative py-28 px-6">
@@ -69,7 +68,7 @@ const ValueSection = () => {
                 className="text-base md:text-lg leading-relaxed mb-8"
                 style={{ ...bodyFont, color: "hsla(180, 30%, 68%, 0.9)" }}
               >
-                {mainText}
+                {primaryText}
               </motion.p>
 
               <div className="space-y-4">
