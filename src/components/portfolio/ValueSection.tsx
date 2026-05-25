@@ -102,9 +102,9 @@ const ValueSection = () => {
                   onError={(e) => {
                     const img = e.currentTarget;
                     const fallbacks = [
-                      "/lovable-uploads/alex-avatar.png",
-                      "/lovable-uploads/Alex_Avatar.png",
-                      "/Alex-Avatar.png",
+                      "/lovable-uploads/Alex-Avatar.jpg",
+                      "/lovable-uploads/Alex-Avatar.jpeg",
+                      "/lovable-uploads/Alex-Avatar.PNG",
                     ];
                     const tried = Number(img.dataset.fallbackIdx ?? "0");
                     if (tried < fallbacks.length) {
