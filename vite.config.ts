@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // Keep this list in sync with scripts/check-uploads.mjs
 const EXPECTED_UPLOADS = [
-  "Alex-Avatar.png",
+  "alex-avatar.png",
   "pomogusha.png",
   "linkedin-engine.png",
   "qa-lifecycle.png",
