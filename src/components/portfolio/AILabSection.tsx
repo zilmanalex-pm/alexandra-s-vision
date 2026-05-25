@@ -28,7 +28,7 @@ const cards: LabCard[] = [
     icon: Workflow,
     title: "Operational Automation & Data Routing Engine",
     subtitle: "Project: 'Pomogusha' / Make.com Architecture",
-    imageUrl: "/lovable-uploads/06a16af7-874e-40a4-a931-4db57bcdc7db.png",
+    imageUrl: "/lovable-uploads/pomogusha.png",
     challenge:
       "Managing multi-stakeholder personal and professional operations efficiently without manual overhead.",
     solution:
@@ -39,7 +39,7 @@ const cards: LabCard[] = [
     icon: Bot,
     title: "AI Persona Engineering & Workflow Automation",
     subtitle: "Project: My LinkedIn Engine / Autonomous Agent Engine",
-    imageUrl: "/lovable-uploads/LinkedIN%20Engine.png",
+    imageUrl: "/lovable-uploads/linkedin-engine.png",
     challenge:
       "Scaling professional presence and content creation while maintaining a highly specific, authentic individual brand voice and rigorous quality control.",
     solution:
@@ -50,7 +50,7 @@ const cards: LabCard[] = [
     icon: FlaskConical,
     title: "Enterprise Transformation: AI-Powered QA Orchestration",
     subtitle: "Framework: Feature Testing Complete Lifecycle",
-    imageUrl: "/lovable-uploads/Feature%20Testing.png",
+    imageUrl: "/lovable-uploads/qa-lifecycle.png",
     challenge:
       "Accelerating the enterprise testing cycle without sacrificing quality benchmarks or alignment across cross-functional R&D and Product teams.",
     solution:
@@ -61,7 +61,7 @@ const cards: LabCard[] = [
     icon: GitBranch,
     title: "AI Skill Architecture & GitOps Framework",
     subtitle: "Repository: cowork-skills / Safe Harbor Project",
-    imageUrl: "/lovable-uploads/GitHub%20Repo.png",
+    imageUrl: "/lovable-uploads/github-repo.png",
     challenge:
       "Version-controlling prompt variations, agent personas, and systemic AI rules without losing track of code deployments.",
     solution:
@@ -77,7 +77,7 @@ const cards: LabCard[] = [
     icon: Globe2,
     title: "Bilingual Client Platform Delivery",
     subtitle: "Live Product: Psychotherapist Production Site",
-    imageUrl: "/lovable-uploads/Bilingual Prod site.png",
+    imageUrl: "/lovable-uploads/therapist-site.png",
     challenge:
       "Launching a highly specialized, human-centric professional digital presence within tight timeline constraints while ensuring localization across multiple languages.",
     solution:
