@@ -28,7 +28,7 @@ const AboutSection = () => (
       }}
     >
       <img
-        src={monsteraImg}
+        src="/profile.png"
         alt=""
         className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[650px] h-auto opacity-[0.3]"
         style={{
