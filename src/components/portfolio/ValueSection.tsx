@@ -96,7 +96,7 @@ const ValueSection = () => {
                 }}
               >
                 <img
-                  src="/lovable-uploads/Alex-Avatar.png"
+                  src="/profile.png"
                   alt="Alexandra Zilman"
                   className="w-full h-full object-cover object-top"
                   onError={(e) => {
