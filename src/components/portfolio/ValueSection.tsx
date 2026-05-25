@@ -96,16 +96,15 @@ const ValueSection = () => {
                 }}
               >
                 <img
-                  src="/lovable-uploads/Alex Avatar.png"
+                  src="/lovable-uploads/Alex-Avatar.png"
                   alt="Alexandra Zilman"
                   className="w-full h-full object-cover object-top"
                   onError={(e) => {
                     const img = e.currentTarget;
                     const fallbacks = [
                       "/lovable-uploads/alex-avatar.png",
-                      "/lovable-uploads/alex%20avatar.png",
-                      "/lovable-uploads/Alex-Avatar.png",
-                      "/Alex Avatar.png",
+                      "/lovable-uploads/Alex_Avatar.png",
+                      "/Alex-Avatar.png",
                     ];
                     const tried = Number(img.dataset.fallbackIdx ?? "0");
                     if (tried < fallbacks.length) {
