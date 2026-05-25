@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Pre-publish check: verifies expected files exist in public/lovable-uploads.
  * Edit EXPECTED_FILES below to add/remove tracked assets.
