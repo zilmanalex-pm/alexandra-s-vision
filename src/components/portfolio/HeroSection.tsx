@@ -19,7 +19,7 @@ const HeroSection = () => {
   const fullName = profile?.full_name || "Alexandra Zilman";
   const jobTitle = profile?.job_title || "Product Manager";
   const subHeadline = profile?.sub_headline || "Specializing in high-stakes execution within regulated B2B SaaS and GovTech.";
-  const cvUrl = profile?.cv_url || "https://docs.google.com/document/d/1FrRdp_cBpUvvEKD51DYDx_omo60ZKPrZMO4ligXQpKM/edit?usp=sharing";
+  const cvUrl = "https://drive.google.com/file/d/15wcDzX__I6yMihCPsmDCkyDJqEE4zu3u/view?usp=drive_link";
   const linkedinUrl = profile?.linkedin_url || "https://www.linkedin.com/in/alexandra-zilman-33770a11/";
 
   const { displayed: typedTitle, done: typingDone } = useTypingEffect(jobTitle, 70);
