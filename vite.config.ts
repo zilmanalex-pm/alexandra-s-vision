@@ -1,8 +1,18 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import { existsSync } from "node:fs";
 import { componentTagger } from "lovable-tagger";
-import { checkUploads, format } from "./scripts/check-uploads.mjs";
+
+// Keep this list in sync with scripts/check-uploads.mjs
+const EXPECTED_UPLOADS = [
+  "Alex-Avatar.png",
+  "pomogusha.png",
+  "linkedin-engine.png",
+  "qa-lifecycle.png",
+  "github-repo.png",
+  "therapist-site.png",
+];
 
 // Pre-build check: warn (don't fail) if expected /lovable-uploads files are missing.
 function uploadsCheckPlugin() {
@@ -10,12 +20,18 @@ function uploadsCheckPlugin() {
     name: "lovable-uploads-check",
     apply: "build" as const,
     buildStart() {
-      const result = checkUploads();
-      const msg = format(result);
-      if (result.missing.length > 0) {
-        this.warn(msg);
+      const dir = path.resolve(__dirname, "public", "lovable-uploads");
+      const missing = EXPECTED_UPLOADS.filter((f) => !existsSync(path.join(dir, f)));
+      if (missing.length) {
+        const msg =
+          `[check-uploads] Missing ${missing.length} expected file(s) in public/lovable-uploads/:\n` +
+          missing.map((f) => `  - ${f}`).join("\n");
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (this as any).warn(msg);
       } else {
-        console.log(msg);
+        console.log(
+          `[check-uploads] ✓ All ${EXPECTED_UPLOADS.length} expected files present in public/lovable-uploads/`
+        );
       }
     },
   };
